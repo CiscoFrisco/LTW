@@ -1,3 +1,10 @@
+<?php
+	include_once('session.php');
+
+	if (isset($_SESSION['username']))
+    	die(header('Location: profile.php'));
+?>
+
 <!doctype html>
 <html>
 

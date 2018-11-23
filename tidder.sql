@@ -1,11 +1,10 @@
---NOT TESTED
-
 CREATE TABLE user (
     user_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     username VARCHAR NOT NULL UNIQUE,
     email VARCHAR NOT NULL UNIQUE,
-    password VARCHAR NOT NULL
-    --realname VARCHAR,
+    password VARCHAR NOT NULL,
+    realname VARCHAR,
+	bio VARCHAR
 );
 
 CREATE TABLE post (
