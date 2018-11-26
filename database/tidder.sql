@@ -7,33 +7,33 @@ CREATE TABLE user (
 	bio VARCHAR
 );
 
-CREATE TABLE post (
-    post_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    post_title VARCHAR NOT NULL, --TAMANHO DE TITULO MÁXIMO?
-    post_text VARCHAR NOT NULL,
+CREATE TABLE story (
+    story_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    story_title VARCHAR NOT NULL, --TAMANHO DE TITULO MÁXIMO?
+    story_text VARCHAR NOT NULL,
     user_id INTEGER NOT NULL REFERENCES user
 );
 
 --STILL NEEDS COMMENT TO COMMENT
 CREATE TABLE comment (
     comment_id INTEGER NOT NULL, --AUTOINCREMENT?
-    post_id INTEGER NOT NULL REFERENCES post,
+    story_id INTEGER NOT NULL REFERENCES story,
     comment_text VARCHAR NOT NULL,
     user_id INTEGER NOT NULL REFERENCES user,
-    PRIMARY KEY(comment_id,post_id)
+    PRIMARY KEY(comment_id,story_id)
 );
 
---MAYBE DO VOTE_COMMENT AND VOTE_POST ON SAME TABLE?
-CREATE TABLE vote_post(
-    post_id INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
+--MAYBE DO VOTE_COMMENT AND VOTE_STORY ON SAME TABLE?
+CREATE TABLE vote_story(
+    story_id INTEGER NOT NULL REFERENCES story,
+    user_id INTEGER NOT NULL REFERENCES user,
     value INTEGER NOT NULL CHECK (value = -1 OR value = 1),
-    PRIMARY KEY(post_id,user_id)
+    PRIMARY KEY(story_id,user_id)
 );
 
 CREATE TABLE vote_comment(
-    comment_id INTEGER NOT NULL,
-    user_id INTEGER NOT NULL,
+    comment_id INTEGER NOT NULL REFERENCES comment,
+    user_id INTEGER NOT NULL REFERENCES user,
     value INTEGER NOT NULL CHECK (value = -1 OR value = 1),
     PRIMARY KEY(comment_id,user_id)
 );

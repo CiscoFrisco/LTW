@@ -1,12 +1,12 @@
 <?php
-	include_once('session.php');
-	include_once('db_user.php');
+	include_once('../includes/session.php');
+	include_once('../database/db_user.php');
 
-	if (!isset($_SESSION['username']))
-		die(header('Location: index.php'));
+	if (!isset($_SESSION['user_id']))
+		die(header('Location: login.php'));
 
-	$username = $_SESSION['username'];
-	getUserInfo($username, $realname, $bio);
+	$user_id = $_SESSION['user_id'];
+	getUserInfo($user_id, $username, $realname, $bio);
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +29,8 @@
 		<header>
 			<h2>Edit</h2>
 		</header>
-		<form method="post" action="action_edit_profile.php" id="edit_profile">
+		<form method="post" action="../actions/action_edit_profile.php" id="edit_profile">
+			<input type="text" name="username" value="<?=$username?>" required>
 			<input type="text" name="realname" value="<?=$realname?>" required>
 			<input type="submit" value="Edit Profile">
 		</form>
@@ -37,7 +38,7 @@
 	</section>
 	<section id="logout">
 		<header>
-			<h3><a href="action_logout.php">Logout</a></h3>
+			<h3><a href="../actions/action_logout.php">Logout</a></h3>
 		</header>
 	</section>
 </body>
