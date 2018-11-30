@@ -9,7 +9,7 @@
     try {
 		insertUser($user_id, $username, $email, $password);
 		$_SESSION['user_id'] = $user_id;
-        header('Location: ../pages/profile.php');
+        header('Location: ../index.php');
     } catch (PDOException $e) {
         header('Location: ../pages/signup.php');
     }

@@ -1,37 +1,31 @@
 <?php
 	include_once('../includes/session.php');
+	include_once('../includes/date.php');
 	include_once('../database/db_user.php');
+	include_once('../templates/tpl_common.php');
 
-	if (!isset($_SESSION['user_id']))
-		die(header('Location: login.php'));
+	if (!isset($_GET['username']))
+		die(header('Location: ../index.php'));
 
-	$user_id = $_SESSION['user_id'];
+	$username = urldecode($_GET['username']);
 	getUserInfo($user_id, $username, $realname, $email, $birthday, $join_date, $bio);
-
 	$formatted_birthday = formatDate($birthday);
 	$formatted_join_date = formatDate($join_date);
+
+	draw_header();
 ?>
 
-<!DOCTYPE html>
-<html lang="en-US">
+	<h2><?=$username?> Profile</h2>
+	<h3>Username: <?=$username?></h3>
+	<h3>Name: <?=$realname?></h3>
+	<h3>Bio: <?=$bio?></h3>
+	<h3>Email: <?=$email?></h3>
+	<h3>Birthday: <?=$formatted_birthday?></h3>
+	<h3>Join Date: <?=$formatted_join_date?></h3>
 
-<head>
-	<title>Tidder</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+	<?php
+	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user_id){?>
 
-<body>
-	<header>
-		<h1><a href="../index.php">Tidder</a></h1>
-		<h2><?=$username?> Profile</h2>
-	</header>
-	<h2>Username: <?=$username?></h2>
-	<h2>Name: <?=$realname?></h2>
-	<h2>Bio: <?=$bio?></h2>
-	<h2>Email: <?=$email?></h2>
-	<h2>Birthday: <?=$formatted_birthday?></h2>
-	<h2>Join Date: <?=$formatted_join_date?></h2>
 	<section id="edit">
 		<header>
 			<h2>Edit</h2>
@@ -52,9 +46,9 @@
 	</section>
 	<section id="logout">
 		<header>
-			<h3><a href="../actions/action_logout.php">Logout</a></h3>
+			<h4><a href="../actions/action_logout.php">Logout</a></h4>
 		</header>
 	</section>
-</body>
 
-</html>
+	<?php } 
+	draw_footer();?>

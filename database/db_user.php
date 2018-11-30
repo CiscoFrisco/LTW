@@ -21,12 +21,12 @@
 		return password_verify($password, $user['password']);
 	}
 
-	function getUserInfo($user_id, &$username, &$realname, &$email, &$birthday, &$join_date, &$bio) {
+	function getUserInfo(&$user_id, $username, &$realname, &$email, &$birthday, &$join_date, &$bio) {
 		$db = Database::instance()->db();
-		$stmt = $db->prepare('SELECT * FROM user WHERE user_id = ?');
-		$stmt->execute(array($user_id));
+		$stmt = $db->prepare('SELECT * FROM user WHERE username = ?');
+		$stmt->execute(array($username));
 		$user = $stmt->fetch();
-		$username = $user['username'];
+		$user_id = $user['user_id'];
 		$email = $user['email'];
 		$realname = $user['realname'];
 		$birthday = $user['birthday'];
@@ -38,11 +38,6 @@
 		$db = Database::instance()->db();
 		$stmt = $db->prepare('UPDATE user SET username = ?, realname = ?, email = ?, birthday = ?, bio = ? WHERE user_id = ?');
 		$stmt->execute(array($username, $realname, $email, $birthday, $bio, $user_id));
-	}
-
-	function formatDate($date){
-		$time = strtotime($date);
-		return date("d/m/Y",$time);
 	}
 
 	function getUserName($user_id){

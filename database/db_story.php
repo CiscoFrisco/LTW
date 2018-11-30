@@ -3,7 +3,7 @@
 	
 	function insertStory($user_id, $title, $story) {
 		$db = Database::instance()->db();
-        $stmt = $db->prepare('INSERT INTO opinion VALUES(NULL, NULL, ?, ?, ?)');
+        $stmt = $db->prepare('INSERT INTO opinion VALUES(NULL, NULL, ?, ?, datetime("now"), ?)');
         $stmt->execute(array($title, $story, $user_id));
 	}
 

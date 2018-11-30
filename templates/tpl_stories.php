@@ -16,8 +16,12 @@
 
         <?php } ?>
 
-    <?php function draw_story($story) { ?>
+    <?php function draw_story($story) { 
+		global $now;?>
         <article class="story">
-            <header><h3><a href="story.php?story_id=<?=$story['opinion_id']?>"><?=$story['opinion_title']?></a></h3></header>
+            <header>
+				<h3><a href="story.php?story_id=<?=$story['opinion_id']?>"><?=$story['opinion_title']?></a></h3>
+				<h4>Posted by <a href="<?='profile.php?username='.urlencode($story['username'])?>"><?=$story['username']?></a> <?=deltaTime($now, $story['posted'])?></h4>
+			</header>
         </article>
     <?php } ?>

@@ -5,7 +5,7 @@ CREATE TABLE user (
     password VARCHAR NOT NULL,
     realname VARCHAR,
     birthday DATE,
-    join_date DATE,
+    join_date DATE NOT NULL,
 	bio VARCHAR
 );
 
@@ -17,6 +17,7 @@ CREATE TABLE opinion (
 	parent_id INTEGER REFERENCES opinion(opinion_id),
     opinion_title VARCHAR,
     opinion_text VARCHAR NOT NULL,
+	posted DATETIME NOT NULL,
     user_id INTEGER NOT NULL REFERENCES user
 );
 

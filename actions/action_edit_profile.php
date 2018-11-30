@@ -11,8 +11,8 @@
 
 	try {
 		editUserInfo($user_id, $username, $realname, $email, $birthday, $bio);
-        header('Location: ../pages/profile.php');
+        header('Location: ../pages/profile.php?username='.urlencode($username));
     } catch (PDOException $e) {
-        header('Location: ../pages/profile.php');
+        header('Location: ../pages/profile.php?username='.urlencode($username));
     }
 ?>
