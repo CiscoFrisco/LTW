@@ -42,8 +42,7 @@
 
 	function formatDate($date){
 		$time = strtotime($date);
-		$formatted_date = date("d/m/Y",$time);
-		return $formatted_date;
+		return date("d/m/Y",$time);
 	}
 
 	function getUserName($user_id){

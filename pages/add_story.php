@@ -24,7 +24,7 @@
 		</header>
 		<form method="post" action="../actions/action_add_story.php">
 			<input type="text" name="title" placeholder="Title" required>
-			<input type="text" name="story" placeholder="Story" required>
+			<textarea name="story" placeholder="Story" required></textarea>
 			<input type="submit" value="AddStory">
 		</form>
 	</section>

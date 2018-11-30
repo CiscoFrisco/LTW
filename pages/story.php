@@ -32,11 +32,11 @@
 	</header>
 	<section id="story">
 		<header>
-			<h2><?=$story['story_title']?></h2>
+			<h2><?=$story['opinion_title']?></h2>
 		</header>
-		<h2><?=$story['story_text']?></h2>
+		<h2><?=$story['opinion_text']?></h2>
 		<h5>Posted by: <?=$username?></h5>
-		<!-- ADD COMMENTS -->
+		<!--ADD COMMENTS IN JS-->
 		<footer>
 			<?php if((isset($_SESSION['user_id']))) { ?>
 			<p>Have something to say about this story? <a href="comment.php">Comment!</a></p>

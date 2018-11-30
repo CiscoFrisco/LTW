@@ -10,6 +10,6 @@
 		insertStory($user_id, $title, $story);
         header('Location: ../index.php');
     } catch (PDOException $e) {
-        header('Location: ../pages/add_story.php');
+		header('Location: ../pages/add_story.php');
     }
 ?>

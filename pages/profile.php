@@ -23,7 +23,8 @@
 
 <body>
 	<header>
-		<h1><?=$username?> Profile</h1>
+		<h1><a href="../index.php">Tidder</a></h1>
+		<h2><?=$username?> Profile</h2>
 	</header>
 	<h2>Username: <?=$username?></h2>
 	<h2>Name: <?=$realname?></h2>
