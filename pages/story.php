@@ -1,6 +1,7 @@
 <?php
 	include_once('../includes/session.php');
 	include_once('../database/db_story.php');
+	include_once('../database/db_user.php');
 
 	if (!isset($_GET['story_id']))
     	die(header('Location: stories.php'));
@@ -12,6 +13,8 @@
     } catch (PDOException $e) {
         die(header('Location: stories.php'));
 	}
+
+	$username = getUserName($story['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +35,7 @@
 			<h2><?=$story['story_title']?></h2>
 		</header>
 		<h2><?=$story['story_text']?></h2>
+		<h5>Posted by: <?=$username?></h5>
 		<!-- ADD COMMENTS -->
 		<footer>
 			<?php if((isset($_SESSION['user_id']))) { ?>

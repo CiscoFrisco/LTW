@@ -45,4 +45,11 @@
 		$formatted_date = date("d/m/Y",$time);
 		return $formatted_date;
 	}
+
+	function getUserName($user_id){
+		$db = Database::instance()->db();
+		$stmt = $db->prepare('SELECT username FROM user WHERE user_id = ?');
+		$stmt->execute(array($user_id));
+		return $stmt->fetch()['username'];
+	}
 ?>
