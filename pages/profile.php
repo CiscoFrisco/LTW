@@ -6,7 +6,10 @@
 		die(header('Location: login.php'));
 
 	$user_id = $_SESSION['user_id'];
-	getUserInfo($user_id, $username, $realname, $bio);
+	getUserInfo($user_id, $username, $realname, $email, $birthday, $join_date, $bio);
+
+	$formatted_birthday = formatDate($birthday);
+	$formatted_join_date = formatDate($join_date);
 ?>
 
 <!DOCTYPE html>
@@ -23,17 +26,27 @@
 		<h1><a href="../index.php">Tidder</a></h1>
 		<h2><?=$username?> Profile</h2>
 	</header>
-	<h3>Username: <?=$username?></h3>
-	<h3>Name: <?=$realname?></h3>
-	<h3>Bio: <?=$bio?></h3>
+	<h2>Username: <?=$username?></h2>
+	<h2>Name: <?=$realname?></h2>
+	<h2>Bio: <?=$bio?></h2>
+	<h2>Email: <?=$email?></h2>
+	<h2>Birthday: <?=$formatted_birthday?></h2>
+	<h2>Join Date: <?=$formatted_join_date?></h2>
 	<section id="edit">
 		<header>
 			<h2>Edit</h2>
 		</header>
 		<form method="post" action="../actions/action_edit_profile.php">
-			<input type="text" name="username" value="<?=$username?>" required>
-			<input type="text" name="realname" value="<?=$realname?>">
-			<textarea name="bio"><?=$bio?></textarea>
+			<label for="username">Username:</label>
+				<input type="text" name="username" value="<?=$username?>" id="username" required>
+			<label for="realname">Name:</label>
+				<input type="text" name="realname" value="<?=$realname?>" id="realname" >
+			<label for="email">Email:</label>
+				<input type="email" name="email" value="<?=$email?>" id="email" required>
+			<label for="birthday">Birthday:</label>
+				<input type="date" name="birthday" value="<?=$birthday?>" id="birthday">
+			<label for="bio">Bio:</label>
+				<textarea name="bio" id="bio"><?=$bio?></textarea>
 			<input type="submit" value="Edit Profile">
 		</form>
 	</section>

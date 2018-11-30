@@ -4,6 +4,8 @@ CREATE TABLE user (
     email VARCHAR NOT NULL UNIQUE,
     password VARCHAR NOT NULL,
     realname VARCHAR,
+    birthday DATE,
+    join_date DATE,
 	bio VARCHAR
 );
 
