@@ -11,6 +11,13 @@
 		$db = Database::instance()->db();
 		$stmt = $db->prepare('SELECT * FROM story');
 		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
+	function getStory($story_id) {
+		$db = Database::instance()->db();
+		$stmt = $db->prepare('SELECT * FROM story WHERE story_id = ?');
+		$stmt->execute(array($story_id));
 		return $stmt->fetch();
 	}
 ?>
