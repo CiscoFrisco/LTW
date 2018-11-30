@@ -18,6 +18,6 @@
 
     <?php function draw_story($story) { ?>
         <article class="story">
-            <header><h3><a href="story.php?story_id=<?=$story['story_id']?>"><?=$story['story_title']?></a></h3></header>
+            <header><h3><a href="story.php?story_id=<?=$story['opinion_id']?>"><?=$story['opinion_title']?></a></h3></header>
         </article>
     <?php } ?>

@@ -20,21 +20,22 @@
 
 <body>
 	<header>
-		<h1><?=$username?> Profile</h1>
+		<h1><a href="../index.php">Tidder</a></h1>
+		<h2><?=$username?> Profile</h2>
 	</header>
-	<h2>Username: <?=$username?></h2>
-	<h2>Name: <?=$realname?></h2>
-	<h2>Bio: <?=$bio?></h2>
+	<h3>Username: <?=$username?></h3>
+	<h3>Name: <?=$realname?></h3>
+	<h3>Bio: <?=$bio?></h3>
 	<section id="edit">
 		<header>
 			<h2>Edit</h2>
 		</header>
-		<form method="post" action="../actions/action_edit_profile.php" id="edit_profile">
+		<form method="post" action="../actions/action_edit_profile.php">
 			<input type="text" name="username" value="<?=$username?>" required>
-			<input type="text" name="realname" value="<?=$realname?>" required>
+			<input type="text" name="realname" value="<?=$realname?>">
+			<textarea name="bio"><?=$bio?></textarea>
 			<input type="submit" value="Edit Profile">
 		</form>
-		<textarea name="bio" form="edit_profile"><?=$bio?></textarea>
 	</section>
 	<section id="logout">
 		<header>
