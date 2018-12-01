@@ -11,11 +11,26 @@
 	getUserInfo($user_id, $username, $realname, $email, $birthday, $join_date, $bio);
 	$formatted_birthday = formatDate($birthday);
 	$formatted_join_date = formatDate($join_date);
+	
+	$path = "../pictures/".$username.".jpeg";
+	$alt = $username." Profile Pic";
+	
+	if(!file_exists($path))
+		$path = "../pictures/".$username.".jpg";
+	
+	if(!file_exists($path))
+		$path = "../pictures/".$username.".png";
+
+	if(!file_exists($path)){
+		$path = "../pictures/default.jpg";
+		$alt ="Default Profile Pic";
+	}
 
 	draw_header();
 ?>
 
 	<h2><?=$username?> Profile</h2>
+	<h3><img src=<?=$path?> alt=<?=$alt?> width="100" height="100"></h3>
 	<h3>Username: <?=$username?></h3>
 	<h3>Name: <?=$realname?></h3>
 	<h3>Bio: <?=$bio?></h3>
@@ -30,17 +45,26 @@
 		<header>
 			<h2>Edit</h2>
 		</header>
-		<form method="post" action="../actions/action_edit_profile.php">
-			<label for="username">Username:</label>
-				<input type="text" name="username" value="<?=$username?>" id="username" required>
-			<label for="realname">Name:</label>
-				<input type="text" name="realname" value="<?=$realname?>" id="realname" >
-			<label for="email">Email:</label>
-				<input type="email" name="email" value="<?=$email?>" id="email" required>
-			<label for="birthday">Birthday:</label>
-				<input type="date" name="birthday" value="<?=$birthday?>" id="birthday">
-			<label for="bio">Bio:</label>
-				<textarea name="bio" id="bio"><?=$bio?></textarea>
+		<form method="post" action="../actions/action_edit_profile.php" enctype="multipart/form-data">
+			<label>Profile Picture:
+				<input type="file" name="img" value="" accept="image/png, image/jpeg">
+			</label>
+			<label>Username:
+				<input type="text" name="username" value="<?=$username?>" required>
+			</label>	
+			<label>Name:
+				<input type="text" name="realname" value="<?=$realname?>">
+			</label>
+			<label>Email:
+				<input type="email" name="email" value="<?=$email?>" required>
+			</label>
+			<label>Birthday:
+				<input type="date" name="birthday" value="<?=$birthday?>">
+			</label>
+			<label>Bio:
+				<textarea name="bio"><?=$bio?></textarea>
+			</label>
+				
 			<input type="submit" value="Edit Profile">
 		</form>
 	</section>

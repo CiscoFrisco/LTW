@@ -12,21 +12,28 @@
 		$time = strtotime($date);
 		$delta = $now - $time;
 
-		if(!floor($delta/60))
-			return $delta.' seconds ago';
-
-		if(!floor($delta/3600))
-			return floor($delta/60).' minutes ago';
-
-		if(!floor($delta/86400))
-			return floor($delta/3600).' hours ago';
-
-		if(!floor($delta/2592000))
-			return floor($delta/86400).' days ago';
-
-		if(!floor($delta/31104000))
-			return floor($delta/2592000).' months ago';
-
-		return floor($delta/31104000).' years ago';
+		if(!floor($delta/60)){
+			$time_word = ($delta == 1 ? ' second ' : ' seconds ');
+			return $delta.$time_word.'ago';
+		}	
+		if(!floor($delta/3600)){
+			$time_word = (floor($delta/60) == 1 ? ' minute ' : ' minutes ');
+			return floor($delta/60).$time_word.'ago';
+		}
+		if(!floor($delta/86400)){
+			$time_word = (floor($delta/3600) == 1 ? ' hour ' : ' hours ');
+			return floor($delta/3600).$time_word.'ago';
+		}
+		if(!floor($delta/2592000)){
+			$time_word = (floor($delta/86400) == 1 ? ' day ' : ' days ');
+			return floor($delta/86400).$time_word.'ago';
+		}	
+		if(!floor($delta/31104000)){
+			$time_word = (floor($delta/2592000) == 1 ? ' month ' : ' months ');
+			return floor($delta/2592000).$time_word.'ago';
+		}
+			
+		$time_word = (floor($delta/31104000) == 1 ? ' year ' : ' years ');
+		return floor($delta/31104000).$time_word.'ago';
 	}
 ?>
