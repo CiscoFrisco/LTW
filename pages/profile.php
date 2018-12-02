@@ -26,7 +26,7 @@
 		$alt ="Default Profile Pic";
 	}
 
-	draw_header();
+	draw_header(true);
 ?>
 
 	<h2><?=$username?> Profile</h2>

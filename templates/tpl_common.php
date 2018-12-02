@@ -2,7 +2,7 @@
 include_once('../includes/session.php');
 include_once('../database/db_user.php');
 
-function draw_header() {
+function draw_header($is_login_signup) {
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -18,11 +18,7 @@ function draw_header() {
 	<header>	
 		<h1><a href="../index.php">Tidder</a></h1>
 	<?php if(!isset($_SESSION['user_id'])) { 
-			if(basename($_SERVER['PHP_SELF']) == "login.php") { ?>
-				<h1><a href='../pages/signup.php'>Signup</a></h1>
-			<?php } else if(basename($_SERVER['PHP_SELF']) == "signup.php") { ?>
-				<h1><a href='../pages/login.php'>Login</a></h1>
-			<?php } else { ?>
+			if($is_login_signup) { ?>
 				<h1><a href='../pages/login.php'>Login</a></h1>
 				<h1><a href='../pages/signup.php'>Signup</a></h1>
 	<?php }

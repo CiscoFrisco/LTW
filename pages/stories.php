@@ -12,7 +12,7 @@
 		$stories[$i]['username'] = getUserName($stories[$i]['user_id']);
 	}
 
-	draw_header();
+	draw_header(true);
 	draw_stories($stories);
 	draw_footer();
 ?>

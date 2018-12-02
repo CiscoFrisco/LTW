@@ -5,7 +5,7 @@
 	if (!isset($_SESSION['user_id']))
 		die(header('Location: login.php'));
 		
-	draw_header();
+	draw_header(true);
 ?>
 
 	<section id="new_story">

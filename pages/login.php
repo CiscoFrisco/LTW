@@ -5,7 +5,7 @@
 	if (isset($_SESSION['user_id']))
 		die(header('Location: profile.php'));
 		
-	draw_header();
+	draw_header(false);
 ?>
 
 	<section id="login">

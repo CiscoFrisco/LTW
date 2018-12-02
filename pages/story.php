@@ -20,7 +20,7 @@
 	$username = getUserName($story['user_id']);
 	$now = time();
 
-	draw_header();
+	draw_header(true);
 ?>
 
 	<section id="story">
