@@ -1,4 +1,9 @@
-<?php function draw_header() { ?>
+<?php 
+include_once('../includes/session.php');
+include_once('../database/db_user.php');
+
+function draw_header() {
+?>
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -10,13 +15,28 @@
 </head>
 
 <body>
-	<header>
+	<header>	
 		<h1><a href="../index.php">Tidder</a></h1>
+	<?php if(!isset($_SESSION['user_id'])) { 
+			if(basename($_SERVER['PHP_SELF']) == "login.php") { ?>
+				<h1><a href='../pages/signup.php'>Signup</a></h1>
+			<?php } else if(basename($_SERVER['PHP_SELF']) == "signup.php") { ?>
+				<h1><a href='../pages/login.php'>Login</a></h1>
+			<?php } else { ?>
+				<h1><a href='../pages/login.php'>Login</a></h1>
+				<h1><a href='../pages/signup.php'>Signup</a></h1>
+	<?php }
+	} else {
+			$username = getUserName($_SESSION['user_id']);
+			$profile_link = "../pages/profile.php?username=".urlencode($username); ?>
+			<h1><a href=<?=$profile_link?>>Your Profile</a></h1>
+			<h1><a href='../actions/action_logout.php'>Logout</a></h1>
+	<?php } ?>
 	</header>
-<?php }
+<?php
+}	
 
 function draw_footer() {?>
-</body>
-
+	</body>
 </html>
 <?php } ?>
