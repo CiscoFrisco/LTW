@@ -8,7 +8,12 @@
 		die(header('Location: ../index.php'));
 
 	$username = urldecode($_GET['username']);
+
 	getUserInfo($user_id, $username, $realname, $email, $birthday, $join_date, $bio);
+
+	if($user_id == '')
+		header('Location: ../pages/404.html');
+
 	$formatted_birthday = formatDate($birthday);
 	$formatted_join_date = formatDate($join_date);
 	

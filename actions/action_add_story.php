@@ -7,10 +7,9 @@
 	$story = $_POST['story'];
 
 	try {
-		insertStory($user_id, $title, $story);
-        header('Location: ../index.php');
+		insertStory($user_id, $title, $story, $story_id);
+        header('Location: ../pages/story.php?story_id='.$story_id);
     } catch (PDOException $e) {
-		echo($e);
-		//header('Location: ../pages/add_story.php');
+		header('Location: ../pages/add_story.php');
     }
 ?>

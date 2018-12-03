@@ -26,5 +26,13 @@ function submitComment(event) {
 }
 
 function addComment() {
+	let opinon = JSON.parse(this.responseText);
+	let section = document.querySelector('#comments');
+	let comment = document.createElement('article');
+
+	comment.classList.add('comment');
+	comment.innerHTML = '<h3>' + opinon['comment'] + '</h3>' + '<h4>' + 'Posted by <a href="profile.php?username=' + opinon['username'] + '">' + opinon['username'] + '</a> just now</h4>';
 	
+	let firstComment = document.querySelector('#comments .comment');
+	section.insertBefore(comment, firstComment);
 }

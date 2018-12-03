@@ -2,7 +2,7 @@
 include_once('../includes/session.php');
 include_once('../database/db_user.php');
 
-function draw_header($is_login_signup) {
+function draw_header($isnt_login_signup) {
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -18,15 +18,15 @@ function draw_header($is_login_signup) {
 	<header>	
 		<h1><a href="../index.php">Tidder</a></h1>
 	<?php if(!isset($_SESSION['user_id'])) { 
-			if($is_login_signup) { ?>
-				<h1><a href='../pages/login.php'>Login</a></h1>
-				<h1><a href='../pages/signup.php'>Signup</a></h1>
+			if($isnt_login_signup) { ?>
+				<h2><a href='../pages/login.php'>Login</a></h2>
+				<h2><a href='../pages/signup.php'>Signup</a></h2>
 	<?php }
 	} else {
 			$username = getUserName($_SESSION['user_id']);
 			$profile_link = "../pages/profile.php?username=".urlencode($username); ?>
-			<h1><a href=<?=$profile_link?>>Your Profile</a></h1>
-			<h1><a href='../actions/action_logout.php'>Logout</a></h1>
+			<h2><a href=<?=$profile_link?>>Your Profile</a></h2>
+			<h2><a href='../actions/action_logout.php'>Logout</a></h2>
 	<?php } ?>
 	</header>
 <?php
