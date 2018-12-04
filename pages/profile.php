@@ -17,14 +17,14 @@
 	$formatted_birthday = formatDate($birthday);
 	$formatted_join_date = formatDate($join_date);
 	
-	$path = "../pictures/".$username.".jpeg";
-	$alt = $username." Profile Pic";
+	$path = "../pictures/".$user_id.".jpeg";
+	$alt = $user_id." Profile Pic";
 	
 	if(!file_exists($path))
-		$path = "../pictures/".$username.".jpg";
+		$path = "../pictures/".$user_id.".jpg";
 	
 	if(!file_exists($path))
-		$path = "../pictures/".$username.".png";
+		$path = "../pictures/".$user_id.".png";
 
 	if(!file_exists($path)){
 		$path = "../pictures/default.jpg";
@@ -72,9 +72,6 @@
 				
 			<input type="submit" value="Edit Profile">
 		</form>
-		<?php if(isset($_GET['error'])){ ?>
-			<h3>Username or email already taken!</h3>
-		<?php } ?>
 	</section>
 	<section id="logout">
 		<header>

@@ -17,9 +17,6 @@
 			<input type="password" name="password" placeholder="password" required>
 			<input type="submit" value="Signup">
 		</form>
-		<?php if(isset($_GET['error'])){ ?>
-			<h3>Username or email already taken!</h3>
-		<?php } ?>
 		<footer>
 			<p>Already have an account? <a href="login.php">Login!</a></p>
 		</footer>

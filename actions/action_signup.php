@@ -11,6 +11,6 @@
 		$_SESSION['user_id'] = $user_id;
         header('Location: ../index.php');
     } catch (PDOException $e) {
-        header('Location: ../pages/signup.php?error=true');
+        header('Location: ../pages/signup.php');
     }
 ?>

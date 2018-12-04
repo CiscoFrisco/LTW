@@ -18,7 +18,7 @@
 		updateProfilePic($img_file, $curr_username, $new_username, $ext);
         header('Location: ../pages/profile.php?username='.urlencode($new_username));
     } catch (PDOException $e) {
-        header('Location: ../pages/profile.php?username='.urlencode($curr_username).'&error=true');
+        header('Location: ../pages/profile.php?username='.urlencode($curr_username));
 	}
 	
 	function updateProfilePic($img_file, $curr_username, $new_username, $ext){
@@ -29,7 +29,7 @@
 			foreach($profile_pics as $pic)
 				unlink($pic);
 
-			move_uploaded_file($img_file, "../pictures/".$new_username.".".$ext);
+			move_uploaded_file($img_file, "../pictures/".$user_id.".".$ext);
 		}
 	}
 ?>
