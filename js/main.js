@@ -38,12 +38,16 @@ function submitComment(event) {
 }
 
 function addComment() {
-	let opinon = JSON.parse(this.responseText);
+	let opinion = JSON.parse(this.responseText);
+
+	if('error' in opinion)
+		return;
+
 	let section = document.querySelector('#comments');
 	let comment = document.createElement('article');
 
 	comment.classList.add('comment');
-	comment.innerHTML = '<h3>' + opinon['comment'] + '</h3>' + '<h4>' + 'Posted by <a href="profile.php?username=' + opinon['username'] + '">' + opinon['username'] + '</a> just now</h4>';
+	comment.innerHTML = '<h3>' + opinion['comment'] + '</h3>' + '<h4>' + 'Posted by <a href="profile.php?username=' + opinion['username'] + '">' + opinion['username'] + '</a> just now</h4>';
 
 	let firstComment = document.querySelector('#comments .comment');
 	section.insertBefore(comment, firstComment);
@@ -96,5 +100,26 @@ function downvoteOpinion(event) {
 }
 
 function changeVote(){
-	alert(this.responseText);
+	let vote = JSON.parse(this.responseText);
+
+	if('error' in vote)
+	{
+		alert('Not logged in!');
+		return;
+	}
+	
+	let opinion_score = document.querySelector('[data-id="' + vote["opinion_id"] + '"] > h5');
+	let opinion_up = document.querySelector('[data-id="' + vote["opinion_id"] + '"] > .upvote');
+	let opinion_down = document.querySelector('[data-id="' + vote["opinion_id"] + '"] > .downvote');
+
+	let old_vote = parseInt(opinion_up.getAttribute('data-value'));
+	let old_score = parseInt(opinion_score.textContent.substr(7));
+	let score = old_score + (vote['value'] - old_vote);
+	
+	opinion_score.outerHTML = '<h5>Score: ' + score + '</h5>';
+	opinion_up.outerHTML = '<div class="upvote" role="button" data-value="'+ vote['value'] + '">&#8593;</div>';
+	opinion_down.outerHTML = '<div class="downvote" role="button" data-value="'+ vote['value'] + '">&#8595;</div>';
+
+	document.querySelector('[data-id="' + vote["opinion_id"] + '"] > .upvote').addEventListener('click', upvoteOpinion);
+	document.querySelector('[data-id="' + vote["opinion_id"] + '"] > .downvote').addEventListener('click', downvoteOpinion);
 }
