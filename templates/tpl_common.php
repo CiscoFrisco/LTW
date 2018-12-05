@@ -17,7 +17,7 @@ function draw_header($isnt_login_signup) {
 </head>
 
 <body>
-	<header>	
+	<header>
 		<h1><a href="../index.php">Tidder</a></h1>
 	<?php if(!isset($_SESSION['user_id'])) { 
 			if($isnt_login_signup) { ?>
