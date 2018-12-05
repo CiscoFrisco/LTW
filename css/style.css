@@ -1,0 +1,63 @@
+section#login {
+    background-color: white;
+
+    border: 1px solid #ddd;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    max-width: 750px;
+}
+
+section#login input{
+    display: block;
+    margin: 10px 10%;
+    width: 50%;
+    max-width: 200px;    
+    min-width: 85px;
+    font-size: 15px;
+    padding: 0.2em;
+    border: 1px solid #ddd;
+}
+
+section#login h2 {
+    padding-top: 20px;
+    margin: 20px 10%;
+}
+
+section#login footer {
+    background-color: #eef;
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10%;
+}
+
+section#login > footer > p > a {
+    text-decoration: none;
+    color: blue;
+}
+
+section#login > footer > p > a:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
+section#login input[type="submit"]{
+    border-radius: 10px;
+    border:none;
+    max-width: 80px;
+    padding: 0.5em;
+    margin-top: 2em;
+    height: 100%;
+    background-color: #bbf;
+    color: white;
+}   
+
+section#login input[type="submit"]:hover {
+    background-color: #aaf;
+    cursor:pointer;
+}
+
+body {
+    background-color: #eee;
+}
