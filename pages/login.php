@@ -17,6 +17,9 @@
 			<input type="password" name="password" placeholder="password" required>
 			<input type="submit" value="Login">
 		</form>
+		<?php if(isset($_GET['error'])){ ?>
+			<h3>Incorrect username or password. Please make sure you're typing them correctly</h3>
+		<?php } ?>
 		<footer>
 			<p>Don't have an account? <a href="signup.php">Signup!</a></p>
 		</footer>

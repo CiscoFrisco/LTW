@@ -76,6 +76,9 @@
 				
 			<input type="submit" value="Edit Profile">
 		</form>
+		<?php if(isset($_GET['error'])){ ?>
+			<h3>Username or email already taken!</h3>
+		<?php } ?>
 	</section>
 	<?php } ?>
 	<section id="stories">
