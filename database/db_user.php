@@ -46,4 +46,11 @@
 		$stmt->execute(array($user_id));
 		return $stmt->fetch()['username'];
 	}
+
+	function getUserID($username){
+		$db = Database::instance()->db();
+		$stmt = $db->prepare('SELECT user_id FROM user WHERE username = ?');
+		$stmt->execute(array($username));
+		return $stmt->fetch()['user_id'];
+	}
 ?>

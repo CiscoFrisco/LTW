@@ -1,7 +1,7 @@
 <?php 
 	include_once('../includes/session.php');
 
-	function draw_comments($comments){ 
+	function draw_comments($comments, $not_profile){ 
 		global $story_id?>
 
         <section id="comments">
@@ -9,7 +9,8 @@
 			<h2>Comments</h2>
 		</header>
 
-        <?php 
+		<?php 
+		if($not_profile){
 			if((isset($_SESSION['user_id']))) { ?>
 				<form>
 					<input type="hidden" name="story_id" value="<?=$story_id?>">
@@ -19,7 +20,8 @@
 			
 		<?php } else { ?>
 			<p>Have something to say about this story? <a href="login.php">Login!</a> or <a href="signup.php">Sign Up!</a></p>
-		<?php } 
+		<?php }
+		} 
 		
 		    foreach($comments as $comment)
 				draw_comment($comment);

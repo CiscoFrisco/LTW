@@ -24,4 +24,18 @@
 		$stmt->execute(array($story_id));
 		return $stmt->fetch();
 	}
+
+	function getStories($user_id){
+		$db = Database::instance()->db();
+		$stmt = $db->prepare('SELECT * FROM opinion WHERE user_id = ? AND parent_id IS NULL');
+		$stmt->execute(array($user_id));
+		return $stmt->fetchAll();
+	}
+
+	function getComments($user_id){
+		$db = Database::instance()->db();
+		$stmt = $db->prepare('SELECT * FROM opinion WHERE user_id = ? AND parent_id NOT NULL');
+		$stmt->execute(array($user_id));
+		return $stmt->fetchAll();
+	}
 ?>

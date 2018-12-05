@@ -1,4 +1,4 @@
-<?php function draw_stories($stories){ ?>
+<?php function draw_stories($stories, $not_profile){ ?>
         <section id="stories">
 		<header>
 			<h2>Stories</h2>
@@ -6,7 +6,10 @@
 
         <?php 
             foreach($stories as $story)
-                draw_story($story);
+				draw_story($story);
+				
+		
+		if($not_profile){
         ?>
 
 		<footer>
@@ -14,7 +17,9 @@
 		</footer>
 	    </section>
 
-        <?php } ?>
+		<?php 
+			}
+		} ?>
 
     <?php function draw_story($story) { 
 		global $now;?>

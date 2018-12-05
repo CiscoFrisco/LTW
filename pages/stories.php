@@ -19,6 +19,6 @@
 	}
 
 	draw_header(true);
-	draw_stories($stories);
+	draw_stories($stories,true);
 	draw_footer();
 ?>

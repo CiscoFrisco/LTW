@@ -40,7 +40,7 @@
 
 	$now = time();
 
-	draw_comments($comments);
+	draw_comments($comments, true);
 
 	draw_footer();
 ?>

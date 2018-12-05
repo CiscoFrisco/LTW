@@ -2,7 +2,11 @@
 	include_once('../includes/session.php');
 	include_once('../includes/date.php');
 	include_once('../database/db_user.php');
+	include_once('../database/db_story.php');
+	include_once('../database/db_vote.php');
 	include_once('../templates/tpl_common.php');
+	include_once('../templates/tpl_stories.php');
+	include_once('../templates/tpl_comments.php');
 
 	if (!isset($_GET['username']))
 		die(header('Location: ../index.php'));
@@ -73,11 +77,40 @@
 			<input type="submit" value="Edit Profile">
 		</form>
 	</section>
+	<?php } ?>
+	<section id="stories">
+		<?php 
+			$user_id = getUserID($username);
+			$stories = getStories($user_id);
+			$comments = getComments($user_id);
+			$now = time();
+
+			for($i = 0; $i < count($stories); $i++){
+				$stories[$i]['username'] = $username;
+				$stories[$i]['score'] = getScore($stories[$i]['opinion_id']);
+		
+				if(isset($_SESSION['user_id']))
+					$stories[$i]['vote'] = getVote($stories[$i]['opinion_id'], $_SESSION['user_id']);
+			}
+
+			for($i = 0; $i < count($comments); $i++){
+				$comments[$i]['username'] = $username;
+				$comments[$i]['score'] = getScore($comments[$i]['opinion_id']);
+		
+				if(isset($_SESSION['user_id']))
+					$comments[$i]['vote'] = getVote($comments[$i]['opinion_id'], $_SESSION['user_id']);
+			}
+
+			draw_stories($stories, false);
+			draw_comments($comments,false);
+		?>
+	</section>
+	<section id="comments">
+	</section>
 	<section id="logout">
 		<header>
 			<h4><a href="../actions/action_logout.php">Logout</a></h4>
 		</header>
 	</section>
 
-	<?php } 
-	draw_footer();?>
+	<?php draw_footer(); ?>
