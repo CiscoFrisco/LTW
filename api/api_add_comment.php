@@ -19,6 +19,7 @@
 	addVote($comment_id, $user_id, 1);
 
 	$opinions['comment_id'] = $comment_id;
+	$opinions['parent_id'] = $parent_id;
 	$opinions['username'] = getUserName($user_id);
 	$opinions['comment'] = $comment;
 

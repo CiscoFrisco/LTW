@@ -1,6 +1,6 @@
 'use strict'
 
-let commentForm = document.querySelector('#comments form');
+let commentForm = document.querySelector('#comments > form');
 
 if (commentForm != null)
 	commentForm.addEventListener('submit', submitComment);
@@ -27,8 +27,8 @@ function encodeForAjax(data) {
 }
 
 function submitComment(event) {
-	let parent_id = document.querySelector('#comments input[name=opinion_id]').value;
-	let comment = document.querySelector('#comments textarea[name=comment]').value;
+	let parent_id = this.parentElement.dataset.id;
+	let comment = this.parentElement.querySelector('form > textarea').value;
 
 	let request = new XMLHttpRequest();
 	request.addEventListener('load', addComment);
@@ -56,12 +56,12 @@ function addComment() {
 	comment.dataset.id = opinion['comment_id'];
 	comment.innerHTML = '<div class="upvote" role="button" data-value="' + opinion['vote'] + '">&#8593;</div> <h5>Score: ' + opinion['score'] + '</h5> <div class="downvote" role="button" data-value="' + opinion['vote'] + '">&#8595;</div>';
 	comment.innerHTML += '<h3>' + opinion['comment'] + '</h3>' + '<h4>' + 'Posted by <a href="profile.php?username=' + opinion['username'] + '">' + opinion['username'] + '</a> just now</h4>';
-	comment.innerHTML += '<div class="comment_comment" role="button">&#128172;</div>';
+	comment.innerHTML += '<div class="comment_comment" role="button">&#128172;</div> <ol></ol>';
 
 	list.innerHTML = comment.outerHTML;
 
-	let firstComment = document.querySelector('li');
-	section.insertBefore(list, firstComment);
+	let parentList = document.querySelector('[data-id="' + opinion['parent_id'] + '"] > ol');
+	parentList.innerHTML = list.outerHTML + parentList.innerHTML; 
 
 	document.querySelector('[data-id="' + opinion['comment_id'] + '"] > .upvote').addEventListener('click', upvoteOpinion);
 	document.querySelector('[data-id="' + opinion['comment_id'] + '"] > .downvote').addEventListener('click', downvoteOpinion);
@@ -141,5 +141,8 @@ function changeVote() {
 }
 
 function add_comment_comment_form() {
-	this.parentElement.innerHTML += '<form> <textarea name="comment" placeholder="Have something to say about this story?" required></textarea> <input type="submit" value="Add Comment"> </form>';
+	let parent_id = this.parentElement.dataset.id;
+	this.parentElement.innerHTML += '<form> <input type="hidden" name="opinion_id" value="' + parent_id +'"> <textarea name="comment" placeholder="Have something to say about this story?" required></textarea> <input type="submit" value="Add Comment"> </form>';
+
+	document.querySelector('.comment[data-id="' + parent_id + '"] > form').addEventListener('submit', submitComment);
 }

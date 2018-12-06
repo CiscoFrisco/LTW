@@ -4,7 +4,7 @@
 	function draw_comments($comments, $not_profile){ 
 		global $story_id?>
 
-        <section id="comments">
+        <section id="comments" data-id="<?=$story_id?>">
 		<header>
 			<h2>Comments</h2>
 		</header>
@@ -26,14 +26,14 @@
 		?><ol><?php
 
 		    foreach($comments as $comment)
-				draw_comment($comment);
+				draw_comment($comment, $not_profile);
 		?>
 	    </ol>
 		</section>
 
         <?php } ?>
 
-    <?php function draw_comment($comment) { 
+    <?php function draw_comment($comment, $not_profile) { 
 		global $now;?>
 		<li>
         <article class="comment" data-id="<?=$comment['opinion_id']?>">
@@ -43,8 +43,8 @@
 			<h3><?=$comment['opinion_text']?></a></h3>
 			<h4>Posted by <a href="<?='profile.php?username='.urlencode($comment['username'])?>"><?=$comment['username']?></a> <?=deltaTime($now, $comment['posted'])?></h4>
 			
-			<?php if((isset($_SESSION['user_id']))) { ?> <div class="comment_comment" role="button">&#128172;</div> <?php } ?>
-		
+			<?php if(isset($_SESSION['user_id']) && $not_profile) { ?> <div class="comment_comment" role="button">&#128172;</div> <?php } ?>
+			<ol></ol>
 		</article>
 		</li>
     <?php } ?>
