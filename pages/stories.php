@@ -18,6 +18,8 @@
 			$stories[$i]['vote'] = getVote($stories[$i]['opinion_id'], $_SESSION['user_id']);
 	}
 
+	$page = 'stories.php';
+
 	draw_header(true);
 	draw_stories($stories,true);
 	draw_footer();

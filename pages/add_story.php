@@ -4,7 +4,8 @@
 
 	if (!isset($_SESSION['user_id']))
 		die(header('Location: login.php'));
-		
+
+	$page = 'add_story.php';	
 	draw_header(true);
 ?>
 

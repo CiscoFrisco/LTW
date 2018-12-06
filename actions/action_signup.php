@@ -9,7 +9,11 @@
     try {
 		insertUser($user_id, $username, $email, $password);
 		$_SESSION['user_id'] = $user_id;
-        header('Location: ../index.php');
+		
+		if(isset($_GET['redirect']))
+			header('Location: ../pages/'.urldecode($_GET['redirect']));
+		
+		else header('Location: ../index.php');
     } catch (PDOException $e) {
         header('Location: ../pages/signup.php?error=true');
     }

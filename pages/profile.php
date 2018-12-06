@@ -59,6 +59,8 @@
 		$alt ="Default Profile Pic";
 	}
 
+	$page = 'profile.php?username='.$username;
+
 	draw_header(true);
 ?>
 

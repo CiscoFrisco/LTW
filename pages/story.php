@@ -26,6 +26,8 @@
 	if(isset($_SESSION['user_id']))
 		$vote = getVote($story_id, $_SESSION['user_id']);
 
+	$page = 'story.php?story_id='.$story_id;
+
 	draw_header(true);
 ?>
 

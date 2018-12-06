@@ -47,10 +47,15 @@ function addComment() {
 	let comment = document.createElement('article');
 
 	comment.classList.add('comment');
-	comment.innerHTML = '<h3>' + opinion['comment'] + '</h3>' + '<h4>' + 'Posted by <a href="profile.php?username=' + opinion['username'] + '">' + opinion['username'] + '</a> just now</h4>';
+	comment.dataset.id = opinion['comment_id'];
+	comment.innerHTML = '<div class="upvote" role="button" data-value="' + opinion['vote'] + '">&#8593;</div> <h5>Score: ' + opinion['score'] + '</h5> <div class="downvote" role="button" data-value="' + opinion['vote'] + '">&#8595;</div>';
+	comment.innerHTML += '<h3>' + opinion['comment'] + '</h3>' + '<h4>' + 'Posted by <a href="profile.php?username=' + opinion['username'] + '">' + opinion['username'] + '</a> just now</h4>';
 
 	let firstComment = document.querySelector('#comments .comment');
 	section.insertBefore(comment, firstComment);
+
+	document.querySelector('[data-id="' + opinion['comment_id'] + '"] > .upvote').addEventListener('click', upvoteOpinion);
+	document.querySelector('[data-id="' + opinion['comment_id'] + '"] > .downvote').addEventListener('click', downvoteOpinion);
 }
 
 function upvoteOpinion(event) {
@@ -120,6 +125,6 @@ function changeVote(){
 	opinion_up.outerHTML = '<div class="upvote" role="button" data-value="'+ vote['value'] + '">&#8593;</div>';
 	opinion_down.outerHTML = '<div class="downvote" role="button" data-value="'+ vote['value'] + '">&#8595;</div>';
 
-	document.querySelector('[data-id="' + vote["opinion_id"] + '"] > .upvote').addEventListener('click', upvoteOpinion);
-	document.querySelector('[data-id="' + vote["opinion_id"] + '"] > .downvote').addEventListener('click', downvoteOpinion);
+	document.querySelector('[data-id="' + vote['opinion_id'] + '"] > .upvote').addEventListener('click', upvoteOpinion);
+	document.querySelector('[data-id="' + vote['opinion_id'] + '"] > .downvote').addEventListener('click', downvoteOpinion);
 }

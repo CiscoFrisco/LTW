@@ -7,7 +7,11 @@
 
 	if (checkUserPassword($user_id, $username, $password)) {
 		$_SESSION['user_id'] = $user_id;
-		header('Location: ../index.php');
+
+		if(isset($_GET['redirect']))
+			header('Location: ../pages/'.urldecode($_GET['redirect']));
+		
+		else header('Location: ../index.php');
 	} else {
 		header('Location: ../pages/login.php?error=true');
 	}

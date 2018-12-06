@@ -3,5 +3,8 @@
 
 	session_destroy();
 
-	header('Location: ../index.php');
+	if(isset($_GET['redirect']))
+		header('Location: ../pages/'.urldecode($_GET['redirect']));
+	
+	else header('Location: ../index.php');
 ?>
