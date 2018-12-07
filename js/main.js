@@ -1,24 +1,28 @@
 'use strict'
 
-let commentForm = document.querySelector('#comments > form');
+addAllEventListeners();
 
-if (commentForm != null)
-	commentForm.addEventListener('submit', submitComment);
+function addAllEventListeners() {
+	let commentForms = document.querySelectorAll('form');
 
-let upvotes = document.querySelectorAll('.upvote');
+	for (var i = 0; i < commentForms.length; i++)
+		commentForms[i].addEventListener('submit', submitComment);
 
-for (var i = 0; i < upvotes.length; i++)
-	upvotes[i].addEventListener('click', upvoteOpinion);
+	let upvotes = document.querySelectorAll('.upvote');
 
-let downvotes = document.querySelectorAll('.downvote');
+	for (var i = 0; i < upvotes.length; i++)
+		upvotes[i].addEventListener('click', upvoteOpinion);
 
-for (var i = 0; i < downvotes.length; i++)
-	downvotes[i].addEventListener('click', downvoteOpinion);
+	let downvotes = document.querySelectorAll('.downvote');
 
-let comments_comments = document.querySelectorAll('.comment_comment');
+	for (var i = 0; i < downvotes.length; i++)
+		downvotes[i].addEventListener('click', downvoteOpinion);
 
-for (var i = 0; i < comments_comments.length; i++)
-	comments_comments[i].addEventListener('click', add_comment_comment_form);
+	let comments_comments = document.querySelectorAll('.comment_comment');
+
+	for (var i = 0; i < comments_comments.length; i++)
+		comments_comments[i].addEventListener('click', add_comment_comment_form);
+}
 
 function encodeForAjax(data) {
 	return Object.keys(data).map(function (k) {
@@ -48,7 +52,11 @@ function addComment() {
 	if ('error' in opinion)
 		return;
 
-	let section = document.querySelector('#comments > ol');
+	let commentForm = document.querySelector('.comment[data-id="' + opinion['parent_id'] + '"] > form');
+
+	if (commentForm != null)
+		commentForm.outerHTML = '<div class="comment_comment" role="button">&#128172;</div>';
+
 	let list = document.createElement('li');
 	let comment = document.createElement('article');
 
@@ -61,11 +69,9 @@ function addComment() {
 	list.innerHTML = comment.outerHTML;
 
 	let parentList = document.querySelector('[data-id="' + opinion['parent_id'] + '"] > ol');
-	parentList.innerHTML = list.outerHTML + parentList.innerHTML; 
+	parentList.innerHTML = list.outerHTML + parentList.innerHTML;
 
-	document.querySelector('[data-id="' + opinion['comment_id'] + '"] > .upvote').addEventListener('click', upvoteOpinion);
-	document.querySelector('[data-id="' + opinion['comment_id'] + '"] > .downvote').addEventListener('click', downvoteOpinion);
-	document.querySelector('[data-id="' + opinion['comment_id'] + '"] > .comment_comment').addEventListener('click', add_comment_comment_form);
+	addAllEventListeners();
 }
 
 function upvoteOpinion(event) {
@@ -141,8 +147,17 @@ function changeVote() {
 }
 
 function add_comment_comment_form() {
-	let parent_id = this.parentElement.dataset.id;
-	this.parentElement.innerHTML += '<form> <input type="hidden" name="opinion_id" value="' + parent_id +'"> <textarea name="comment" placeholder="Have something to say about this story?" required></textarea> <input type="submit" value="Add Comment"> </form>';
+	if (this.parentElement.querySelector('form') != null)
+		return;
 
-	document.querySelector('.comment[data-id="' + parent_id + '"] > form').addEventListener('submit', submitComment);
+	let parent_id = this.parentElement.dataset.id;
+
+	let new_form = document.createElement('form');
+	new_form.innerHTML = '<form> <input type="hidden" name="opinion_id" value="' + parent_id + '"> <textarea name="comment" placeholder="Have something to say about this story?" required></textarea> <input type="submit" value="Add Comment"> </form>';
+
+	this.parentElement.insertBefore(new_form, this.parentElement.querySelector('ol'));
+
+	document.querySelector('.comment[data-id="' + parent_id + '"] > .comment_comment').remove();
+
+	addAllEventListeners();
 }
