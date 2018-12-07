@@ -1,7 +1,21 @@
-section#login {
-    background-color: white;
+/* Global variables */
+:root {
+    /* Colors */
+    --main-bg-color: #eee;
 
-    border: 1px solid #ddd;
+    /* Section login */
+    --section-login-bg-color: white;
+    --section-login-border-color: #ddd;
+    --section-login-footer-bg-color: #eef;
+
+    /* Button */
+    --button-bg-color: #bbf;
+    --button-hover-bg-color: #aaf;
+}
+
+section#login {
+    background-color: var(--section-login-bg-color);
+    border: 1px solid var(--section-login-border-color);
     margin-left: auto;
     margin-right: auto;
     width: 90%;
@@ -16,7 +30,7 @@ section#login input{
     min-width: 85px;
     font-size: 15px;
     padding: 0.2em;
-    border: 1px solid #ddd;
+    border: 1px solid var(--section-login-border-color);
 }
 
 section#login h2 {
@@ -25,7 +39,7 @@ section#login h2 {
 }
 
 section#login footer {
-    background-color: #eef;
+    background-color: var(--section-login-footer-bg-color);
     
     padding-top: 10px;
     padding-bottom: 10px;
@@ -49,15 +63,15 @@ section#login input[type="submit"]{
     padding: 0.5em;
     margin-top: 2em;
     height: 100%;
-    background-color: #bbf;
+    background-color: var(--button-bg-color);
     color: white;
 }   
 
 section#login input[type="submit"]:hover {
-    background-color: #aaf;
+    background-color: var(--button-hover-bg-color);
     cursor:pointer;
 }
 
 body {
-    background-color: #eee;
+    background-color:var(--main-bg-color);
 }
