@@ -19,8 +19,12 @@ function draw_header($isnt_login_signup) {
 
 <body>
 	<header>
-		<h1><a href="../index.php">Tidder</a></h1>
-	<?php if(!isset($_SESSION['user_id'])) { 
+		<h1>
+			<a href="../index.php">
+				<img src="../pictures/default.jpg" alt="icon" width = "25" height = "25">Tidder
+			</a>
+		</h1>
+	<?php if(!isset($_SESSION['user_id'])) {  
 			if($isnt_login_signup) { ?>
 				<h2><a href='../pages/login.php?redirect=<?=urlencode($page)?>''>Login</a></h2>
 				<h2><a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></h2>

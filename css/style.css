@@ -13,6 +13,20 @@
     --button-hover-bg-color: #aaf;
 }
 
+body > header {
+    background-color: white;
+    height: 40px;
+    border-bottom: solid var(--section-login-border-color) 1px
+}
+
+header h1 {
+    margin:0px;    
+}
+
+header h1 a {
+    padding-left: 10%;
+}
+
 section#login {
     background-color: var(--section-login-bg-color);
     border: 1px solid var(--section-login-border-color);
@@ -20,6 +34,7 @@ section#login {
     margin-right: auto;
     width: 90%;
     max-width: 750px;
+    margin-top: 30px;
 }
 
 section#login input{
@@ -74,4 +89,5 @@ section#login input[type="submit"]:hover {
 
 body {
     background-color:var(--main-bg-color);
+    margin: 0px;
 }
