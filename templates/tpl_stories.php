@@ -4,24 +4,19 @@
 			<h2>Stories</h2>
 		</header>
 		<ol>
-
         <?php 
             foreach($stories as $story)
-				draw_story($story);
-				
-		
-		if($not_profile){
-		?>
-		</ol>
+				draw_story($story);		
+		?> 
+		</ol> 
+		<?php if($not_profile){?>
 
 		<footer>
 			<p>Want to share a story? <a href="add_story.php">Add a story!</a></p>
 		</footer>
-	    </section>
-
-		<?php 
-			}
-		} ?>
+		<?php } ?>
+		 </section>
+		<?php } ?>
 
     <?php function draw_story($story) { 
 		global $now;?>

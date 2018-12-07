@@ -49,8 +49,7 @@
 		if(isset($_SESSION['user_id']))
 			$comments[$i]['vote'] = getVote($comments[$i]['opinion_id'], $_SESSION['user_id']);
 	}
-	
-	draw_comments($comments, true);
 
+	draw_comments_header($comments,true);
 	draw_footer();
 ?>

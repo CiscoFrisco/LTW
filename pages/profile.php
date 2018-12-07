@@ -19,7 +19,7 @@
 		header('Location: ../pages/404.html');
 
 	$stories = getStories($user_id);
-	$comments = getComments($user_id);
+	$comments = array_reverse(getComments($user_id));
 	$now = time();
 
 	$score = 0;
@@ -104,17 +104,10 @@
 		<input type="submit" value="Edit Profile">
 	</form>
 </section>
-<?php } ?>
-<section id="stories">
-	<?php 
+<?php } 
 	draw_stories($stories, false);
+	draw_comments_header($comments,false);
 ?>
-</section>
-<section id="comments">
-	<?php 
-	draw_comments($comments,false);
-?>
-</section>
 <section id="logout">
 	<header>
 		<h4><a href="../actions/action_logout.php">Logout</a></h4>

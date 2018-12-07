@@ -3,10 +3,15 @@
 addAllEventListeners();
 
 function addAllEventListeners() {
-	let commentForms = document.querySelectorAll('form');
+	let commentForm = document.querySelector('#comments > form');
 
-	for (var i = 0; i < commentForms.length; i++)
-		commentForms[i].addEventListener('submit', submitComment);
+	if(commentForm != null)
+		commentForm.addEventListener('submit', submitComment);
+
+	let commentCommentForms = document.querySelectorAll('#comments form');
+
+	for (var i = 0; i < commentCommentForms.length; i++)
+		commentCommentForms[i].addEventListener('submit', submitComment);
 
 	let upvotes = document.querySelectorAll('.upvote');
 
