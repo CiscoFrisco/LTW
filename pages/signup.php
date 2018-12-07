@@ -4,7 +4,13 @@
 
 	if (isset($_SESSION['user_id']))
 		die(header('Location: profile.php'));
-		
+
+	if (!isset($_GET['redirect']) 
+		|| preg_match('@../@', $_GET['redirect']) 
+		|| !preg_match('@.php@', $_GET['redirect'])
+		|| !is_readable('../pages/' + $_GET['redirect']))
+		$_GET['redirect'] = '../index.php';
+
 	draw_header(false);
 ?>
 	<section id="signup">
@@ -17,9 +23,12 @@
 			<input type="password" name="password" placeholder="password" required>
 			<input type="submit" value="Signup">
 		</form>
-		<?php if(isset($_GET['error'])){ ?>
-			<h3>Username or email already taken!</h3>
-		<?php } ?>
+		<?php if(isset($_GET['error'])){ 
+				if($_GET['error'] == 'taken'){?>
+					<h3>Username or email already taken!</h3>
+		<?php } else if($_GET['error'] == 'badPassword') {?>
+					<h3>Password should have at least 8 characters, at least 1 number. 1 lowercase and 1 uppercase letter!</h3>
+		<?php }} ?>
 		<footer>
 			<p>Already have an account? <a href="login.php?redirect=<?=$_GET['redirect']?>">Login!</a></p>
 		</footer>

@@ -7,6 +7,12 @@
 	$title = $_POST['title'];
 	$story = $_POST['story'];
 
+	if(strlen($title) > 50)
+		die(header('Location: ../pages/add_story.php?error=title'));
+
+	if(strlen($story) > 50000)
+		die(header('Location: ../pages/add_story.php?error=text'));
+
 	try {
 		insertStory($user_id, $title, $story, $story_id);
 		addVote($story_id, $user_id, 1);

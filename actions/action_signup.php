@@ -4,7 +4,15 @@
 
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+	$password = $_POST['password'];
+	
+	$uppercase = preg_match('@[A-Z]@', $password);
+	$lowercase = preg_match('@[a-z]@', $password);
+	$number = preg_match('@[0-9]@', $password);
+
+	if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
+		die(header('Location: ../pages/signup.php?error=badPassword'));
+	}
 
     try {
 		insertUser($user_id, $username, $email, $password);
@@ -15,6 +23,6 @@
 		
 		else header('Location: ../index.php');
     } catch (PDOException $e) {
-        header('Location: ../pages/signup.php?error=true');
+        header('Location: ../pages/signup.php?error=taken');
     }
 ?>

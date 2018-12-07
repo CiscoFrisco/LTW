@@ -15,6 +15,9 @@
 	$parent_id = $_POST['parent_id'];
 	$comment = $_POST['comment'];
 
+	if(strlen($comment) > 10000)
+		die(json_encode(array('error' => 'too_long')));
+
 	addComment($user_id, $parent_id, $comment, $comment_id);
 	addVote($comment_id, $user_id, 1);
 

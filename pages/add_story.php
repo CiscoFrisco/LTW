@@ -18,6 +18,12 @@
 			<textarea name="story" placeholder="Story" required></textarea>
 			<input type="submit" value="Add Story">
 		</form>
+		<?php if(isset($_GET['error'])){ 
+				if($_GET['error'] == 'title'){?>
+					<h3>Title is too long! (Max is 50 characters)</h3>
+		<?php } else if($_GET['error'] == 'text') {?>
+					<h3>Story is too long! (Max is 50000 characters)</h3>
+		<?php }} ?>
 	</section>
 	
 <?php draw_footer();?>

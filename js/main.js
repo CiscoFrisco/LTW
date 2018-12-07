@@ -5,7 +5,7 @@ addAllEventListeners();
 function addAllEventListeners() {
 	let commentForm = document.querySelector('#comments > form');
 
-	if(commentForm != null)
+	if (commentForm != null)
 		commentForm.addEventListener('submit', submitComment);
 
 	let commentCommentForms = document.querySelectorAll('#comments form');
@@ -54,8 +54,10 @@ function submitComment(event) {
 function addComment() {
 	let opinion = JSON.parse(this.responseText);
 
-	if ('error' in opinion)
+	if ('error' in opinion) {
+		alert('Comment too long! Max is 10000 characters');
 		return;
+	}
 
 	let commentForm = document.querySelector('.comment[data-id="' + opinion['parent_id'] + '"] > form');
 

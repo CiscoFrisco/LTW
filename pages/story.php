@@ -35,8 +35,9 @@
 		<div class="upvote" role="button" data-value="<?=$vote?>">&#8593;</div>
 		<h5>Score: <?=$score?></h5>
 		<div class="downvote" role="button" data-value="<?=$vote?>">&#8595;</div>
-		<h2><?=$story['opinion_text']?></h2>
-		<h3>Posted by <a href="<?='profile.php?username='.urlencode($username)?>"><?=$username?></a> <?=deltaTime($now, $story['posted'])?></h3>
+		<h2><?=$story['opinion_title']?></h2>
+		<h3><?=$story['opinion_text']?></h3>
+		<h4>Posted by <a href="<?='profile.php?username='.urlencode($username)?>"><?=$username?></a> <?=deltaTime($now, $story['posted'])?></h4>
 	</section>
 
 <?php
