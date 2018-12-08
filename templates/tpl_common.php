@@ -19,22 +19,34 @@ function draw_header($isnt_login_signup) {
 
 <body>
 	<header>
-		<h1>
-			<a href="../index.php">
-				<img src="../pictures/default.jpg" alt="icon" width = "25" height = "25">Tidder
-			</a>
-		</h1>
-	<?php if(!isset($_SESSION['user_id'])) {  
-			if($isnt_login_signup) { ?>
-				<h2><a href='../pages/login.php?redirect=<?=urlencode($page)?>''>Login</a></h2>
-				<h2><a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></h2>
-	<?php }
-	} else {
-			$username = getUserName($_SESSION['user_id']);
-			$profile_link = "../pages/profile.php?username=".urlencode($username); ?>
-			<h2><a href=<?=$profile_link?>>Your Profile</a></h2>
-			<h2><a href='../actions/action_logout.php?redirect=<?=urlencode($page)?>'>Logout</a></h2>
-	<?php } ?>
+		<div class = "container">
+			<h1>
+				<a href="../index.php">
+					<img src="../pictures/default.jpg" alt="icon" width = "25" height = "25"> Tidder
+				</a>
+			</h1>
+		
+			<?php if(!isset($_SESSION['user_id'])) {  
+					if($isnt_login_signup) { ?>
+					<nav>
+						<ul>
+							<li><a href='../pages/login.php?redirect=<?=urlencode($page)?>''>Login</a></li>
+							<li><a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></li>
+						</ul>
+					</nav>
+			<?php }
+			} else {
+					$username = getUserName($_SESSION['user_id']);
+					$profile_link = "../pages/profile.php?username=".urlencode($username); ?>
+					<nav>
+						<ul>
+							<li><a href=<?=$profile_link?>>Your Profile</a></li>
+							<li><a href='../actions/action_logout.php?redirect=<?=urlencode($page)?>'>Logout</a></li>
+						</ul>
+					</nav>
+			<?php } ?>
+
+		</div> <!-- End of container -->
 	</header>
 <?php
 }	

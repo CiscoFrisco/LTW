@@ -13,19 +13,55 @@
     --button-hover-bg-color: #aaf;
 }
 
+/* Global Class */
+.container {
+    width: 80%;
+    margin: 0px auto;
+    overflow: hidden;
+}
+
+/* Header */
 body > header {
-    background-color: white;
-    height: 40px;
-    border-bottom: solid var(--section-login-border-color) 1px
+    background-color: #35424a;
+    color: #ffffff;
+    padding-top: 5px;
+    min-height: 50px;
+    border-bottom: #e8491d 3px solid;
 }
 
-header h1 {
-    margin:0px;    
+body > header a {
+    color: #ffffff;
+    text-decoration: none;
 }
 
-header h1 a {
-    padding-left: 10%;
+body > header ul {
+    padding: 0;
+    margin: 0;
 }
+
+
+body > header li {
+    display: inline;
+    padding: 0 20px;
+}
+
+body > header h1 {
+    float: left;
+    margin: 0;
+}
+
+body > header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+
+
+
+
+
+
+
 
 section#login {
     background-color: var(--section-login-bg-color);
@@ -88,6 +124,8 @@ section#login input[type="submit"]:hover {
 }
 
 body {
-    background-color:var(--main-bg-color);
-    margin: 0px;
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: var(--main-bg-color);
 }
