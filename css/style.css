@@ -90,6 +90,26 @@ body > header nav {
     margin-top: 10px;
 }
 
+/*  
+    MAIN FOOTER ===================================================
+*/
+
+body > footer {
+    background-color: #35424a;
+    border-top: #e8491d 3px solid;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+body > footer a {
+    color: white;
+    text-decoration: none;
+}
+
+body > footer a:hover {
+    text-decoration: underline;
+}
 
 /*
     LOGIN SECTION =================================================
@@ -170,6 +190,7 @@ section#login input[type="submit"]:hover {
 
 ol {
     list-style-type: none;
+    padding: 0;
 }
 
 article.story {

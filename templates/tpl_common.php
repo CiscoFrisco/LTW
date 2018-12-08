@@ -53,6 +53,11 @@ function draw_header($isnt_login_signup) {
 }	
 
 function draw_footer() {?>
+		<footer>
+			Made by <a href="https://github.com/Rekicho">Bruno Sousa</a>, 
+			<a href="https://github.com/CiscoFrisco">Francisco Filipe</a>, 
+			<a href="https://github.com/PedroMiguelSilva">Pedro Silva</a> &copy;2018
+		</footer>
 	</body>
 </html>
 <?php } ?>
