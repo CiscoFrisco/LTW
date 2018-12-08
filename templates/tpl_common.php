@@ -19,6 +19,7 @@ function draw_header($isnt_login_signup) {
 </head>
 
 <body>
+	<div class = "wrapper">
 	<header>
 		<div class = "container">
 			<h1>
@@ -53,6 +54,7 @@ function draw_header($isnt_login_signup) {
 }	
 
 function draw_footer() {?>
+		</div> <!-- end of wrapper  -->
 		<footer>
 			Made by <a href="https://github.com/Rekicho">Bruno Sousa</a>, 
 			<a href="https://github.com/CiscoFrisco">Francisco Filipe</a>, 

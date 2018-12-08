@@ -24,12 +24,28 @@
     --grey-shade-6: #505050;
 }
 
+html, body  {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+.wrapper:after {
+    content: "";
+    display: block;
+    height: 50px;
+}
+
 /* Body default Variables */
 body {
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding: 0;
-    margin: 0;
     background-color: var(--grey-shade-2);
+    position: relative;
 }
 
 /* Global Class */
@@ -37,12 +53,18 @@ body {
     width: 80%;
     margin: 0px auto;
     overflow: hidden;
+    min-height: 100%;
+}
+
+body > .container {
+    padding-bottom: 50px;
+    min-height: 100%;
 }
 
 /* 
     MAIN HEADER ========================================== 
 */
-body > header {
+body > .wrapper > header {
     background-color: #35424a;
     color: #ffffff;
     padding-top: 5px;
@@ -50,42 +72,42 @@ body > header {
     border-bottom: #e8491d 3px solid;
 }
 
-body > header a {
+body > .wrapper > header a {
     color: #ffffff;
     text-decoration: none;
 }
 
-body > header nav a{
+body > .wrapper > header nav a{
     padding: 5px;
 }
 
-body > header nav a:hover {
+body > .wrapper > header nav a:hover {
     background-color: #303745;
     text-decoration: underline;
     padding: 5px;
 }
 
-body > header nav li{
+body > .wrapper > header nav li{
     padding: 0px;
 }
 
-body > header ul {
+body > .wrapper > header ul {
     padding: 0;
     margin: 0;
 }
 
 
-body > header li {
+body > .wrapper > header li {
     display: inline;
     padding: 0 20px;
 }
 
-body > header h1 {
+body > .wrapper > header h1 {
     float: left;
     margin: 0;
 }
 
-body > header nav {
+body > .wrapper > header nav {
     float: right;
     margin-top: 10px;
 }
@@ -97,9 +119,10 @@ body > header nav {
 body > footer {
     background-color: #35424a;
     border-top: #e8491d 3px solid;
-    padding: 20px;
+    height:50px;
     text-align: center;
     color: white;
+    width: 100%;
 }
 
 body > footer a {
