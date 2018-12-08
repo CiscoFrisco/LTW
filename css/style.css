@@ -11,14 +11,41 @@
     /* Button */
     --button-bg-color: #bbf;
     --button-hover-bg-color: #aaf;
+
+
+
+    /* Color Pallete */
+    --grey-shade-0: #f9f9f9;
+    --grey-shade-1: #f5f5f5;
+    --grey-shade-2: #d3d3d3;
+    --grey-shade-3: #bebebe;
+    --grey-shade-4: #a9a9a9;
+    --grey-shade-5: #808080;
+    --grey-shade-6: #505050;
+}
+
+html, body  {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+.wrapper:after {
+    content: "";
+    display: block;
+    height: 50px;
 }
 
 /* Body default Variables */
 body {
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding: 0;
-    margin: 0;
-    background-color: var(--main-bg-color);
+    background-color: var(--grey-shade-2);
+    position: relative;
 }
 
 /* Global Class */
@@ -26,12 +53,18 @@ body {
     width: 80%;
     margin: 0px auto;
     overflow: hidden;
+    min-height: 100%;
+}
+
+body > .container {
+    padding-bottom: 50px;
+    min-height: 100%;
 }
 
 /* 
     MAIN HEADER ========================================== 
 */
-body > header {
+body > .wrapper > header {
     background-color: #35424a;
     color: #ffffff;
     padding-top: 5px;
@@ -39,46 +72,67 @@ body > header {
     border-bottom: #e8491d 3px solid;
 }
 
-body > header a {
+body > .wrapper > header a {
     color: #ffffff;
     text-decoration: none;
 }
 
-body > header nav a{
+body > .wrapper > header nav a{
     padding: 5px;
 }
 
-body > header nav a:hover {
+body > .wrapper > header nav a:hover {
     background-color: #303745;
     text-decoration: underline;
     padding: 5px;
 }
 
-body > header nav li{
+body > .wrapper > header nav li{
     padding: 0px;
 }
 
-body > header ul {
+body > .wrapper > header ul {
     padding: 0;
     margin: 0;
 }
 
 
-body > header li {
+body > .wrapper > header li {
     display: inline;
     padding: 0 20px;
 }
 
-body > header h1 {
+body > .wrapper > header h1 {
     float: left;
     margin: 0;
 }
 
-body > header nav {
+body > .wrapper > header nav {
     float: right;
     margin-top: 10px;
 }
 
+/*  
+    MAIN FOOTER ===================================================
+*/
+
+body > footer {
+    background-color: #35424a;
+    border-top: #e8491d 3px solid;
+    height:50px;
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+body > footer a {
+    color: white;
+    text-decoration: none;
+}
+
+body > footer a:hover {
+    text-decoration: underline;
+}
 
 /*
     LOGIN SECTION =================================================
@@ -101,7 +155,6 @@ section#login input{
     min-width: 85px;
     font-size: 15px;
     padding: 0.2em;
-    border: 1px solid var(--section-login-border-color);
 }
 
 section#login header {
@@ -158,29 +211,40 @@ section#login input[type="submit"]:hover {
     ARTICLE STORY =======================================
 */
 
+ol {
+    list-style-type: none;
+    padding: 0;
+}
+
 article.story {
-    background-color: red;
+    background-color: var(--grey-shade-0);
     position: relative;
-    min-height: 70px;
+    min-height: 80px;
+    border-radius: 15px;
+    border: var(--grey-shade-6) 0.5px solid;
+    margin: 0 0 10px 0;
+
 }
 
 article.story .storyinfo{
     padding-left: 60px;
+    
 }
 
 article.story .votes-container {
     position: absolute;
-    background-color: darkred;
+    background-color: var(--grey-shade-1);
     float: left;
     width: 50px;
-    bottom: 0;
-    top:0;
-    left:0;
+    bottom: 0.5px;
+    top:0.5px;
+    left:0.5px;
+    border-radius: 15px 0px 0px 15px;
 
 }
 
 article.story .votes {
-    background-color: yellow;
+    background-color: var(--grey-shade-2);
     width: 50%;
     margin: 0 auto;
     margin-top: 5px;
@@ -200,5 +264,41 @@ article.story .votes-container h5 {
     UPVOTE AND DOWNVOTE BUTTONS SECTION =========================================
 */
 .fa-arrow-circle-down, .fa-arrow-circle-up {
+    color: var(--grey-shade-5);
+}
+
+.downvote[data-value="-1"] .fa-arrow-circle-down {
     color: red;
+} 
+
+.upvote[data-value="1"] .fa-arrow-circle-up {
+    color: blue;
+}
+
+.upvote {
+    margin:0;
+    padding:0;
+    margin-top: 3px;
+}
+
+.downvote {
+    margin:0;
+    padding:0;
+    margin-bottom: 3px;
+}
+
+.fa-arrow-circle-down:hover {
+    color: red;
+} 
+
+.fa-arrow-circle-up:hover {
+    color: blue;
+}
+
+/*
+    VOTE CONTAINER AND RELATED =========================================
+*/
+
+.votes {
+    border-radius: 15px;
 }

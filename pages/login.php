@@ -30,5 +30,5 @@
 				<p>Don't have an account? <a href="signup.php?redirect=<?=$_GET['redirect']?>">Signup!</a></p>
 			</footer>
 		</section>
-	</div>
+	</div> <!-- end of container -->
 <?php draw_footer();?>
