@@ -195,3 +195,10 @@ article.story .votes-container h5 {
     padding: 0;
     margin: 0;
 }
+
+/*
+    UPVOTE AND DOWNVOTE BUTTONS SECTION =========================================
+*/
+.fa-arrow-circle-down, .fa-arrow-circle-up {
+    color: red;
+}

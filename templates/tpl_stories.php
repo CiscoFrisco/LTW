@@ -26,9 +26,9 @@
 				<article class="story" data-id="<?=$story['opinion_id']?>">
 					<div class = "votes-container">
 							<div class = "votes">
-								<div class="upvote" role="button" data-value="<?=$story['vote']?>">&#8593;</div>
+								<div class="upvote" role="button" data-value="<?=$story['vote']?>"><i class="fas fa-arrow-circle-up"></i></div>
 								<h5><?=$story['score']?></h5>
-								<div class="downvote" role="button" data-value="<?=$story['vote']?>">&#8595;</div>
+								<div class="downvote" role="button" data-value="<?=$story['vote']?>"><i class="fas fa-arrow-circle-down"></i></div>
 							</div>
 					</div>
 					<div class = "storyinfo">

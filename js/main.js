@@ -155,8 +155,8 @@ function changeVote() {
 	let score = old_score + (vote['value'] - old_vote);
 
 	opinion_score.outerHTML = '<h5>' + score + '</h5>';
-	opinion_up.outerHTML = '<div class="upvote" role="button" data-value="' + vote['value'] + '">&#8593;</div>';
-	opinion_down.outerHTML = '<div class="downvote" role="button" data-value="' + vote['value'] + '">&#8595;</div>';
+	opinion_up.outerHTML = '<div class="upvote" role="button" data-value="' + vote['value'] + '"><i class="fas fa-arrow-circle-up"></i></div>';
+	opinion_down.outerHTML = '<div class="downvote" role="button" data-value="' + vote['value'] + '"><i class="fas fa-arrow-circle-down"></i></div>';
 
 	document.querySelector('[data-id="' + vote['opinion_id'] + '"] .upvote').addEventListener('click', upvoteOpinion);
 	document.querySelector('[data-id="' + vote['opinion_id'] + '"] .downvote').addEventListener('click', downvoteOpinion);
