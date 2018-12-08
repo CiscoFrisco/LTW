@@ -13,6 +13,14 @@
     --button-hover-bg-color: #aaf;
 }
 
+/* Body default Variables */
+body {
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: var(--main-bg-color);
+}
+
 /* Global Class */
 .container {
     width: 80%;
@@ -20,7 +28,9 @@
     overflow: hidden;
 }
 
-/* Header */
+/* 
+    MAIN HEADER ========================================== 
+*/
 body > header {
     background-color: #35424a;
     color: #ffffff;
@@ -32,6 +42,20 @@ body > header {
 body > header a {
     color: #ffffff;
     text-decoration: none;
+}
+
+body > header nav a{
+    padding: 5px;
+}
+
+body > header nav a:hover {
+    background-color: #303745;
+    text-decoration: underline;
+    padding: 5px;
+}
+
+body > header nav li{
+    padding: 0px;
 }
 
 body > header ul {
@@ -56,19 +80,15 @@ body > header nav {
 }
 
 
-
-
-
-
-
-
+/*
+    LOGIN SECTION =================================================
+*/
 
 section#login {
     background-color: var(--section-login-bg-color);
     border: 1px solid var(--section-login-border-color);
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
     max-width: 750px;
     margin-top: 30px;
 }
@@ -84,9 +104,19 @@ section#login input{
     border: 1px solid var(--section-login-border-color);
 }
 
+section#login header {
+    background-color: #35424a;
+    border-bottom: #e8491d 3px solid;
+    color:white;
+    padding: 20px;
+}
+
 section#login h2 {
-    padding-top: 20px;
-    margin: 20px 10%;
+    margin: 0;
+}
+
+section#login form {
+    margin-top:20px;
 }
 
 section#login footer {
@@ -123,9 +153,8 @@ section#login input[type="submit"]:hover {
     cursor:pointer;
 }
 
-body {
-    font: 15px/1.5 Arial, Helvetica, sans-serif;
-    padding: 0;
-    margin: 0;
-    background-color: var(--main-bg-color);
-}
+
+/*
+    STORIES =======================================
+*/
+
