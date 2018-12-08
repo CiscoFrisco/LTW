@@ -91,7 +91,7 @@ function addComment() {
 }
 
 function upvoteOpinion(event) {
-	let opinion_id = this.parentElement.getAttribute('data-id');
+	let opinion_id = this.parentElement.parentElement.parentElement.getAttribute('data-id');
 	let value;
 
 	switch (this.getAttribute('data-value')) {
@@ -115,7 +115,7 @@ function upvoteOpinion(event) {
 }
 
 function downvoteOpinion(event) {
-	let opinion_id = this.parentElement.getAttribute('data-id');
+	let opinion_id = this.parentElement.parentElement.parentElement.getAttribute('data-id');
 	let value;
 
 	switch (this.getAttribute('data-value')) {
@@ -146,20 +146,20 @@ function changeVote() {
 		return;
 	}
 
-	let opinion_score = document.querySelector('[data-id="' + vote["opinion_id"] + '"] > h5');
-	let opinion_up = document.querySelector('[data-id="' + vote["opinion_id"] + '"] > .upvote');
-	let opinion_down = document.querySelector('[data-id="' + vote["opinion_id"] + '"] > .downvote');
+	let opinion_score = document.querySelector('[data-id="' + vote["opinion_id"] + '"] h5');
+	let opinion_up = document.querySelector('[data-id="' + vote["opinion_id"] + '"] .upvote');
+	let opinion_down = document.querySelector('[data-id="' + vote["opinion_id"] + '"] .downvote');
 
 	let old_vote = parseInt(opinion_up.getAttribute('data-value'));
-	let old_score = parseInt(opinion_score.textContent.substr(7));
+	let old_score = parseInt(opinion_score.textContent);
 	let score = old_score + (vote['value'] - old_vote);
 
-	opinion_score.outerHTML = '<h5>Score: ' + score + '</h5>';
+	opinion_score.outerHTML = '<h5>' + score + '</h5>';
 	opinion_up.outerHTML = '<div class="upvote" role="button" data-value="' + vote['value'] + '">&#8593;</div>';
 	opinion_down.outerHTML = '<div class="downvote" role="button" data-value="' + vote['value'] + '">&#8595;</div>';
 
-	document.querySelector('[data-id="' + vote['opinion_id'] + '"] > .upvote').addEventListener('click', upvoteOpinion);
-	document.querySelector('[data-id="' + vote['opinion_id'] + '"] > .downvote').addEventListener('click', downvoteOpinion);
+	document.querySelector('[data-id="' + vote['opinion_id'] + '"] .upvote').addEventListener('click', upvoteOpinion);
+	document.querySelector('[data-id="' + vote['opinion_id'] + '"] .downvote').addEventListener('click', downvoteOpinion);
 }
 
 function add_comment_comment_form() {
