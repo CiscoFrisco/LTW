@@ -43,7 +43,17 @@
         <?php } ?>
 
     <?php function draw_comment($comment, $not_profile) { 
-		global $now;?>
+		global $now;
+		
+		$regex = '/\[([^\]]+)\]\((http[s]?:[\/]{2})?(www\.)?([-a-zA-Z0-9@:%&_\+~#=]{2,256}\.[a-z]{2,6}\b[-a-zA-Z0-9@:%_\+.~#?&=\/]*)\)/';
+		$comment['opinion_text'] = preg_replace($regex,"<a href=\"https://www.$4\"	>$1</a>",$comment['opinion_text']);
+
+		$regex_user = '/\/u\/([-a-zA-Z0-9@:%_\+.~#?&=\/]+)/';
+		$comment['opinion_text'] = preg_replace($regex_user, "<a href=\"profile.php?username=$1\">$0</a>",$comment['opinion_text']);
+
+		$regex_channel = '/\/c\/([-a-zA-Z0-9@:%_\+.~#?&=\/]+)/';
+		$comment['opinion_text'] = preg_replace($regex_channel, "<a href=\"profile.php?username=$1\">$0</a>",$comment['opinion_text']);
+		?>
 		<li>
         <article class="comment" data-id="<?=$comment['opinion_id']?>">
 			<div class="upvote" role="button" data-value="<?=$comment['vote']?>">&#8593;</div>

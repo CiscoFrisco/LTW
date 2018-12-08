@@ -61,6 +61,15 @@ function addComment() {
 
 	let commentForm = document.querySelector('.comment[data-id="' + opinion['parent_id'] + '"] > form');
 
+	let regex_url = /\[([^\]]+)\]\((http[s]?:[\/]{2})?(www.)?([-a-zA-Z0-9@:%&_\+~#=]{2,256}\.[a-z]{2,6}\b[-a-zA-Z0-9@:%_\+.~#?&=/]*)\)/g;
+	opinion['comment'] = opinion['comment'].replace(regex_url, '<a href=\"https://www.$4\">$1</a>');
+
+	let regex_user = /\/u\/([-a-zA-Z0-9@:%_\+.~#?&=/]+)/g;
+	opinion['comment'] = opinion['comment'].replace(regex_user, '<a href=\"profile.php?username=$1\">$&</a>');
+
+	let regex_channel = /\/u\/([-a-zA-Z0-9@:%_\+.~#?&=/]+)/g;
+	opinion['comment'] = opinion['comment'].replace(regex_channel, '<a href=\"profile.php?username=$1\">$&</a>');
+
 	if (commentForm != null)
 		commentForm.outerHTML = '<div class="comment_comment" role="button">&#128172;</div>';
 
