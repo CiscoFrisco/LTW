@@ -1,7 +1,19 @@
 <?php 
 	include_once('../includes/session.php');
 	include_once('../database/db_comment.php');
+	//include_once('../database/tpl_stories.php');
 
+	function getNumberComments($story) {
+			
+		$comments = getAllComments($story);
+		
+		$count = 0;
+		foreach($comments as $comment){
+			$count += getNumberComments($comment['opinion_id']);
+		}
+
+		return count($comments) + $count;
+	}
 
 	function draw_comments_header($comments,$not_profile){ 
 		global $story_id;
@@ -60,6 +72,13 @@
 			<h5>Score: <?=$comment['score']?></h5>
 			<div class="downvote" role="button" data-value="<?=$comment['vote']?>">&#8595;</div>
 			<h3><?=$comment['opinion_text']?></a></h3>
+			<?php 
+			$number_comments = getNumberComments($comment['opinion_id']);
+			if($number_comments == 1){ ?>
+				<h4><?=$number_comments?> reply</4>
+			<?php } else if($number_comments > 1){ ?>
+				<h4><?=$number_comments?> replies</4>
+			<?php } ?>
 			<h4>Posted by <a href="<?='profile.php?username='.urlencode($comment['username'])?>"><?=$comment['username']?></a> <?=deltaTime($now, $comment['posted'])?></h4>
 			
 			<?php if(isset($_SESSION['user_id']) && $not_profile) { ?> 

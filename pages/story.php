@@ -37,6 +37,13 @@
 		<div class="downvote" role="button" data-value="<?=$vote?>">&#8595;</div>
 		<h2><?=$story['opinion_title']?></h2>
 		<h3><?=$story['opinion_text']?></h3>
+		<?php 
+		$number_comments = getNumberComments($story_id);
+		if($number_comments == 1){ ?>
+			<h4><?=$number_comments?> comment</4>
+		<?php } else { ?>
+			<h4><?=$number_comments?> comments</4>
+		<?php } ?>
 		<h4>Posted by <a href="<?='profile.php?username='.urlencode($username)?>"><?=$username?></a> <?=deltaTime($now, $story['posted'])?></h4>
 	</section>
 
