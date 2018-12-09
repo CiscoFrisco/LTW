@@ -348,7 +348,8 @@ article.story .storyinfo h4 a:hover {
 
 article.story:hover {
     background-color: var(--grey-shade-1);
-    border: 1px solid var(--grey-shade-3);
+    border: 1px solid var(--grey-shade-4);
+    z-index: 1;
 }
 
 article.story:hover .votes-container {
