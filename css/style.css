@@ -112,6 +112,22 @@ body > .wrapper > header nav {
     margin-top: 10px;
 }
 
+/*
+    TITLE OF PAGE =================================================
+*/
+
+body > .wrapper > #stories > header {
+    padding-left: 15%;
+    background-color: var(--grey-shade-5);
+}
+
+body > .wrapper > #stories > header > h2{
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: var(--grey-shade-1)
+}
+
 /*  
     MAIN FOOTER ===================================================
 */
@@ -220,16 +236,12 @@ article.story {
     background-color: var(--grey-shade-0);
     position: relative;
     min-height: 80px;
-    border-radius: 15px;
-    border: var(--grey-shade-6) 0.5px solid;
-    margin: 0 0 10px 0;
+    border-radius: 2px;
+    border: var(--grey-shade-3) 1px solid;
+    margin-top: -1px;
 
 }
 
-article.story .storyinfo{
-    padding-left: 60px;
-    
-}
 
 article.story .votes-container {
     position: absolute;
@@ -259,6 +271,39 @@ article.story .votes-container h5 {
     padding: 0;
     margin: 0;
 }
+
+article.story .storyinfo {
+    padding: 10px;
+    padding-left: 60px;
+}
+
+article.story .storyinfo h3 {
+    margin: 0;
+}
+
+article.story .storyinfo h3 a {
+    color: black;
+    text-decoration: none;
+}
+
+article.story .storyinfo h4 {
+    color: var(--grey-shade-5);
+    font-size: 12px;
+    margin: 0;
+}
+
+article.story .storyinfo h4 a {
+    color: var(--grey-shade-5);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+article.story .storyinfo h4 a:hover {
+    color: var(--grey-shade-5);
+    text-decoration: underline;
+    font-size: 12px;
+}
+
 
 /*
     UPVOTE AND DOWNVOTE BUTTONS SECTION =========================================
@@ -301,4 +346,34 @@ article.story .votes-container h5 {
 
 .votes {
     border-radius: 15px;
+}
+
+
+/*
+    MEDIA SCREENS =========================================================
+*/
+
+@media screen and (max-width: 600px) {
+    article.story .storyinfo {
+        float: none;
+        padding-left: 10px;
+        width: 100%;
+        display: block;
+    }
+
+    article.story .votes-container {
+        float:none;
+        display: none;
+    }
+
+    body > .wrapper > header h1 {
+        float: none;
+        display: block;
+    }
+
+    body > .wrapper > header nav {
+        float: none;
+        display: block;
+        padding-bottom: 15px;
+    }
 }
