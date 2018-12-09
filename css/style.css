@@ -436,6 +436,10 @@ article.story:hover .votes-container {
         display: block;
     }
 
+    article.story:hover .votes-container {
+        background-color: var(--grey-shade-1);
+    }
+
     article.story .votes-container {
         position: relative;
         background-color: inherit;
