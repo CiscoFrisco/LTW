@@ -2,15 +2,25 @@
 
 		include_once('../templates/tpl_comments.php');
 
-		function draw_stories($stories, $not_profile){ ?>
+		function draw_stories($stories, $selected, $not_profile){ ?>
         <section id="stories">
 		<header>
 			<h2>Stories</h2>
+			<form method="post" action="../actions/action_sort_stories.php">
+				<label>Sort
+					<select name="sort" onchange="this.form.submit()";>
+						<option value="0">Most Recent</option>
+						<option value="1">Most Comments</option>
+						<option value="2">Most Upvoted</option>
+						<option value="3">Most Downvoted</option>
+					</select>
+				</label>
+			</form >
 		</header>
 		<div class = "container">
 			<ol>
-					<?php 
-							foreach($stories as $story)
+			<?php 
+				foreach($stories as $story)
 					draw_story($story);		
 			?> 
 			</ol>
@@ -27,9 +37,6 @@
 	<?php 
 		function draw_story($story) { 
 		global $now;
-		
-		$number_comments = getNumberComments($story['opinion_id']);
-		
 		?>
 		<li>
 				<article class="story" data-id="<?=$story['opinion_id']?>">
@@ -42,10 +49,10 @@
 					</div>
 					<div class = "storyinfo">
 						<h3><a href="story.php?story_id=<?=$story['opinion_id']?>"><?=$story['opinion_title']?></a></h3>
-						<?php if($number_comments == 1){ ?>
-							<h4><?=$number_comments?> comment</4>
+						<?php if($story['comments'] == 1){ ?>
+							<h4><?=$story['comments']?> comment</4>
 						<?php } else { ?>
-							<h4><?=$number_comments?> comments</4>
+							<h4><?=$story['comments']?> comments</4>
 						<?php } ?>
 						<h4>Posted by <a href="<?='profile.php?username='.urlencode($story['username'])?>"><?=$story['username']?></a> <?=deltaTime($now, $story['posted'])?></h4>
 					</div>
