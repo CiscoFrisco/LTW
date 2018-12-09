@@ -342,6 +342,29 @@ article.story .storyinfo h4 a:hover {
     text-decoration: underline;
     font-size: 12px;
 }
+/*  
+    STORIES FOOTER ================================================
+*/
+#stories footer p{
+    background-color: var(--grey-shade-0);
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 20px;
+    border: 1px var(--grey-shade-3) solid;
+    padding: 5px;
+}
+
+#stories footer p a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+
+}
+
+#stories footer p a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
 
 
 /*
