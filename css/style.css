@@ -111,6 +111,7 @@ body > .wrapper > header h1 {
 body > .wrapper > header nav {
     float: right;
     margin-top: 10px;
+    padding-left: 10px;
 }
 
 /*
@@ -439,25 +440,48 @@ article.story:hover .votes-container {
         position: relative;
         background-color: inherit;
     }
+}
 
+@media screen and (max-width: 350px) {
     body > .wrapper > header h1 {
         float: none;
         display: block;
+        margin: 0;
+        text-align: center;
     }
 
     body > .wrapper > header nav {
         float: none;
         display: block;
         padding-bottom: 15px;
+        margin: 0;
+        text-align: center;
     }
 
+}
+
+@media screen and (max-width: 400px){
     body > .wrapper > #stories > header > .container > form {
         float: none;
         width: 100%;
+        margin: 0;
+        text-align: center;
+        padding: 0;
+    }
+
+    body > .wrapper > #stories > header > .container > form label {
+        padding-left: 10%;
+    }
+
+    body > .wrapper > #stories > header {
+        padding: 0;
     }
 
     body > .wrapper > #stories > header > .container > h2 {
         float: none;
         width: 100%;
+        margin: 0;
+        text-align: center;
     }
 }
+
