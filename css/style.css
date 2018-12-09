@@ -17,6 +17,7 @@
     /* Color Pallete */
     --grey-shade-0: #f9f9f9;
     --grey-shade-1: #f5f5f5;
+    --grey-shade-1-5: #efefef;
     --grey-shade-2: #d3d3d3;
     --grey-shade-3: #bebebe;
     --grey-shade-4: #a9a9a9;
@@ -282,16 +283,15 @@ article.story {
 }
 
 
+
 article.story .votes-container {
     position: absolute;
     background-color: var(--grey-shade-1);
     float: left;
     width: 50px;
     bottom: 0.5px;
-    top:0.5px;
-    left:0.5px;
-    border-radius: 15px 0px 0px 15px;
-
+    top:0px;
+    left:0px;
 }
 
 article.story .votes {
@@ -314,10 +314,13 @@ article.story .votes-container h5 {
 article.story .storyinfo {
     padding: 10px;
     padding-left: 60px;
+    overflow: hidden;
 }
 
 article.story .storyinfo h3 {
     margin: 0;
+    margin-right: 5px;
+    font-size: 15px;
 }
 
 article.story .storyinfo h3 a {
@@ -341,6 +344,15 @@ article.story .storyinfo h4 a:hover {
     color: var(--grey-shade-5);
     text-decoration: underline;
     font-size: 12px;
+}
+
+article.story:hover {
+    background-color: var(--grey-shade-1);
+    border: 1px solid var(--grey-shade-3);
+}
+
+article.story:hover .votes-container {
+    background-color: var(--grey-shade-1-5);
 }
 /*  
     STORIES FOOTER ================================================
@@ -419,13 +431,12 @@ article.story .storyinfo h4 a:hover {
     article.story .storyinfo {
         float: none;
         padding-left: 10px;
-        width: 100%;
         display: block;
     }
 
     article.story .votes-container {
-        float:none;
-        display: none;
+        position: relative;
+        background-color: inherit;
     }
 
     body > .wrapper > header h1 {
