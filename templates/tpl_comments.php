@@ -1,7 +1,6 @@
 <?php 
 	include_once('../includes/session.php');
 	include_once('../database/db_comment.php');
-	//include_once('../database/tpl_stories.php');
 
 	function getNumberComments($story) {
 			
