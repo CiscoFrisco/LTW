@@ -8,11 +8,8 @@
 	include_once('../templates/tpl_stories.php');
 
 
-	$selected = array('false', 'false', 'false', 'false');
-
 	if(isset($_GET['sort_code'])){
 		$sort = intval($_GET['sort_code']);
-		$selected[$sort] = 'selected';
 	}
 	
 	$stories = array_reverse(getAllStories());
@@ -60,6 +57,6 @@
 	$page = 'stories.php';
 
 	draw_header(true);
-	draw_stories($stories,$selected,true);
+	draw_stories($stories,true);
 	draw_footer();
 ?>

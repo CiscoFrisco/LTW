@@ -2,7 +2,7 @@
 
 		include_once('../templates/tpl_comments.php');
 
-		function draw_stories($stories, $selected, $not_profile){ ?>
+		function draw_stories($stories, $not_profile){ ?>
         <section id="stories">
 			
 			<header>

@@ -53,7 +53,7 @@
 	for($i = 0; $i < count($comments); $i++){
 		$comments[$i]['username'] = getUserName($comments[$i]['user_id']);
 		$comments[$i]['score'] = getScore($comments[$i]['opinion_id']);
-
+		$comments[$i]['replies'] = getNumberComments($comments[$i]['opinion_id']);
 		if(isset($_SESSION['user_id']))
 			$comments[$i]['vote'] = getVote($comments[$i]['opinion_id'], $_SESSION['user_id']);
 	}

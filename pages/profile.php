@@ -27,6 +27,7 @@
 	for($i = 0; $i < count($stories); $i++){
 		$stories[$i]['username'] = $username;
 		$stories[$i]['score'] = getScore($stories[$i]['opinion_id']);
+		$stories[$i]['comments'] = getNumberComments($stories[$i]['opinion_id']);
 		$score += $stories[$i]['score'];
 
 		if(isset($_SESSION['user_id']))
@@ -36,6 +37,7 @@
 	for($i = 0; $i < count($comments); $i++){
 		$comments[$i]['username'] = $username;
 		$comments[$i]['score'] = getScore($comments[$i]['opinion_id']);
+		$comments[$i]['replies'] = getNumberComments($comments[$i]['opinion_id']);
 		$score += $comments[$i]['score'];
 
 		if(isset($_SESSION['user_id']))

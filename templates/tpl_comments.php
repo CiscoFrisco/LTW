@@ -72,11 +72,10 @@
 			<div class="downvote" role="button" data-value="<?=$comment['vote']?>">&#8595;</div>
 			<h3><?=$comment['opinion_text']?></a></h3>
 			<?php 
-			$number_comments = getNumberComments($comment['opinion_id']);
-			if($number_comments == 1){ ?>
-				<h4><?=$number_comments?> reply</4>
-			<?php } else if($number_comments > 1){ ?>
-				<h4><?=$number_comments?> replies</4>
+			if($comment['replies'] == 1){ ?>
+				<h4><?=$comment['replies']?> reply</4>
+			<?php } else if($comment['replies'] > 1){ ?>
+				<h4><?=$comment['replies']?> replies</4>
 			<?php } ?>
 			<h4>Posted by <a href="<?='profile.php?username='.urlencode($comment['username'])?>"><?=$comment['username']?></a> <?=deltaTime($now, $comment['posted'])?></h4>
 			
