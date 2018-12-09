@@ -116,17 +116,56 @@ body > .wrapper > header nav {
     TITLE OF PAGE =================================================
 */
 
-body > .wrapper > #stories > header {
-    padding-left: 15%;
+body > .wrapper > #stories >  header {
+    padding-left: 5%;
     background-color: var(--grey-shade-5);
 }
 
-body > .wrapper > #stories > header > h2{
+body > .wrapper > #stories > header > .container > h2{
     margin: 0;
-    margin-bottom: 10px;
-    padding: 10px;
-    color: var(--grey-shade-1)
+    padding-top: 5px; 
+    color: var(--grey-shade-1);
+    float: left;
+    text-transform: uppercase;
 }
+
+body > .wrapper > #stories > header > .container > form  {
+    float: right;
+    padding-right: 5%;
+    padding-top: 5px;
+}
+
+body > .wrapper > #stories > header > .container > form > label {
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+body > .wrapper > #stories > header > .container > form > label {
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+body > .wrapper > #stories > header > .container > form option {
+    background-color: var(--grey-shade-6);
+}
+
+body > .wrapper > #stories > header > .container > form select {
+    border: none;
+    background-color: inherit;
+    color: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    padding: 10px;
+}
+
+body > .wrapper > #stories > header > .container > form select:hover {
+    background-color: var(--grey-shade-6);
+    cursor: pointer;
+} 
 
 /*  
     MAIN FOOTER ===================================================
@@ -375,5 +414,15 @@ article.story .storyinfo h4 a:hover {
         float: none;
         display: block;
         padding-bottom: 15px;
+    }
+
+    body > .wrapper > #stories > header > .container > form {
+        float: none;
+        width: 100%;
+    }
+
+    body > .wrapper > #stories > header > .container > h2 {
+        float: none;
+        width: 100%;
     }
 }

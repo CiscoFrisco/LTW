@@ -4,19 +4,23 @@
 
 		function draw_stories($stories, $selected, $not_profile){ ?>
         <section id="stories">
-		<header>
-			<h2>Stories</h2>
-			<form method="post" action="../actions/action_sort_stories.php">
-				<label>Sort
-					<select name="sort" onchange="this.form.submit()";>
-						<option value="0">Most Recent</option>
-						<option value="1">Most Comments</option>
-						<option value="2">Most Upvoted</option>
-						<option value="3">Most Downvoted</option>
-					</select>
-				</label>
-			</form >
-		</header>
+			
+			<header>
+			<div class = "container">
+				<h2>Stories</h2>
+				<form method="post" action="../actions/action_sort_stories.php">
+					<label>Sort
+						<select name="sort" onchange="this.form.submit()";>
+							<option value="0">Most Recent</option>
+							<option value="1">Most Comments</option>
+							<option value="2">Most Upvoted</option>
+							<option value="3">Most Downvoted</option>
+						</select>
+					</label>
+				</form >
+				</div>
+			</header>
+		
 		<div class = "container">
 			<ol>
 			<?php 
