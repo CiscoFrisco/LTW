@@ -10,15 +10,13 @@
 				<h2>Stories</h2>
 				<?php if ($not_profile) { ?>
 				<form method="post" action="../actions/action_sort_stories.php">
-					<label>Sort
 						<select name="sort" onchange="this.form.submit();">
-							<option value="-1" hidden selected>Choose one</option>
+							<option value="-1" hidden selected>SORT</option>
 							<option value="0">Most Recent</option>
 							<option value="1">Most Comments</option>
 							<option value="2">Most Upvoted</option>
 							<option value="3">Most Downvoted</option>
 						</select>
-					</label>
 				</form >
 				<?php } ?>
 				</div>

@@ -26,6 +26,10 @@ function draw_header($isnt_login_signup) {
 				<a href="../index.php">
 					<img src="../pictures/default.jpg" alt="icon" width = "25" height = "25"> Tidder
 				</a>
+				<form method="get" action="../actions/action_search.php">
+					<input type="text" name="search" placeholder="Search" required>
+					<input type="submit" class="fa fa-input" value="&#xf002">
+				</form>
 			</h1>
 		
 			<?php if(!isset($_SESSION['user_id'])) {  
