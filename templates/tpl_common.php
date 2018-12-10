@@ -41,7 +41,6 @@ function draw_header($isnt_login_signup) {
 					$username = getUserName($_SESSION['user_id']);
 					$profile_link = "../pages/profile.php?username=".urlencode($username); ?>
 					<nav>
-						<ul>
 							<li><a href=<?=$profile_link?>>Profile</a></li>
 							<li><a href='../actions/action_logout.php?redirect=<?=urlencode($page)?>'>Logout</a></li>
 						</ul>

@@ -18,7 +18,7 @@
 	if($user_id == '')
 		header('Location: ../pages/404.html');
 
-	$stories = getStories($user_id);
+	$stories = array_reverse(getStories($user_id));
 	$comments = array_reverse(getComments($user_id));
 	$now = time();
 

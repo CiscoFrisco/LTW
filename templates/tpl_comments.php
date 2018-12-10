@@ -21,10 +21,12 @@
 		<?php } else { ?>
 			<section id="comments">
 		<?php } ?>
+
+		<div class="container">
 		
-		<header>
-			<h2>Comments</h2>
-		</header>
+			<header>
+				<h2>Comments</h2>
+			</header>
 
 		<?php if($not_profile){
 			if((isset($_SESSION['user_id']))) { ?>
@@ -40,6 +42,7 @@
 		}
 		
 		draw_comments($comments,$not_profile);?>
+			</div>
 		</section>
 	<?php }
 
@@ -67,19 +70,20 @@
 		?>
 		<li>
         <article class="comment" data-id="<?=$comment['opinion_id']?>">
-			<div class="upvote" role="button" data-value="<?=$comment['vote']?>">&#8593;</div>
-			<h5>Score: <?=$comment['score']?></h5>
-			<div class="downvote" role="button" data-value="<?=$comment['vote']?>">&#8595;</div>
+			<div class="upvote" role="button" data-value="<?=$comment['vote']?>"><i class="fas fa-arrow-circle-up"></i></div>
+			<h5><?=$comment['score']?></h5>
+			<div class="downvote" role="button" data-value="<?=$comment['vote']?>"><i class="fas fa-arrow-circle-down"></i></div>
 			<h3><?=$comment['opinion_text']?></a></h3>
-			<?php 
-			if($comment['replies'] == 1){ ?>
-				<h4><?=$comment['replies']?> reply</4>
-			<?php } else if($comment['replies'] > 1){ ?>
-				<h4><?=$comment['replies']?> replies</4>
-			<?php } ?>
 			<h4>Posted by <a href="<?='profile.php?username='.urlencode($comment['username'])?>"><?=$comment['username']?></a> <?=deltaTime($now, $comment['posted'])?></h4>
-			
-			<?php if(isset($_SESSION['user_id']) && $not_profile) { ?> 
+			<?php 
+			$replieNum = getNumberComments($comment['opinion_id']);
+			if($replieNum == 1){ ?>
+				<h4><?=$replieNum?> reply</h4>
+			<?php } else { ?>
+				<h4><?=$replieNum?> replies</h4>
+			<?php }
+				
+			if(isset($_SESSION['user_id']) && $not_profile) { ?> 
 				<div class="comment_comment" role="button">&#128172;</div> 
 			<?php }
 

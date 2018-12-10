@@ -32,19 +32,21 @@
 ?>
 
 	<section id="story" data-id="<?=$story_id?>">
-		<div class="upvote" role="button" data-value="<?=$vote?>">&#8593;</div>
-		<h5>Score: <?=$score?></h5>
-		<div class="downvote" role="button" data-value="<?=$vote?>">&#8595;</div>
-		<h2><?=$story['opinion_title']?></h2>
-		<h3><?=$story['opinion_text']?></h3>
-		<?php 
-		$number_comments = getNumberComments($story_id);
-		if($number_comments == 1){ ?>
-			<h4><?=$number_comments?> comment</4>
-		<?php } else { ?>
-			<h4><?=$number_comments?> comments</4>
-		<?php } ?>
-		<h4>Posted by <a href="<?='profile.php?username='.urlencode($username)?>"><?=$username?></a> <?=deltaTime($now, $story['posted'])?></h4>
+		<div class = "container">
+			<div class="upvote" role="button" data-value="<?=$vote?>"><i class="fas fa-arrow-circle-up"></i></div>
+			<h5><?=$score?></h5>
+			<div class="downvote" role="button" data-value="<?=$vote?>"><i class="fas fa-arrow-circle-down"></i></div>
+			<h2><?=$story['opinion_title']?></h2>
+			<h3><?=$story['opinion_text']?></h3>
+			<?php 
+			$number_comments = getNumberComments($story_id);
+			if($number_comments == 1){ ?>
+				<h4><?=$number_comments?> comment</4>
+			<?php } else { ?>
+				<h4><?=$number_comments?> comments</4>
+			<?php } ?>
+			<h4>Posted by <a href="<?='profile.php?username='.urlencode($username)?>"><?=$username?></a> <?=deltaTime($now, $story['posted'])?></h4>
+		</div>
 	</section>
 
 <?php
@@ -53,11 +55,12 @@
 	for($i = 0; $i < count($comments); $i++){
 		$comments[$i]['username'] = getUserName($comments[$i]['user_id']);
 		$comments[$i]['score'] = getScore($comments[$i]['opinion_id']);
-		$comments[$i]['replies'] = getNumberComments($comments[$i]['opinion_id']);
+		
 		if(isset($_SESSION['user_id']))
 			$comments[$i]['vote'] = getVote($comments[$i]['opinion_id'], $_SESSION['user_id']);
 	}
 
 	draw_comments_header($comments,true);
+
 	draw_footer();
 ?>

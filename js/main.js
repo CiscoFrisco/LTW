@@ -37,6 +37,10 @@ function encodeForAjax(data) {
 
 function submitComment(event) {
 	let parent_id = this.parentElement.dataset.id;
+
+	if(parent_id == null)
+		parent_id = this.parentElement.parentElement.dataset.id;
+
 	let comment = this.parentElement.querySelector('form > textarea').value;
 
 	let request = new XMLHttpRequest();
@@ -78,20 +82,32 @@ function addComment() {
 
 	comment.classList.add('comment');
 	comment.dataset.id = opinion['comment_id'];
-	comment.innerHTML = '<div class="upvote" role="button" data-value="' + opinion['vote'] + '">&#8593;</div> <h5>Score: ' + opinion['score'] + '</h5> <div class="downvote" role="button" data-value="' + opinion['vote'] + '">&#8595;</div>';
+	comment.innerHTML = '<div class="upvote" role="button" data-value="' + opinion['vote'] + '">&#8593;</div> <h5>' + opinion['score'] + '</h5> <div class="downvote" role="button" data-value="' + opinion['vote'] + '">&#8595;</div>';
 	comment.innerHTML += '<h3>' + opinion['comment'] + '</h3>' + '<h4>' + 'Posted by <a href="profile.php?username=' + opinion['username'] + '">' + opinion['username'] + '</a> just now</h4>';
+	comment.innerHTML += '<h4>0 replies</h4>'
 	comment.innerHTML += '<div class="comment_comment" role="button">&#128172;</div> <ol></ol>';
 
 	list.innerHTML = comment.outerHTML;
 
 	let parentList = document.querySelector('[data-id="' + opinion['parent_id'] + '"] > ol');
+
+	if(parentList == null)
+		parentList = document.querySelector('[data-id="' + opinion['parent_id'] + '"] > .container > ol');
+
 	parentList.innerHTML = list.outerHTML + parentList.innerHTML;
 
 	addAllEventListeners();
 }
 
 function upvoteOpinion(event) {
-	let opinion_id = this.parentElement.parentElement.parentElement.getAttribute('data-id');
+	let opinion_id = this.parentElement.getAttribute('data-id');
+
+	if(opinion_id == null)
+		opinion_id = this.parentElement.parentElement.getAttribute('data-id');
+
+	if(opinion_id == null)
+		opinion_id = this.parentElement.parentElement.parentElement.getAttribute('data-id');
+
 	let value;
 
 	switch (this.getAttribute('data-value')) {
@@ -115,7 +131,14 @@ function upvoteOpinion(event) {
 }
 
 function downvoteOpinion(event) {
-	let opinion_id = this.parentElement.parentElement.parentElement.getAttribute('data-id');
+	let opinion_id = this.parentElement.getAttribute('data-id');
+
+	if(opinion_id == null)
+		opinion_id = this.parentElement.parentElement.getAttribute('data-id');
+
+	if(opinion_id == null)
+		opinion_id = this.parentElement.parentElement.parentElement.getAttribute('data-id');
+
 	let value;
 
 	switch (this.getAttribute('data-value')) {

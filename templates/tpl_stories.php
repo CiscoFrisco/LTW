@@ -8,9 +8,10 @@
 			<header>
 			<div class = "container">
 				<h2>Stories</h2>
+				<?php if ($not_profile) { ?>
 				<form method="post" action="../actions/action_sort_stories.php">
 					<label>Sort
-						<select name="sort" onchange="this.form.submit()";>
+						<select name="sort" onchange="this.form.submit();">
 							<option value="-1" hidden selected>Choose one</option>
 							<option value="0">Most Recent</option>
 							<option value="1">Most Comments</option>
@@ -19,6 +20,7 @@
 						</select>
 					</label>
 				</form >
+				<?php } ?>
 				</div>
 			</header>
 		
@@ -54,12 +56,12 @@
 					</div>
 					<div class = "storyinfo">
 						<h3><a href="story.php?story_id=<?=$story['opinion_id']?>"><?=$story['opinion_title']?></a></h3>
-						<?php if($story['comments'] == 1){ ?>
-							<h4><?=$story['comments']?> comment</4>
-						<?php } else { ?>
-							<h4><?=$story['comments']?> comments</4>
-						<?php } ?>
 						<h4>Posted by <a href="<?='profile.php?username='.urlencode($story['username'])?>"><?=$story['username']?></a> <?=deltaTime($now, $story['posted'])?></h4>
+						<?php if($story['comments'] == 1){ ?>
+							<h4><?=$story['comments']?> comment</h4>
+						<?php } else { ?>
+							<h4><?=$story['comments']?> comments</h4>
+						<?php } ?>
 					</div>
 		   </article>
 		</li>

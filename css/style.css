@@ -143,12 +143,6 @@ body > .wrapper > #stories > header > .container > form > label {
     font-weight: bold;
 }
 
-body > .wrapper > #stories > header > .container > form > label {
-    color: white;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
 body > .wrapper > #stories > header > .container > form option {
     background-color: var(--grey-shade-6);
 }
@@ -269,8 +263,8 @@ section#login input[type="submit"]:hover {
 */
 
 ol {
-    list-style-type: none;
-    padding: 0;
+    /*list-style-type: none;
+    padding: 0; */
 }
 
 article.story {
