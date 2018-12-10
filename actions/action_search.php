@@ -1,6 +1,4 @@
-<?php
-	include_once('../includes/session.php');
-    
+<?php    
     $search = $_GET['search'];
     
 	try {

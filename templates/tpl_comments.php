@@ -23,11 +23,9 @@
 		<?php } ?>
 
 		<div class="container">
-		
 			<header>
 				<h2>Comments</h2>
 			</header>
-
 		<?php if($not_profile){
 			if((isset($_SESSION['user_id']))) { ?>
 				<form>

@@ -53,4 +53,20 @@
 		$stmt->execute(array($username));
 		return $stmt->fetch()['user_id'];
 	}
+
+	function getPicture($user_id, &$path, &$alt){
+		$path = "../pictures/".$user_id.".jpeg";
+		$alt = $user_id." Profile Pic";
+		
+		if(!file_exists($path))
+			$path = "../pictures/".$user_id.".jpg";
+		
+		if(!file_exists($path))
+			$path = "../pictures/".$user_id.".png";
+
+		if(!file_exists($path)){
+			$path = "../pictures/default.jpg";
+			$alt ="Default Profile Pic";
+		}
+	}
 ?>
