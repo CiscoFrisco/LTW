@@ -5,7 +5,7 @@
 		$db = Database::instance()->db();
         $stmt = $db->prepare('INSERT INTO opinion VALUES(NULL, ?, NULL, ?, NULL, datetime("now"), ?)');
 		$stmt->execute(array($parent_id, $comment, $user_id));
-		$stmt = $db->prepare('SELECT opinion_id FROM opinion WHERE parent_id IS ? AND opinion_title IS NULL AND opinion_text = ? AND channel_id = NULL AND user_id = ?');
+		$stmt = $db->prepare('SELECT opinion_id FROM opinion WHERE parent_id IS ? AND opinion_title IS NULL AND opinion_text = ? AND channel_id IS NULL AND user_id = ?');
 		$stmt->execute(array($parent_id, $comment, $user_id));
 		$comments = $stmt->fetchAll();
 		$comment_id = $comments[count($comments)-1]['opinion_id'];
