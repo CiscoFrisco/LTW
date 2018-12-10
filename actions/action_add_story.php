@@ -6,6 +6,7 @@
 	$user_id = $_SESSION['user_id'];
 	$title = $_POST['title'];
 	$story = $_POST['story'];
+	$channel_id = $_POST['channel'];
 
 	if(strlen($title) > 50)
 		die(header('Location: ../pages/add_story.php?error=title'));
@@ -14,7 +15,7 @@
 		die(header('Location: ../pages/add_story.php?error=text'));
 
 	try {
-		insertStory($user_id, $title, $story, $story_id);
+		insertStory($user_id, $title, $story, $channel_id, $story_id);
 		addVote($story_id, $user_id, 1);
         header('Location: ../pages/story.php?story_id='.$story_id);
     } catch (PDOException $e) {

@@ -6,9 +6,9 @@
 		die(header('Location: profile.php'));
 
 	if (!isset($_GET['redirect']) 
-		|| preg_match('@../@', $_GET['redirect']) 
-		|| !preg_match('@.php@', $_GET['redirect'])
-		|| !is_readable('../pages/' . $_GET['redirect']))
+		|| preg_match('@../@', urldecode($_GET['redirect'])) 
+		|| !preg_match('@.php@', urldecode($_GET['redirect']))
+		|| !is_readable('../pages/' . urldecode($_GET['redirect'])))
 		$_GET['redirect'] = '../index.php';
 
 	draw_header(false);

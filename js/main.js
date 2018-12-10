@@ -27,6 +27,16 @@ function addAllEventListeners() {
 
 	for (var i = 0; i < comments_comments.length; i++)
 		comments_comments[i].addEventListener('click', add_comment_comment_form);
+
+	let subscribes = document.querySelectorAll('.subscribe');
+
+	for (var i = 0; i < subscribes.length; i++)
+		subscribes[i].addEventListener('click', subcribe_channel);
+
+	let unsubscribes = document.querySelectorAll('.unsubscribe');
+
+	for (var i = 0; i < unsubscribes.length; i++)
+		unsubscribes[i].addEventListener('click', unsubcribe_channel);
 }
 
 function encodeForAjax(data) {
@@ -38,7 +48,7 @@ function encodeForAjax(data) {
 function submitComment(event) {
 	let parent_id = this.parentElement.dataset.id;
 
-	if(parent_id == null)
+	if (parent_id == null)
 		parent_id = this.parentElement.parentElement.dataset.id;
 
 	let comment = this.parentElement.querySelector('form > textarea').value;
@@ -91,7 +101,7 @@ function addComment() {
 
 	let parentList = document.querySelector('[data-id="' + opinion['parent_id'] + '"] > ol');
 
-	if(parentList == null)
+	if (parentList == null)
 		parentList = document.querySelector('[data-id="' + opinion['parent_id'] + '"] > .container > ol');
 
 	parentList.innerHTML = list.outerHTML + parentList.innerHTML;
@@ -102,10 +112,10 @@ function addComment() {
 function upvoteOpinion(event) {
 	let opinion_id = this.parentElement.getAttribute('data-id');
 
-	if(opinion_id == null)
+	if (opinion_id == null)
 		opinion_id = this.parentElement.parentElement.getAttribute('data-id');
 
-	if(opinion_id == null)
+	if (opinion_id == null)
 		opinion_id = this.parentElement.parentElement.parentElement.getAttribute('data-id');
 
 	let value;
@@ -133,10 +143,10 @@ function upvoteOpinion(event) {
 function downvoteOpinion(event) {
 	let opinion_id = this.parentElement.getAttribute('data-id');
 
-	if(opinion_id == null)
+	if (opinion_id == null)
 		opinion_id = this.parentElement.parentElement.getAttribute('data-id');
 
-	if(opinion_id == null)
+	if (opinion_id == null)
 		opinion_id = this.parentElement.parentElement.parentElement.getAttribute('data-id');
 
 	let value;
@@ -199,4 +209,49 @@ function add_comment_comment_form() {
 	document.querySelector('.comment[data-id="' + parent_id + '"] > .comment_comment').remove();
 
 	addAllEventListeners();
+}
+
+
+function subcribe_channel() {
+	let channel_id = this.dataset.id;
+
+	let request = new XMLHttpRequest();
+	request.addEventListener('load', changeSubscription);
+	request.open('POST', '../api/api_subscription.php', true);
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	request.send(encodeForAjax({
+		channel_id: channel_id,
+		value: true
+	}));
+}
+
+function unsubcribe_channel() {
+	let channel_id = this.dataset.id;
+
+	let request = new XMLHttpRequest();
+	request.addEventListener('load', changeSubscription);
+	request.open('POST', '../api/api_subscription.php', true);
+	request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	request.send(encodeForAjax({
+		channel_id: channel_id,
+		value: false
+	}));
+}
+
+function changeSubscription() {
+	let subscription = JSON.parse(this.responseText);
+
+	if (subscription["value"] == "true") {
+		let div = document.querySelector('.subscribe[data-id="' + subscription["channel_id"] + '"]');
+		div.innerHTML = '<i class="fas fa-bell-slash"></i>';
+		div.classList.replace('subscribe', 'unsubscribe');
+		div.removeEventListener('click', subcribe_channel);
+		div.addEventListener('click', unsubcribe_channel);
+	} else {
+		let div = document.querySelector('.unsubscribe[data-id="' + subscription["channel_id"] + '"]');
+		div.innerHTML = '<i class="fas fa-bell"></i>';
+		div.classList.replace('unsubscribe', 'subscribe');
+		div.removeEventListener('click', unsubcribe_channel);
+		div.addEventListener('click', subcribe_channel);
+	}
 }

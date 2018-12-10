@@ -12,7 +12,19 @@
 		$sort = intval($_GET['sort_code']);
 	}
 	
-	$stories = array_reverse(getAllStories());
+	if(isset($_GET['subscribed']) && $_GET['subscribed'] == 'true'){
+		if(!isset($_SESSION['user_id']))
+			die(header('Location: ../index.php'));
+
+		$stories = array_reverse(getAllSubscribedStories($_SESSION['user_id']));
+	}
+
+	else if(isset($_GET['channel'])){
+		$channel = urldecode($_GET['channel']);
+		$stories = array_reverse(getAllChannelStories(urldecode($channel)));
+	}
+	
+	else $stories = array_reverse(getAllStories());
 	$now = time();
 
 	for($i = 0; $i < count($stories); $i++){
@@ -54,7 +66,15 @@
 		}
 	}
 
-	$page = 'stories.php';
+	if(isset($_GET['subscribed']) && $_GET['subscribed'] == 'true'){
+		$page = 'stories.php?subscribed=true';
+	}
+
+	else if(isset($_GET['channel'])){
+		$page = 'stories.php?channel='.$_GET['channel'];
+	}
+
+	else $page = 'stories.php';
 
 	draw_header(true);
 	draw_stories($stories,true);
