@@ -26,6 +26,10 @@ function draw_header($isnt_login_signup) {
 				<a href="../index.php">
 					<img src="../pictures/default.jpg" alt="icon" width = "25" height = "25"> Tidder
 				</a>
+				<form method="get" action="../actions/action_search.php">
+					<input type="text" name="search" placeholder="Search" required>
+					<input type="submit" class="fa fa-input" value="&#xf002">
+				</form>
 			</h1>
 
 			<label class = "switch">
@@ -44,8 +48,10 @@ function draw_header($isnt_login_signup) {
 			<?php }
 			} else {
 					$username = getUserName($_SESSION['user_id']);
+					getPicture($_SESSION['user_id'],$path,$alt);
 					$profile_link = "../pages/profile.php?username=".urlencode($username); ?>
 					<nav>
+							<li><img src=<?=$path?> alt=<?=$alt?> width="25" height="25">
 							<li><a href=<?=$profile_link?>>Profile</a></li>
 							<li><a href='../actions/action_logout.php?redirect=<?=urlencode($page)?>'>Logout</a></li>
 						</ul>

@@ -1,11 +1,20 @@
 <?php
 	include_once('../includes/session.php');
+	include_once('../database/db_channel.php');
 	include_once('../templates/tpl_common.php');
+	include_once('../templates/tpl_channels.php');
 
 	if (!isset($_SESSION['user_id']))
 		die(header('Location: login.php'));
 
-	$page = 'add_story.php';	
+	if (isset($_GET['channel'])){
+		$channel_name = urldecode($_GET['channel']);
+		$page = 'add_story.php?channel='.urldecode($_GET['channel']);
+	}
+
+	else $page = 'add_story.php';
+
+	$channels = getAllChannels();		
 	draw_header(true);
 ?>
 
@@ -16,6 +25,7 @@
 		<form method="post" action="../actions/action_add_story.php">
 			<input type="text" name="title" placeholder="Title" required>
 			<textarea name="story" placeholder="Story" required></textarea>
+			<?php draw_channel_options($channels); ?>
 			<input type="submit" value="Add Story">
 		</form>
 		<?php if(isset($_GET['error'])){ 

@@ -23,11 +23,9 @@
 		<?php } ?>
 
 		<div class="container">
-		
 			<header>
 				<h2>Comments</h2>
 			</header>
-
 		<?php if($not_profile){
 			if((isset($_SESSION['user_id']))) { ?>
 				<form>
@@ -76,7 +74,7 @@
 				<div class="downvote" role="button" data-value="<?=$comment['vote']?>"><i class="fas fa-arrow-circle-down"></i></div>
 			</div>
 			<div class = "comment-container">
-			<h3><?=$comment['opinion_text']?></a></h3>
+			<h3><?=htmlentities($comment['opinion_text'])?></h3>
 			<h4>Posted by <a href="<?='profile.php?username='.urlencode($comment['username'])?>"><?=$comment['username']?></a> <?=deltaTime($now, $comment['posted'])?></h4>
 			<?php 
 			$replieNum = getNumberComments($comment['opinion_id']);
