@@ -35,7 +35,7 @@
 				</form>
 			
 		<?php } else { ?>
-			<p>Have something to say about this story? <a href="login.php">Login!</a> or <a href="signup.php">Sign Up!</a></p>
+			<p>Want to add a channel? <a href='../pages/login.php?redirect=<?=urlencode($page)?>'>Login</a> or <a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></p>
 		<?php }
 		}
 		

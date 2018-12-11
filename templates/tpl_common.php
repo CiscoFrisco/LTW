@@ -41,7 +41,7 @@ function draw_header($isnt_login_signup) {
 					if($isnt_login_signup) { ?>
 					<nav>
 						<ul>
-							<li><a href='../pages/login.php?redirect=<?=urlencode($page)?>''>Login</a></li>
+							<li><a href='../pages/login.php?redirect=<?=urlencode($page)?>'>Login</a></li>
 							<li><a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></li>
 						</ul>
 					</nav>

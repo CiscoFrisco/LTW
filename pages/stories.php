@@ -4,6 +4,7 @@
 	include_once('../database/db_story.php');
 	include_once('../database/db_user.php');
 	include_once('../database/db_vote.php');
+	include_once('../database/db_channel.php');
 	include_once('../templates/tpl_common.php');
 	include_once('../templates/tpl_stories.php');
 
@@ -21,6 +22,15 @@
 
 	else if(isset($_GET['channel'])){
 		$channel = urldecode($_GET['channel']);
+
+		if(!channel_exists($channel))
+			die(header('Location: 404.php'));
+
+		if (isset($_SESSION['user_id'])){
+			$channel_id = getChannelID($channel);
+			$subscribed = checkSubscription($channel_id, $_SESSION['user_id']);
+		}
+
 		$stories = array_reverse(getAllChannelStories(urldecode($channel)));
 	}
 	

@@ -16,7 +16,7 @@
 	getUserInfo($user_id, $username, $realname, $email, $birthday, $join_date, $bio);
 
 	if($user_id == '')
-		header('Location: ../pages/404.html');
+		header('Location: ../pages/404.php');
 
 	$stories = array_reverse(getStories($user_id));
 	$comments = array_reverse(getComments($user_id));
@@ -98,10 +98,5 @@
 	draw_stories($stories, false);
 	draw_comments_header($comments,false);
 ?>
-<section id="logout">
-	<header>
-		<h4><a href="../actions/action_logout.php">Logout</a></h4>
-	</header>
-</section>
 
 <?php draw_footer(); ?>

@@ -12,6 +12,15 @@
 			<h3><a href="channels.php">Channels</a></h3>
 		<?php } else if($channel) { ?>
 			<h2><?='/c/'.$channel?></h2>
+			<?php if(isset($_SESSION['user_id'])) {
+					global $channel_id;
+					global $subscribed;
+					if($subscribed) { ?>
+						<div class="unsubscribe" role="button" data-id="<?=$channel_id?>"><i class="fas fa-bell-slash"></i></div>
+					<?php } else { ?>
+						<div class="subscribe" role="button" data-id="<?=$channel_id?>"><i class="fas fa-bell"></i></div>
+					<?php } 
+				} ?>
 			<h3><a href="stories.php?subscribed=true">Subscibed</a></h3>
 			<h3><a href="stories.php">Stories</a></h3>
 			<h3><a href="channels.php">Channels</a></h3>
@@ -48,7 +57,9 @@
 			</ol>
 		</div> 
 		<?php if($not_profile){
-			if($channel){?>
+			if(!isset($_SESSION['user_id'])) { ?>
+				<p>Want to add a channel? <a href='../pages/login.php?redirect=<?=urlencode($page)?>'>Login</a> or <a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></p>
+		<?php } else if($channel){?>
 
 			<footer>
 				<p>Want to share a story? <a href="add_story.php?channel=<?=urlencode($channel)?>">Add a story!</a></p>
@@ -79,7 +90,9 @@
 					</div>
 					<div class = "storyinfo">
 						<h3><a href="story.php?story_id=<?=$story['opinion_id']?>"><?=htmlentities($story['opinion_title'])?></a></h3>
-						<h4>Posted by <a href="<?='profile.php?username='.urlencode($story['username'])?>"><?=$story['username']?></a> <?=deltaTime($now, $story['posted'])?></h4>
+						<h4>Posted by <a href="<?='profile.php?username='.urlencode($story['username'])?>"><?=$story['username']?></a> 
+							<?=deltaTime($now, $story['posted'])?>
+							in <a href="<?='stories.php?channel='.urlencode($story['channel_name'])?>"><?=$story['channel_name']?></a></h4>
 						<?php if($story['comments'] == 1){ ?>
 							<h4><?=$story['comments']?> comment</h4>
 						<?php } else { ?>
