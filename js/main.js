@@ -88,8 +88,8 @@ function numberOfParentsUntilSectionComments(node){
 
 function darkmode() {
 	
-	let body = this.parentElement.parentElement.parentElement.parentElement.parentElement;
-
+	let body = document.getElementsByTagName("body")[0];
+	
 	if(this.checked){
 		sessionStorage.setItem('mode','dark');
 		body.classList.remove("light")

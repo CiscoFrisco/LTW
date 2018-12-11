@@ -26,8 +26,6 @@
 
 }
 
-
-
 html, body  {
     height: 100%;
     margin: 0;
@@ -49,9 +47,11 @@ body.light {
     --main-bg: var(--grey-shade-2);
     --writing-bg: var(--grey-shade-1);
     --hover-bg: var(--grey-shade-2);
-
     --border-color: var(--grey-shade-3);
     --main-font-color: black;
+    /* cor para os titulos clicaveis */
+    /* cor especial */
+    /* cor secundaria de writing bg */ 
 }
 
 /* Variables for the dark mode */ 
@@ -59,7 +59,6 @@ body.dark {
     --main-bg: black;
     --writing-bg: var(--grey-shade-6);
     --hover-bg: var(--grey-shade-5);
-
     --border-color: darkgrey;
     --main-font-color: var(--grey-shade-1);
 }
@@ -84,99 +83,7 @@ h2, h3, h5,p {
     position: relative;
 }
 
-body > .container {
-    padding-bottom: 50px;
-}
-
-
-
-
-/* 
-    MAIN HEADER ========================================== 
-*/
-body > .wrapper > header {
-    background-color: var(--writing-bg);
-    color: var(--main-font-color);
-    padding-top: 5px;
-    min-height: 50px;
-    border-bottom: var(--border-color) 3px solid;
-}
-
-body > .wrapper > header a {
-    color: var(--main-font-color);
-    text-decoration: none;
-}
-
-body > .wrapper > header nav a{
-    padding: 5px;
-}
-
-body > .wrapper > header nav a:hover {
-    background-color: var(--hover-bg);
-    text-decoration: underline;
-    padding: 5px;
-}
-
-body > .wrapper > header nav li{
-    padding: 0px;
-}
-
-body > .wrapper > header ul {
-    padding: 0;
-    margin: 0;
-}
-
-
-body > .wrapper > header li {
-    display: inline;
-    padding: 0 20px;
-}
-
-body > .wrapper > header h1 {
-    float: left;
-    margin: 0;
-}
-
-body > .wrapper > header nav {
-    float: right;
-    margin-top: 10px;
-    padding-left: 10px;
-}
-
-/*
-    TITLE OF PAGE =================================================
-*/
-
-body > .wrapper > #stories >  header {
-    padding-left: 5%;
-    background-color: var(--writing-bg);
-}
-
-body > .wrapper > #stories > header > .container > h2{
-    margin: 0;
-    padding-top: 5px; 
-    color: var(--main-font-color);
-    float: left;
-    text-transform: uppercase;
-}
-
-body > .wrapper > #stories > header > .container > form  {
-    float: right;
-    padding-right: 5%;
-    padding-top: 5px;
-}
-
-body > .wrapper > #stories > header > .container > form > label {
-    color: var(--main-font-color);
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-body > .wrapper > #stories > header > .container > form option {
-    background-color: var(--hover-bg);
-}
-
-body > .wrapper > #stories > header > .container > form select {
+select {
     border: none;
     background-color: inherit;
     color: var(--main-font-color);
@@ -186,18 +93,15 @@ body > .wrapper > #stories > header > .container > form select {
     text-overflow: '';
     padding: 10px;
     text-align-last: center;
+    float: right;
 }
 
-body > .wrapper > #stories > header > .container > form select:hover {
+select:hover {
     background-color: var(--hover-bg);
     cursor: pointer;
 } 
 
-/*  
-    MAIN FOOTER ===================================================
-*/
-
-body > footer {
+footer {
     background-color: var(--writing-bg);
     border-top: var(--border-color) 3px solid;
     height:50px;
@@ -206,14 +110,210 @@ body > footer {
     width: 100%;
 }
 
-body > footer a {
+a {
     color: var(--main-font-color);
     text-decoration: none;
 }
 
-body > footer a:hover {
+nav a{
+    padding: 5px;
+}
+
+a:hover {
     text-decoration: underline;
 }
+
+ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+/*
+    CHECKBOX SLIDER =========================================
+*/
+
+.switch {
+    margin: 10px;
+    position: relative;
+    display: inline-block;
+    width: 37px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    height: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+}
+
+.slider.round {
+    border-radius: 60px;
+
+}
+
+.slider.round:before {
+    border-radius: 40%;
+}
+
+
+
+/*
+    UPVOTE AND DOWNVOTE BUTTONS SECTION =========================================
+*/
+.fa-arrow-circle-down, .fa-arrow-circle-up {
+    color: var(--grey-shade-5); /* TODO */ 
+}
+
+.downvote[data-value="-1"] .fa-arrow-circle-down , .fa-arrow-circle-down:hover {
+    color: red;
+} 
+
+.upvote[data-value="1"] .fa-arrow-circle-up , .fa-arrow-circle-up:hover {
+    color: blue;
+}
+
+.upvote , .downvote {
+    margin:0;
+    padding:0;
+    margin-top: 3px;
+}
+
+i:hover {
+    cursor: pointer;
+}
+
+
+/* 
+    MAIN HEADER ========================================== 
+*/
+header {
+    background-color: var(--writing-bg);
+    color: var(--main-font-color);
+    padding: 10px;
+    min-height: 50px;
+    border-bottom: var(--border-color) 3px solid;
+}
+
+
+
+header nav a:hover {
+    background-color: var(--hover-bg);
+    text-decoration: underline;
+    padding: 5px;
+}
+
+header li {
+    display: inline;
+    padding: 0 5px;
+}
+
+header ul {
+    padding: 0;
+    margin: 0;
+}
+
+header h1 {
+    display: inline-block;
+    margin: 0;
+}
+
+header nav {
+    display: inline-block;
+    margin-top: 10px;
+    position: absolute;
+    right: 0;
+}
+
+.form-container {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    width: 200px;
+    padding-left: 30px;
+}
+
+.form-container input:nth-child(1) {
+    width: 150px;
+}
+
+/*
+    TITLE OF PAGE =================================================
+*/
+
+header .secondary {
+    padding-left: 5%;
+}
+
+header .secondary h2{
+    margin: 0;
+    padding-top: 5px; 
+    color: var(--main-font-color);
+    float: left;
+    text-transform: uppercase;
+}
+
+header .secondary form  {
+    float: right;
+    padding-right: 5%;
+    padding-top: 5px;
+}
+
+header .secondary label {
+    color: var(--main-font-color);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+header .secondary option {
+    background-color: var(--hover-bg);
+}
+
+
+
+/*  
+    MAIN FOOTER ===================================================
+*/
+
+
 
 /*
     LOGIN SECTION =================================================
@@ -253,23 +353,6 @@ section#login form {
     margin-top:20px;
 }
 
-section#login footer {
-    background-color: var(--writing-bg);
-    
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10%;
-}
-
-section#login > footer > p > a {
-    text-decoration: none;
-    color: blue;
-}
-
-section#login > footer > p > a:hover {
-    text-decoration: underline;
-    color: blue;
-}
 
 section#login input[type="submit"]{
     border-radius: 10px;
@@ -293,6 +376,7 @@ section#login input[type="submit"]:hover {
 section#story .container {
     margin-top: 20px;
     background-color: var(--writing-bg);
+    margin-bottom: 20px;
 }
 
 section#story .container h4 {
@@ -341,10 +425,7 @@ article.comment.dark-comment {
     ARTICLE STORY =======================================
 */
 
-ol {
-    list-style-type: none;
-    padding: 0;
-}
+
 
 article.story {
     background-color: var(--writing-bg);
@@ -418,66 +499,13 @@ article.story:hover {
     z-index: 1;
 }
 
-/*  
-    STORIES FOOTER ================================================
-*/
-#stories footer p{
-    background-color: var(--writing-bg);
-    margin-left: 10%;
-    margin-right: 10%;
-    font-size: 20px;
-    border: 1px var(--border-color) solid;
-    padding: 5px;
-}
-
-#stories footer p a {
-    text-decoration: none;
-    color: var(--main-font-color);
-    font-weight: bold;
-
-}
-
-#stories footer p a:hover {
-    text-decoration: underline;
-    font-weight: bold;
-}
 
 
 /*
-    UPVOTE AND DOWNVOTE BUTTONS SECTION =========================================
+    SPECIFIC CASES
 */
-.fa-arrow-circle-down, .fa-arrow-circle-up {
-    color: var(--grey-shade-5);
-}
-
-.downvote[data-value="-1"] .fa-arrow-circle-down {
-    color: red;
-} 
-
-.upvote[data-value="1"] .fa-arrow-circle-up {
-    color: blue;
-}
-
-.upvote {
-    margin:0;
-    padding:0;
-    margin-top: 3px;
-}
-
-.downvote {
-    margin:0;
-    padding:0;
-    margin-bottom: 3px;
-}
-
-.fa-arrow-circle-down:hover {
-    color: red;
-    cursor: pointer;
-} 
-
-.fa-arrow-circle-up:hover {
-    color: blue;
-    cursor: pointer;
+a.dont-underline:hover {
+    text-decoration: none;
 }
 
 
@@ -500,85 +528,6 @@ article.story:hover {
         position: relative;
         background-color: inherit;
     }
-}
-
-@media screen and (max-width: 350px) {
-    body > .wrapper > header h1 {
-        float: none;
-        display: block;
-        margin: 0;
-        text-align: center;
-    }
-
-    body > .wrapper > header nav {
-        float: none;
-        display: block;
-        padding: 0;
-        padding-bottom: 10px;
-        margin: 0;
-        text-align: center;
-    }
-
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 37px;
-    height: 20px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 15px;
-    width: 15px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked + .slider {
-    background-color: #2196F3;
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(15px);
-    -ms-transform: translateX(15px);
-    transform: translateX(15px);
-}
-
-.slider.round {
-    border-radius: 34px;
-
-}
-
-.slider.round:before {
-    border-radius: 50%;
 }
 
 
@@ -619,3 +568,32 @@ input:checked + .slider:before {
     }
 }
 
+@media screen and (max-width: 700px){
+    header nav {
+        position: relative;
+        display: block;
+        text-align: center;
+    }
+    .form-container {
+        position: absolute;
+        right: 0;
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 430px){
+    .form-container {
+        position: relative;
+        padding: 0;
+        padding-top: 10px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    body > .wrapper > header h1 {
+        float: none;
+        display: block;
+        margin: 0;
+        text-align: center;
+    }
+}
