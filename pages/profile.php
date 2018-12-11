@@ -4,6 +4,7 @@
 	include_once('../database/db_user.php');
 	include_once('../database/db_story.php');
 	include_once('../database/db_vote.php');
+	include_once('../database/db_channel.php');
 	include_once('../templates/tpl_common.php');
 	include_once('../templates/tpl_stories.php');
 	include_once('../templates/tpl_comments.php');
@@ -28,6 +29,7 @@
 		$stories[$i]['username'] = $username;
 		$stories[$i]['score'] = getScore($stories[$i]['opinion_id']);
 		$stories[$i]['comments'] = getNumberComments($stories[$i]['opinion_id']);
+		$stories[$i]['channel_name']= getChannelName($stories[$i]['channel_id']);
 		$score += $stories[$i]['score'];
 
 		if(isset($_SESSION['user_id']))

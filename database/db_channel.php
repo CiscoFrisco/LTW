@@ -40,6 +40,13 @@
 		return $stmt->fetch()['channel_id'];
 	}
 
+	function getChannelName($channel_id){
+		$db = Database::instance()->db();
+		$stmt = $db->prepare('SELECT channel_name FROM channel WHERE channel_id = ?');
+		$stmt->execute(array($channel_id));
+		return $stmt->fetch()['channel_name'];
+	}
+
 	function checkSubscription($channel_id, $user_id){
 		$db = Database::instance()->db();
 		$stmt = $db->prepare('SELECT * FROM subscription WHERE channel_id = ? AND user_id = ?');

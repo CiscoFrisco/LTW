@@ -13,21 +13,21 @@
 
 	function getAllStories() {
 		$db = Database::instance()->db();
-		$stmt = $db->prepare('SELECT * FROM opinion NATURAL JOIN channel WHERE parent_id IS NULL');
+		$stmt = $db->prepare('SELECT * FROM opinion WHERE parent_id IS NULL');
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
 
 	function getAllChannelStories($channel) {
 		$db = Database::instance()->db();
-		$stmt = $db->prepare('SELECT * FROM opinion NATURAL JOIN channel WHERE parent_id IS NULL AND channel_name = ?');
+		$stmt = $db->prepare('SELECT * FROM opinion INNER JOIN channel ON opinion.channel_id = channel.channel_id WHERE parent_id IS NULL AND channel_name = ?');
 		$stmt->execute(array($channel));
 		return $stmt->fetchAll();
 	}
 
 	function getAllSubscribedStories($user_id){
 		$db = Database::instance()->db();
-		$stmt = $db->prepare('SELECT * FROM opinion NATURAL JOIN subscription NATURAL JOIN channel WHERE parent_id IS NULL AND subscription.user_id = ?');
+		$stmt = $db->prepare('SELECT * FROM subscription JOIN opinion ON subscription.channel_id = opinion.channel_id WHERE parent_id IS NULL AND subscription.user_id = ?');
 		$stmt->execute(array($user_id));
 		return $stmt->fetchAll();
 	}
@@ -41,7 +41,7 @@
 
 	function getStories($user_id){
 		$db = Database::instance()->db();
-		$stmt = $db->prepare('SELECT * FROM opinion NATURAL JOIN channel WHERE opinion.user_id = ? AND parent_id IS NULL');
+		$stmt = $db->prepare('SELECT * FROM opinion WHERE user_id = ? AND parent_id IS NULL');
 		$stmt->execute(array($user_id));
 		return $stmt->fetchAll();
 	}

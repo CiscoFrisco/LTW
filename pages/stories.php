@@ -41,6 +41,7 @@
 		$stories[$i]['username'] = getUserName($stories[$i]['user_id']);
 		$stories[$i]['score'] = getScore($stories[$i]['opinion_id']);
 		$stories[$i]['comments']= getNumberComments($stories[$i]['opinion_id']);
+		$stories[$i]['channel_name']= getChannelName($stories[$i]['channel_id']);
 
 		if(isset($_SESSION['user_id']))
 			$stories[$i]['vote'] = getVote($stories[$i]['opinion_id'], $_SESSION['user_id']);
