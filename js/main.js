@@ -3,7 +3,6 @@
 addAllEventListeners();
 startPage();
 
-
 function addAllEventListeners() {
 	let commentForm = document.querySelector('#comments > form');
 
@@ -46,6 +45,7 @@ function addAllEventListeners() {
 }
 
 function startPage() {
+	/* Take care of theme */
 	let currentMode = sessionStorage.getItem('mode');
 	let body = document.getElementsByTagName("body")[0];
 	
@@ -55,6 +55,34 @@ function startPage() {
 		body.classList.add("dark")
 		dark_mode.checked = true;
 	}
+
+	/* Update the depth of each comment */
+	let article = document.querySelectorAll('article.comment');
+	for(var i = 0 ; i < article.length; i++){
+		let counter = numberOfParentsUntilSectionComments(article[i])
+		if(counter%2){
+			article[i].classList.add("light-comment")
+		}
+		else{
+			article[i].classList.add("dark-comment")
+		}
+		
+	}
+	
+}
+
+function numberOfParentsUntilSectionComments(node){
+	let counter = 1;
+	let newNode = node.parentElement;
+	let name;
+	let id;
+	do {
+		name = newNode.nodeName;
+		id = newNode.id;
+		newNode = newNode.parentElement;
+		counter++;
+	}while(name != "SECTION" || id != "comments");
+	return counter;
 }
 
 
