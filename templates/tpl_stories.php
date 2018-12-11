@@ -6,7 +6,11 @@
 	<section id="stories">
 	<header>
 	<div class = "container">
-		<?php if($channel) { ?>
+		<?php if(isset($_GET['subscribed']) && $_GET['subscribed'] == 'true') { ?>
+			<h2>Subscibed</h2>
+			<h3><a href="stories.php">Stories</a></h3>
+			<h3><a href="channels.php">Channels</a></h3>
+		<?php } else if($channel) { ?>
 			<h2><?='/c/'.$channel?></h2>
 			<h3><a href="stories.php?subscribed=true">Subscibed</a></h3>
 			<h3><a href="stories.php">Stories</a></h3>
@@ -18,9 +22,11 @@
 		<?php } ?>
 			<?php if ($not_profile) { ?>
 			<form method="post" action="../actions/action_sort_stories.php">
-				<?php if($channel) { ?>
+			<?php if(isset($_GET['subscribed']) && $_GET['subscribed'] == 'true') { ?>
+				<input type="hidden" name="subscribed" value="true">
+			<?php } else if($channel) { ?>
 				<input type="hidden" name="channel" value="<?=$channel?>">
-				<?php } ?>
+			<?php } ?>
 				<select name="sort" onchange="this.form.submit();">
 					<option value="-1" hidden selected>SORT</option>
 					<option value="0">Most Recent</option>
@@ -72,7 +78,7 @@
 							</div>
 					</div>
 					<div class = "storyinfo">
-						<h3><a href="story.php?story_id=<?=$story['opinion_id']?>"><?=$story['opinion_title']?></a></h3>
+						<h3><a href="story.php?story_id=<?=$story['opinion_id']?>"><?=htmlentities($story['opinion_title'])?></a></h3>
 						<h4>Posted by <a href="<?='profile.php?username='.urlencode($story['username'])?>"><?=$story['username']?></a> <?=deltaTime($now, $story['posted'])?></h4>
 						<?php if($story['comments'] == 1){ ?>
 							<h4><?=$story['comments']?> comment</h4>

@@ -36,14 +36,18 @@
 			<div class="upvote" role="button" data-value="<?=$vote?>"><i class="fas fa-arrow-circle-up"></i></div>
 			<h5><?=$score?></h5>
 			<div class="downvote" role="button" data-value="<?=$vote?>"><i class="fas fa-arrow-circle-down"></i></div>
-			<h2><?=$story['opinion_title']?></h2>
-			<h3><?=$story['opinion_text']?></h3>
+			<h2><?=htmlentities($story['opinion_title'])?></h2>
+			<h3><?php
+				$lines = explode(PHP_EOL, $story['opinion_text']);
+				foreach($lines as $line) { ?>
+					<p><?=htmlentities($line);?></p>
+			<?php } ?></h3>
 			<?php 
 			$number_comments = getNumberComments($story_id);
 			if($number_comments == 1){ ?>
-				<h4><?=$number_comments?> comment</4>
+				<h4><?=$number_comments?> comment</h4>
 			<?php } else { ?>
-				<h4><?=$number_comments?> comments</4>
+				<h4><?=$number_comments?> comments</h4>
 			<?php } ?>
 			<h4>Posted by <a href="<?='profile.php?username='.urlencode($username)?>"><?=$username?></a> <?=deltaTime($now, $story['posted'])?></h4>
 		</div>

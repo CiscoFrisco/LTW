@@ -50,7 +50,7 @@ function submitComment(event) {
 
 	if (parent_id == null)
 		parent_id = this.parentElement.parentElement.dataset.id;
-
+	
 	let comment = this.parentElement.querySelector('form > textarea').value;
 
 	let request = new XMLHttpRequest();
