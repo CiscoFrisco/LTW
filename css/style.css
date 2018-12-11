@@ -332,6 +332,11 @@ article.comment {
 
 }
 
+article.comment.dark-comment {
+    background-color: var(--grey-shade-2);
+}
+
+
 /*
     ARTICLE STORY =======================================
 */
