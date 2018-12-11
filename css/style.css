@@ -91,9 +91,7 @@ select {
     -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';
-    padding: 10px;
     text-align-last: center;
-    float: right;
 }
 
 select:hover {
@@ -229,7 +227,6 @@ header {
     background-color: var(--writing-bg);
     color: var(--main-font-color);
     padding: 10px;
-    min-height: 50px;
     border-bottom: var(--border-color) 3px solid;
 }
 
@@ -389,6 +386,20 @@ section#story .container h4 {
 .story-content {
     padding-left: 40px;
     padding-right: 40px;
+}
+
+
+.secondary-header h3, .secondary-header h2 {
+    display: inline-block;
+    padding-right: 20px;
+    margin: 0;
+}
+
+.secondary-header select {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 10px;
 }
 
 /*

@@ -2,11 +2,13 @@
 	include_once('../includes/session.php');
 
 	function draw_channels($channels){ ?>
-		<section id="stories">
-			<header>
-				<h2>Channels</h2>
-				<h3><a href="stories.php?subscribed=true">Subscibed</a></h3>
-				<h3><a href="stories.php">Stories</a></h3>
+		<section id="stories" class = "secondary">
+			<header class = "secondary-header">
+				<div class = "container"> 
+					<h2>Channels</h2>
+					<h3><a href="stories.php?subscribed=true">Subscibed</a></h3>
+					<h3><a href="stories.php">Stories</a></h3>
+				</div>
 			</header>
 			<div class = "container">
 				<ol>
@@ -18,14 +20,22 @@
 			</div>
 
 		<?php if((isset($_SESSION['user_id']))) { ?>
-				<p>Want to add a channel?</p>
-				<form method="post" action="../actions/action_add_channel.php">
-					<input type="text" name="name" placeholder="Channel Name" required>
-					<input type="submit" value="Add Channel">
-				</form>
+			<footer>
+				<div class = "container">
+					<p>Want to add a channel?</p>
+					<form method="post" action="../actions/action_add_channel.php">
+						<input type="text" name="name" placeholder="Channel Name" required>
+						<input type="submit" value="Add Channel">
+					</form>
+				</div>
+			</footer>
 			
 		<?php } else { ?>
-			<p>Want to add a channel? <a href='../pages/login.php?redirect=<?=urlencode($page)?>'>Login</a> or <a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></p>
+			<footer>
+				<div class = "container">
+					<p>Want to add a channel? <a href='../pages/login.php?redirect=<?=urlencode($page)?>'>Login</a> or <a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></p>
+				</div>
+			</footer>
 		<?php }		
 	}
 

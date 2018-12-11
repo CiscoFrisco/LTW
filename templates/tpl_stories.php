@@ -4,7 +4,7 @@
 	function draw_stories($stories, $not_profile){ 
 		global $channel;?>
 	<section id="stories">
-	<header>
+	<header class = "secondary-header">
 	<div class = "container">
 		<?php if(isset($_GET['subscribed']) && $_GET['subscribed'] == 'true') { ?>
 			<h2>Subscibed</h2>

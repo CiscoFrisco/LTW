@@ -22,10 +22,13 @@
 			<section id="comments">
 		<?php } ?>
 
-		<div class="container">
-			<header>
-				<h2>Comments</h2>
+		
+			<header class = "secondary-header">
+				<div class = "container">
+					<h2>Comments</h2>
+				</div>
 			</header>
+			<div class="container">
 		<?php if($not_profile){
 			if((isset($_SESSION['user_id']))) { ?>
 				<form>
