@@ -23,6 +23,7 @@
 			<h2>Add a New Story</h2>
 		</header>
 		<form method="post" action="../actions/action_add_story.php">
+			<input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
 			<input type="text" name="title" placeholder="Title" required>
 			<textarea name="story" placeholder="Story" required></textarea>
 			<?php draw_channel_options($channels); ?>

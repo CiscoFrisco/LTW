@@ -27,6 +27,7 @@ function draw_header($isnt_login_signup) {
 					<img src="../pictures/default.jpg" alt="icon" width = "25" height = "25"> Tidder
 				</a>
 				<form method="get" action="../actions/action_search.php">
+					<input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
 					<input type="text" name="search" placeholder="Search" required>
 					<input type="submit" class="fa fa-input" value="&#xf002">
 				</form>

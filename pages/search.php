@@ -43,7 +43,7 @@
             getPicture($user['user_id'],$path,$alt);
             $page = 'profile.php?username='.$user['username']; ?>
                 <li>
-                    <h3><a href="<?=$page?>"><?=$user['username']?></a></h2>
+                    <h3><a href="<?=$page?>"><?=htmlentities($user['username'])?></a></h2>
                     <h3><img src=<?=$path?> alt=<?=$alt?> width="50" height="50"></h3>
                 </li>
             <?php } ?>

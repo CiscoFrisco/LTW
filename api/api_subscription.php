@@ -2,6 +2,9 @@
 	include_once('../includes/session.php');
 	include_once('../database/db_channel.php');
 
+	if ($_SESSION['csrf'] !== $_POST['csrf'])
+		die(json_encode(array('error' => 'csrf')));
+
 	if (!isset($_SESSION['user_id']))
 		die(json_encode(array('error' => 'not_logged_in'))); 
 

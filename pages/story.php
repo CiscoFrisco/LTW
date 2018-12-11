@@ -35,7 +35,7 @@
 		<div class = "container">
 			<div class = "votes-container">
 				<div class="upvote" role="button" data-value="<?=$vote?>"><i class="fas fa-arrow-circle-up"></i></div>
-				<h5><?=$score?></h5>
+				<h5><?=htmlentities($score)?></h5>
 				<div class="downvote" role="button" data-value="<?=$vote?>"><i class="fas fa-arrow-circle-down"></i></div>
 			</div>
 			<div class = "story-content">
@@ -52,7 +52,7 @@
 			<?php } else { ?>
 				<h4><?=$number_comments?> comments</h4>
 			<?php } ?>
-			<h4>Posted by <a href="<?='profile.php?username='.urlencode($username)?>"><?=$username?></a> <?=deltaTime($now, $story['posted'])?></h4>
+			<h4>Posted by <a href="<?='profile.php?username='.urlencode($username)?>"><?=htmlentities($username)?></a> <?=deltaTime($now, $story['posted'])?></h4>
 			</div>
 		</div>
 	</section>
