@@ -23,7 +23,10 @@
     --grey-shade-4: #a9a9a9;
     --grey-shade-5: #808080;
     --grey-shade-6: #505050;
+
 }
+
+
 
 html, body  {
     height: 100%;
@@ -41,12 +44,35 @@ html, body  {
     height: 50px;
 }
 
-/* Body default Variables */
+/* Variables for the light mode */
+body.light {
+    --main-bg: var(--grey-shade-2);
+    --writing-bg: var(--grey-shade-1);
+    --hover-bg: var(--grey-shade-2);
+
+    --border-color: var(--grey-shade-3);
+    --main-font-color: black;
+}
+
+/* Variables for the dark mode */ 
+body.dark {
+    --main-bg: black;
+    --writing-bg: var(--grey-shade-6);
+    --hover-bg: var(--grey-shade-5);
+
+    --border-color: darkgrey;
+    --main-font-color: var(--grey-shade-1);
+}
+
 body {
+    background-color: var(--main-bg);
     font: 15px/1.5 Arial, Helvetica, sans-serif;
     padding: 0;
-    background-color: var(--grey-shade-2);
     position: relative;
+}
+
+h2, h3, h5,p {
+    color: var(--main-font-color);
 }
 
 /* Global Class */
@@ -55,26 +81,29 @@ body {
     margin: 0px auto;
     overflow: hidden;
     min-height: 100%;
+    position: relative;
 }
 
 body > .container {
     padding-bottom: 50px;
-    min-height: 100%;
 }
+
+
+
 
 /* 
     MAIN HEADER ========================================== 
 */
 body > .wrapper > header {
-    background-color: #35424a;
-    color: #ffffff;
+    background-color: var(--writing-bg);
+    color: var(--main-font-color);
     padding-top: 5px;
     min-height: 50px;
-    border-bottom: #e8491d 3px solid;
+    border-bottom: var(--border-color) 3px solid;
 }
 
 body > .wrapper > header a {
-    color: #ffffff;
+    color: var(--main-font-color);
     text-decoration: none;
 }
 
@@ -83,7 +112,7 @@ body > .wrapper > header nav a{
 }
 
 body > .wrapper > header nav a:hover {
-    background-color: #303745;
+    background-color: var(--hover-bg);
     text-decoration: underline;
     padding: 5px;
 }
@@ -120,13 +149,13 @@ body > .wrapper > header nav {
 
 body > .wrapper > #stories >  header {
     padding-left: 5%;
-    background-color: var(--grey-shade-5);
+    background-color: var(--writing-bg);
 }
 
 body > .wrapper > #stories > header > .container > h2{
     margin: 0;
     padding-top: 5px; 
-    color: var(--grey-shade-1);
+    color: var(--main-font-color);
     float: left;
     text-transform: uppercase;
 }
@@ -138,28 +167,29 @@ body > .wrapper > #stories > header > .container > form  {
 }
 
 body > .wrapper > #stories > header > .container > form > label {
-    color: white;
+    color: var(--main-font-color);
     text-transform: uppercase;
     font-weight: bold;
 }
 
 body > .wrapper > #stories > header > .container > form option {
-    background-color: var(--grey-shade-6);
+    background-color: var(--hover-bg);
 }
 
 body > .wrapper > #stories > header > .container > form select {
     border: none;
     background-color: inherit;
-    color: white;
+    color: var(--main-font-color);
     -webkit-appearance: none;
     -moz-appearance: none;
     text-indent: 1px;
     text-overflow: '';
     padding: 10px;
+    text-align-last: center;
 }
 
 body > .wrapper > #stories > header > .container > form select:hover {
-    background-color: var(--grey-shade-6);
+    background-color: var(--hover-bg);
     cursor: pointer;
 } 
 
@@ -168,16 +198,16 @@ body > .wrapper > #stories > header > .container > form select:hover {
 */
 
 body > footer {
-    background-color: #35424a;
-    border-top: #e8491d 3px solid;
+    background-color: var(--writing-bg);
+    border-top: var(--border-color) 3px solid;
     height:50px;
     text-align: center;
-    color: white;
+    color: var(--main-font-color);
     width: 100%;
 }
 
 body > footer a {
-    color: white;
+    color: var(--main-font-color);
     text-decoration: none;
 }
 
@@ -191,7 +221,7 @@ body > footer a:hover {
 
 section#login {
     background-color: var(--section-login-bg-color);
-    border: 1px solid var(--section-login-border-color);
+    border: 1px solid var(--border-color);
     margin-left: auto;
     margin-right: auto;
     max-width: 750px;
@@ -209,9 +239,9 @@ section#login input{
 }
 
 section#login header {
-    background-color: #35424a;
-    border-bottom: #e8491d 3px solid;
-    color:white;
+    background-color: var(--writing-bg);
+    border-bottom: var(--border-color) 3px solid;
+    color:var(--main-font-color);
     padding: 20px;
 }
 
@@ -224,7 +254,7 @@ section#login form {
 }
 
 section#login footer {
-    background-color: var(--section-login-footer-bg-color);
+    background-color: var(--writing-bg);
     
     padding-top: 10px;
     padding-bottom: 10px;
@@ -253,62 +283,98 @@ section#login input[type="submit"]{
 }   
 
 section#login input[type="submit"]:hover {
-    background-color: var(--button-hover-bg-color);
+    background-color: var(--hover-bg);
     cursor:pointer;
 }
 
+/*
+    STORY ===================================================
+*/
+section#story .container {
+    margin-top: 20px;
+    background-color: var(--writing-bg);
+}
+
+section#story .container h4 {
+    float: left;
+    color: var(--grey-shade-4);
+    font-size: 15px;
+    padding-right: 20px;
+}
+
+.story-content {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+/*
+    COMMENTS ===============================================
+*/
+
+.comment-container {
+    padding: 5px;
+    padding-left: 40px;
+}
+
+.comment-container h4 {
+    margin:0;
+    padding:0;
+    color: var(--grey-shade-4);
+    font-size: 15px;
+    padding-right: 20px;
+}
+
+article.comment {
+    background-color: var(--writing-bg);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--border-color);
+    margin: 20px;
+
+}
 
 /*
     ARTICLE STORY =======================================
 */
 
 ol {
-    /*list-style-type: none;
-    padding: 0; */
+    list-style-type: none;
+    padding: 0;
 }
 
 article.story {
-    background-color: var(--grey-shade-0);
+    background-color: var(--writing-bg);
     position: relative;
     min-height: 80px;
     border-radius: 2px;
-    border: var(--grey-shade-3) 1px solid;
+    border: var(--border-color) 1px solid;
     margin-top: -1px;
 
 }
 
 
 
-article.story .votes-container {
+/* article.story */ .votes-container {
     position: absolute;
-    background-color: var(--grey-shade-1);
     float: left;
-    width: 50px;
-    bottom: 0.5px;
-    top:0px;
-    left:0px;
-}
-
-article.story .votes {
-    background-color: var(--grey-shade-2);
-    width: 50%;
-    margin: 0 auto;
-    margin-top: 5px;
+    width: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    
+    margin-top: 5px;
+
 }
 
-article.story .votes-container h5 {
+
+/* article.story */ .votes-container h5 {
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 
 article.story .storyinfo {
     padding: 10px;
-    padding-left: 60px;
+    padding-left: 30px;
     overflow: hidden;
 }
 
@@ -319,7 +385,7 @@ article.story .storyinfo h3 {
 }
 
 article.story .storyinfo h3 a {
-    color: black;
+    color: var(--main-font-color);
     text-decoration: none;
 }
 
@@ -342,29 +408,26 @@ article.story .storyinfo h4 a:hover {
 }
 
 article.story:hover {
-    background-color: var(--grey-shade-1);
-    border: 1px solid var(--grey-shade-4);
+    background-color: var(--hover-bg);
+    border: 1px solid var(--border-color);
     z-index: 1;
 }
 
-article.story:hover .votes-container {
-    background-color: var(--grey-shade-1-5);
-}
 /*  
     STORIES FOOTER ================================================
 */
 #stories footer p{
-    background-color: var(--grey-shade-0);
+    background-color: var(--writing-bg);
     margin-left: 10%;
     margin-right: 10%;
     font-size: 20px;
-    border: 1px var(--grey-shade-3) solid;
+    border: 1px var(--border-color) solid;
     padding: 5px;
 }
 
 #stories footer p a {
     text-decoration: none;
-    color: black;
+    color: var(--main-font-color);
     font-weight: bold;
 
 }
@@ -404,18 +467,12 @@ article.story:hover .votes-container {
 
 .fa-arrow-circle-down:hover {
     color: red;
+    cursor: pointer;
 } 
 
 .fa-arrow-circle-up:hover {
     color: blue;
-}
-
-/*
-    VOTE CONTAINER AND RELATED =========================================
-*/
-
-.votes {
-    border-radius: 15px;
+    cursor: pointer;
 }
 
 
@@ -431,7 +488,7 @@ article.story:hover .votes-container {
     }
 
     article.story:hover .votes-container {
-        background-color: var(--grey-shade-1);
+        background-color: var(--hover-bg);
     }
 
     article.story .votes-container {
@@ -458,6 +515,67 @@ article.story:hover .votes-container {
     }
 
 }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 37px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+}
+
+.slider.round {
+    border-radius: 34px;
+
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
 
 @media screen and (max-width: 400px){
     body > .wrapper > #stories > header > .container > form {

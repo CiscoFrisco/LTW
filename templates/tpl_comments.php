@@ -69,18 +69,21 @@
 		$comment['opinion_text'] = preg_replace($regex_channel, "<a href=\"profile.php?username=$1\">$0</a>",$comment['opinion_text']);
 		?>
 		<li>
-        <article class="comment" data-id="<?=$comment['opinion_id']?>">
-			<div class="upvote" role="button" data-value="<?=$comment['vote']?>"><i class="fas fa-arrow-circle-up"></i></div>
-			<h5><?=$comment['score']?></h5>
-			<div class="downvote" role="button" data-value="<?=$comment['vote']?>"><i class="fas fa-arrow-circle-down"></i></div>
+		<article class="comment" data-id="<?=$comment['opinion_id']?>">
+			<div class = "votes-container">
+				<div class="upvote" role="button" data-value="<?=$comment['vote']?>"><i class="fas fa-arrow-circle-up"></i></div>
+				<h5><?=$comment['score']?></h5>
+				<div class="downvote" role="button" data-value="<?=$comment['vote']?>"><i class="fas fa-arrow-circle-down"></i></div>
+			</div>
+			<div class = "comment-container">
 			<h3><?=$comment['opinion_text']?></a></h3>
 			<h4>Posted by <a href="<?='profile.php?username='.urlencode($comment['username'])?>"><?=$comment['username']?></a> <?=deltaTime($now, $comment['posted'])?></h4>
 			<?php 
 			$replieNum = getNumberComments($comment['opinion_id']);
 			if($replieNum == 1){ ?>
-				<h4><?=$replieNum?> reply</h4>
+				<h4><?=$replieNum?> reply</h4></div><!-- closing comment-container -->
 			<?php } else { ?>
-				<h4><?=$replieNum?> replies</h4>
+				<h4><?=$replieNum?> replies</h4></div><!-- closing comment-container -->
 			<?php }
 				
 			if(isset($_SESSION['user_id']) && $not_profile) { ?> 
@@ -99,6 +102,7 @@
 				
 				draw_comments($comments,$not_profile);
 			?>
+			
 		</article>
 		</li>
     <?php } ?>

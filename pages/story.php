@@ -33,9 +33,12 @@
 
 	<section id="story" data-id="<?=$story_id?>">
 		<div class = "container">
-			<div class="upvote" role="button" data-value="<?=$vote?>"><i class="fas fa-arrow-circle-up"></i></div>
-			<h5><?=$score?></h5>
-			<div class="downvote" role="button" data-value="<?=$vote?>"><i class="fas fa-arrow-circle-down"></i></div>
+			<div class = "votes-container">
+				<div class="upvote" role="button" data-value="<?=$vote?>"><i class="fas fa-arrow-circle-up"></i></div>
+				<h5><?=$score?></h5>
+				<div class="downvote" role="button" data-value="<?=$vote?>"><i class="fas fa-arrow-circle-down"></i></div>
+			</div>
+			<div class = "story-content">
 			<h2><?=$story['opinion_title']?></h2>
 			<h3><?=$story['opinion_text']?></h3>
 			<?php 
@@ -46,6 +49,7 @@
 				<h4><?=$number_comments?> comments</4>
 			<?php } ?>
 			<h4>Posted by <a href="<?='profile.php?username='.urlencode($username)?>"><?=$username?></a> <?=deltaTime($now, $story['posted'])?></h4>
+			</div>
 		</div>
 	</section>
 

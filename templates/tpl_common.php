@@ -18,7 +18,7 @@ function draw_header($isnt_login_signup) {
 	<link rel="shortcut icon" type="image/jpg" href="../pictures/default.jpg"/>
 </head>
 
-<body>
+<body class = "light">
 	<div class = "wrapper">
 	<header>
 		<div class = "container">
@@ -27,7 +27,12 @@ function draw_header($isnt_login_signup) {
 					<img src="../pictures/default.jpg" alt="icon" width = "25" height = "25"> Tidder
 				</a>
 			</h1>
-		
+
+			<label class = "switch">
+				<input type="checkbox" name = "darkmode" >
+				<span class = "slider round"></span>
+			</label>
+
 			<?php if(!isset($_SESSION['user_id'])) {  
 					if($isnt_login_signup) { ?>
 					<nav>

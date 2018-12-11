@@ -1,6 +1,8 @@
 'use strict'
 
 addAllEventListeners();
+startPage();
+
 
 function addAllEventListeners() {
 	let commentForm = document.querySelector('#comments > form');
@@ -27,6 +29,40 @@ function addAllEventListeners() {
 
 	for (var i = 0; i < comments_comments.length; i++)
 		comments_comments[i].addEventListener('click', add_comment_comment_form);
+
+	let dark_mode = document.querySelector('input[name="darkmode"]');
+	dark_mode.addEventListener('change', darkmode);
+
+}
+
+function startPage() {
+	let currentMode = sessionStorage.getItem('mode');
+	let body = document.getElementsByTagName("body")[0];
+	
+	if(currentMode == "dark"){
+		let dark_mode = document.querySelector('input[name="darkmode"]');
+		body.classList.remove("light")
+		body.classList.add("dark")
+		dark_mode.checked = true;
+	}
+}
+
+
+function darkmode() {
+	
+	let body = this.parentElement.parentElement.parentElement.parentElement.parentElement;
+
+	if(this.checked){
+		sessionStorage.setItem('mode','dark');
+		body.classList.remove("light")
+		body.classList.add("dark")
+	}
+	else{
+		sessionStorage.setItem('mode','light');
+		body.classList.remove("dark")
+		body.classList.add("light")
+	}
+
 }
 
 function encodeForAjax(data) {
@@ -82,9 +118,8 @@ function addComment() {
 
 	comment.classList.add('comment');
 	comment.dataset.id = opinion['comment_id'];
-	comment.innerHTML = '<div class="upvote" role="button" data-value="' + opinion['vote'] + '">&#8593;</div> <h5>' + opinion['score'] + '</h5> <div class="downvote" role="button" data-value="' + opinion['vote'] + '">&#8595;</div>';
-	comment.innerHTML += '<h3>' + opinion['comment'] + '</h3>' + '<h4>' + 'Posted by <a href="profile.php?username=' + opinion['username'] + '">' + opinion['username'] + '</a> just now</h4>';
-	comment.innerHTML += '<h4>0 replies</h4>'
+	comment.innerHTML = '<div class = "votes-container"> <div class="upvote" role="button" data-value="' + opinion['vote'] + '"><i class="fas fa-arrow-circle-up"></i></div> <h5>' + opinion['score'] + '</h5> <div class="downvote" role="button" data-value="' + opinion['vote'] + '"><i class="fas fa-arrow-circle-down"></i></div></div>';
+	comment.innerHTML += '<div class = "comment-container"><h3>' + opinion['comment'] + '</h3>' + '<h4>' + 'Posted by <a href="profile.php?username=' + opinion['username'] + '">' + opinion['username'] + '</a> just now</h4><h4>0 replies</h4></div>';
 	comment.innerHTML += '<div class="comment_comment" role="button">&#128172;</div> <ol></ol>';
 
 	list.innerHTML = comment.outerHTML;
