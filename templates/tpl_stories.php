@@ -58,7 +58,9 @@
 		</div> 
 		<?php if($not_profile){
 			if(!isset($_SESSION['user_id'])) { ?>
+			<footer class = "secondary-footer">
 				<p>Want to add a channel? <a href='../pages/login.php?redirect=<?=urlencode($page)?>'>Login</a> or <a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></p>
+			</footer>
 		<?php } else if($channel){?>
 
 			<footer class = "secondary-footer">

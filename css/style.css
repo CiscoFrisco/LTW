@@ -23,6 +23,7 @@
     --grey-shade-4: #a9a9a9;
     --grey-shade-5: #808080;
     --grey-shade-6: #505050;
+    --grey-shade-7: #303030;
 
 }
 
@@ -46,9 +47,12 @@ html, body  {
 body.light {
     --main-bg: var(--grey-shade-2);
     --writing-bg: var(--grey-shade-1);
+    --secondary-writing-bg: var(--grey-shade-1-5);
     --hover-bg: var(--grey-shade-2);
     --border-color: var(--grey-shade-3);
     --main-font-color: black;
+    --secondary-font-color: var(--grey-shade-5);
+    --icon-color: var(--grey-shade-4);
     /* cor para os titulos clicaveis */
     /* cor especial */
     /* cor secundaria de writing bg */ 
@@ -58,9 +62,12 @@ body.light {
 body.dark {
     --main-bg: black;
     --writing-bg: var(--grey-shade-6);
+    --secondary-writing-bg: var(--grey-shade-7);
     --hover-bg: var(--grey-shade-5);
     --border-color: darkgrey;
     --main-font-color: var(--grey-shade-1);
+    --icon-color: var(--grey-shade-2);
+    --secondary-font-color: var(--grey-shade-4);
 }
 
 body {
@@ -214,7 +221,7 @@ input:checked + .slider:before {
     UPVOTE AND DOWNVOTE BUTTONS SECTION =========================================
 */
 .fa-arrow-circle-down, .fa-arrow-circle-up {
-    color: var(--grey-shade-5); /* TODO */ 
+    color: var(--icon-color);
 }
 
 .downvote[data-value="-1"] .fa-arrow-circle-down , .fa-arrow-circle-down:hover {
@@ -502,7 +509,7 @@ article.comment {
 }
 
 article.comment.dark-comment {
-    background-color: var(--grey-shade-2);
+    background-color: var(--secondary-writing-bg);
 }
 
 
@@ -561,13 +568,13 @@ article.story .storyinfo h3 a {
 }
 
 article.story .storyinfo h4 {
-    color: var(--grey-shade-5);
+    color: var(--secondary-font-color);
     font-size: 12px;
     margin: 0;
 }
 
 article.story .storyinfo h4 a {
-    color: var(--grey-shade-5);
+    color: var(--secondary-font-color);
     text-decoration: none;
     font-size: 12px;
 }
