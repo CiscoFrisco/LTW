@@ -277,7 +277,7 @@ function add_comment_comment_form() {
 
 function subcribe_channel() {
 	let channel_id = this.dataset.id;
-
+	
 	let request = new XMLHttpRequest();
 	request.addEventListener('load', changeSubscription);
 	request.open('POST', '../api/api_subscription.php', true);

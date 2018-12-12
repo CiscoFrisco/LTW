@@ -55,46 +55,54 @@
 
 	draw_header(true);
 ?>
-
-	<h2><?=$username?> Profile</h2>
-	<h3><img src=<?=$path?> alt=<?=$alt?> width="100" height="100"></h3>
-	<h3>Username: <?=$username?></h3>
-	<h3>Score: <?=$score?></h3>
-	<h3>Name: <?=$realname?></h3>
-	<h3>Bio: <?=$bio?></h3>
-	<h3>Email: <?=$email?></h3>
-	<h3>Birthday: <?=$formatted_birthday?></h3>
-	<h3>Join Date: <?=$formatted_join_date?></h3>
-
+	<div class = "container profile">
+		<div class = "comment-container">
+			<h2><?=$username?>'s Profile</h2>
+			<div class = "photo-cropper">
+				<img class = "profile-pic" src=<?=$path?> alt=<?=$alt?> width="100" height="100">
+			</div>
+			<h3>Username: <span class = "input"> <?=$username?> </span></h3>
+			<h3>Score: <span class = "input"><?=$score?></span></h3>
+			<h3>Name: <span class = "input"><?=$realname?></span></h3>
+			<h3>Bio: <span class = "input"><?=$bio?></span></h3>
+			<h3>Email: <span class = "input"><?=$email?></span></h3>
+			<h3>Birthday: <span class = "input"><?=$formatted_birthday?></span></h3>
+			<h3>Join Date: <span class = "input"><?=$formatted_join_date?></span></h3>
+		</div>
+	</div>
 <?php
 	if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $user_id){?>
 
 <section id="edit">
-	<header>
+	<header class = "secondary-header">
 		<h2>Edit</h2>
 	</header>
-	<form method="post" action="../actions/action_edit_profile.php" enctype="multipart/form-data">
-		<label>Profile Picture:
-			<input type="file" name="img" value="" accept="image/png, image/jpeg">
-		</label>
-		<label>Username:
-			<input type="text" name="username" value="<?=$username?>" required>
-		</label>
-		<label>Name:
-			<input type="text" name="realname" value="<?=$realname?>">
-		</label>
-		<label>Email:
-			<input type="email" name="email" value="<?=$email?>" required>
-		</label>
-		<label>Birthday:
-			<input type="date" name="birthday" value="<?=$birthday?>">
-		</label>
-		<label>Bio:
-			<textarea name="bio"><?=$bio?></textarea>
-		</label>
+	<div class = "container profile">
+		<div class = "comment-container">
+			<form method="post" action="../actions/action_edit_profile.php" enctype="multipart/form-data">
+				<label>Profile Picture:
+					<input type="file" name="img" value="" accept="image/png, image/jpeg">
+				</label>
+				<label>Username:
+					<input type="text" name="username" value="<?=$username?>" required>
+				</label>
+				<label>Name:
+					<input type="text" name="realname" value="<?=$realname?>">
+				</label>
+				<label>Email:
+					<input type="email" name="email" value="<?=$email?>" required>
+				</label>
+				<label>Birthday:
+					<input type="date" name="birthday" value="<?=$birthday?>">
+				</label>
+				<label>Bio:
+					<textarea name="bio"><?=$bio?></textarea>
+				</label>
 
-		<input type="submit" value="Edit Profile">
-	</form>
+				<input type="submit" value="Edit Profile">
+			</form>
+		</div>
+	</div>
 </section>
 <?php } 
 	draw_stories($stories, false);

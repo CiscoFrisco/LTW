@@ -416,6 +416,46 @@ section#story .container h4 {
     position: absolute;
     right: 0;
     top: 10px;
+    padding: 5px;
+}
+
+.photo-cropper {
+    border-radius: 50%;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.profile-pic {
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+}
+
+.comment-container .input {
+    color: var(--grey-shade-5);
+}
+
+.profile {
+    position: relative;
+    background-color: var(--writing-bg);
+    margin: 20px auto;
+}
+
+section#edit form {
+    padding: 20px 0;
+}
+
+section#edit form  * {
+    margin: 5px 0;
+    display: block;
+}
+
+section#edit label{
+    font-weight: bold;
+}
+
+section#edit label * {
+    display: inline-block;
 }
 
 .channel {
