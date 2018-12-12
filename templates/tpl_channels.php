@@ -21,7 +21,7 @@
 
 		<?php if((isset($_SESSION['user_id']))) { ?>
 			<footer class = "secondary-footer">
-				<div class = "container">
+				<div class = "container addChannel">
 					<p>Want to add a channel?</p>
 					<form method="post" action="../actions/action_add_channel.php">
 						<input type="text" name="name" placeholder="Channel Name" required>

@@ -426,6 +426,10 @@ section#story .container h4 {
     right: 30px;
 }
 
+.addChannel * {
+    display: inline-block;
+}
+ 
 .profile-pic {
     border: 1px solid var(--border-color);
     border-radius: 50%;
