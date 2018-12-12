@@ -105,8 +105,24 @@ footer {
     height:50px;
     text-align: center;
     color: var(--main-font-color);
-    width: 100%;
+
 }
+
+textarea {
+    width: 70%;
+    display: block;
+}
+
+.comment_comment {
+    margin: 20px;
+}
+
+section#comments form {
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 
 a {
     color: var(--main-font-color);
@@ -400,6 +416,20 @@ section#story .container h4 {
     position: absolute;
     right: 0;
     top: 10px;
+}
+
+.channel {
+    background-color: var(--writing-bg);
+    margin: 10px;
+    padding-left: 20px;
+}
+
+.channel * {
+    display: inline-block;
+}
+
+.secondary-footer {
+    margin: 20px 10%;  
 }
 
 /*

@@ -6,7 +6,7 @@
 			<header class = "secondary-header">
 				<div class = "container"> 
 					<h2>Channels</h2>
-					<h3><a href="stories.php?subscribed=true">Subscibed</a></h3>
+					<h3><a href="stories.php?subscribed=true">Subscribed</a></h3>
 					<h3><a href="stories.php">Stories</a></h3>
 				</div>
 			</header>
@@ -20,7 +20,7 @@
 			</div>
 
 		<?php if((isset($_SESSION['user_id']))) { ?>
-			<footer>
+			<footer class = "secondary-footer">
 				<div class = "container">
 					<p>Want to add a channel?</p>
 					<form method="post" action="../actions/action_add_channel.php">
@@ -31,7 +31,7 @@
 			</footer>
 			
 		<?php } else { ?>
-			<footer>
+			<footer class = "secondary-footer">
 				<div class = "container">
 					<p>Want to add a channel? <a href='../pages/login.php?redirect=<?=urlencode($page)?>'>Login</a> or <a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></p>
 				</div>

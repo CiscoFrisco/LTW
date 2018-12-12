@@ -7,7 +7,7 @@
 	<header class = "secondary-header">
 	<div class = "container">
 		<?php if(isset($_GET['subscribed']) && $_GET['subscribed'] == 'true') { ?>
-			<h2>Subscibed</h2>
+			<h2>Subscribed</h2>
 			<h3><a href="stories.php">Stories</a></h3>
 			<h3><a href="channels.php">Channels</a></h3>
 		<?php } else if($channel) { ?>
@@ -21,12 +21,12 @@
 						<div class="subscribe" role="button" data-id="<?=$channel_id?>"><i class="fas fa-bell"></i></div>
 					<?php } 
 				} ?>
-			<h3><a href="stories.php?subscribed=true">Subscibed</a></h3>
+			<h3><a href="stories.php?subscribed=true">Subscribed</a></h3>
 			<h3><a href="stories.php">Stories</a></h3>
 			<h3><a href="channels.php">Channels</a></h3>
 		<?php } else {?>
 			<h2>Stories</h2>
-			<h3><a href="stories.php?subscribed=true">Subscibed</a></h3>
+			<h3><a href="stories.php?subscribed=true">Subscribed</a></h3>
 			<h3><a href="channels.php">Channels</a></h3>
 		<?php } ?>
 			<?php if ($not_profile) { ?>
@@ -61,13 +61,13 @@
 				<p>Want to add a channel? <a href='../pages/login.php?redirect=<?=urlencode($page)?>'>Login</a> or <a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></p>
 		<?php } else if($channel){?>
 
-			<footer>
+			<footer class = "secondary-footer">
 				<p>Want to share a story? <a href="add_story.php?channel=<?=urlencode($channel)?>">Add a story!</a></p>
 			</footer>
 
 		<?php } else {?>
 
-			<footer>
+			<footer class = "secondary-footer" >
 				<p>Want to share a story? <a href="add_story.php">Add a story!</a></p>
 			</footer>
 
