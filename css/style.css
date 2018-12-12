@@ -1,35 +1,15 @@
-/* Global variables */
-:root {
-    /* Colors */
-    --main-bg-color: #eee;
-
-    /* Section login */
-    --section-login-bg-color: white;
-    --section-login-border-color: #ddd;
-    --section-login-footer-bg-color: #eef;
-
-    /* Button */
-    --button-bg-color: #bbf;
-    --button-hover-bg-color: #aaf;
-
-
-
-    /* Color Pallete */
-    --grey-shade-0: #f9f9f9;
-    --grey-shade-1: #f5f5f5;
-    --grey-shade-1-5: #efefef;
-    --grey-shade-2: #d3d3d3;
-    --grey-shade-3: #bebebe;
-    --grey-shade-4: #a9a9a9;
-    --grey-shade-5: #808080;
-    --grey-shade-6: #505050;
-    --grey-shade-7: #303030;
-
-}
+@import "color.css";
 
 html, body  {
     height: 100%;
     margin: 0;
+}
+
+body {
+    background-color: var(--main-bg);
+    font: 15px/1.5 Arial, Helvetica, sans-serif;
+    padding: 0;
+    position: relative;
 }
 
 .wrapper {
@@ -43,49 +23,15 @@ html, body  {
     height: 50px;
 }
 
-/* Variables for the light mode */
-body.light {
-    --main-bg: var(--grey-shade-2);
-    --writing-bg: var(--grey-shade-1);
-    --secondary-writing-bg: var(--grey-shade-1-5);
-    --hover-bg: var(--grey-shade-2);
-    --border-color: var(--grey-shade-3);
-    --main-font-color: black;
-    --secondary-font-color: var(--grey-shade-5);
-    --icon-color: var(--grey-shade-4);
-    /* cor para os titulos clicaveis */
-    /* cor especial */
-    /* cor secundaria de writing bg */ 
-}
-
-/* Variables for the dark mode */ 
-body.dark {
-    --main-bg: black;
-    --writing-bg: var(--grey-shade-6);
-    --secondary-writing-bg: var(--grey-shade-7);
-    --hover-bg: var(--grey-shade-5);
-    --border-color: darkgrey;
-    --main-font-color: var(--grey-shade-1);
-    --icon-color: var(--grey-shade-2);
-    --secondary-font-color: var(--grey-shade-4);
-}
-
-body {
-    background-color: var(--main-bg);
-    font: 15px/1.5 Arial, Helvetica, sans-serif;
-    padding: 0;
-    position: relative;
-}
-
 h2, h3, h5,p {
     color: var(--main-font-color);
 }
 
 h4 {
     font-size: 12px;
+    color: var(--secondary-font-color);
 }
 
-/* Global Class */
 .container {
     width: 80%;
     margin: 0px auto;
@@ -108,7 +54,7 @@ select {
 select:hover {
     background-color: var(--hover-bg);
     cursor: pointer;
-} 
+}
 
 footer {
     background-color: var(--writing-bg);
@@ -116,8 +62,8 @@ footer {
     height:50px;
     text-align: center;
     color: var(--main-font-color);
-
 }
+
 
 textarea {
     width: 70%;
@@ -129,11 +75,8 @@ textarea {
 }
 
 section#comments form {
-    margin-left: 30px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin: 20px auto 10px 30px;
 }
-
 
 a {
     color: var(--main-font-color);
@@ -210,17 +153,6 @@ input:checked + .slider:before {
     transform: translateX(15px);
 }
 
-.slider.round {
-    border-radius: 60px;
-
-}
-
-.slider.round:before {
-    border-radius: 40%;
-}
-
-
-
 /*
     UPVOTE AND DOWNVOTE BUTTONS SECTION =========================================
 */
@@ -246,17 +178,9 @@ i:hover {
     cursor: pointer;
 }
 
-
 /* 
     MAIN HEADER ========================================== 
 */
-header {
-    background-color: var(--writing-bg);
-    color: var(--main-font-color);
-    padding: 10px;
-    border-bottom: var(--border-color) 3px solid;
-}
-
 
 
 header nav a:hover {
@@ -287,6 +211,18 @@ header nav {
     right: 0;
 }
 
+header {
+    background-color: var(--writing-bg);
+    color: var(--main-font-color);
+    padding: 10px;
+    border-bottom: var(--border-color) 3px solid;
+}
+
+.secondary-header {
+    background-color: var(--secondary-writing-bg);
+    border-bottom: var(--border-color) 1px solid;
+}
+
 .form-container {
     display: inline-block;
     padding: 0;
@@ -299,52 +235,9 @@ header nav {
     width: 150px;
 }
 
-/*
-    TITLE OF PAGE =================================================
-*/
-
-header .secondary {
-    padding-left: 5%;
-}
-
-header .secondary h2{
-    margin: 0;
-    padding-top: 5px; 
-    color: var(--main-font-color);
-    float: left;
-    text-transform: uppercase;
-}
-
-header .secondary form  {
-    float: right;
-    padding-right: 5%;
-    padding-top: 5px;
-}
-
-header .secondary label {
-    color: var(--main-font-color);
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-header .secondary option {
-    background-color: var(--hover-bg);
-}
-
-
-
-/*  
-    MAIN FOOTER ===================================================
-*/
-
-
-
-/*
-    LOGIN SECTION =================================================
-*/
 
 section#login {
-    background-color: var(--section-login-bg-color);
+    background-color: var(--secondary-writing-bg);
     border: 1px solid var(--border-color);
     margin-left: auto;
     margin-right: auto;
@@ -385,12 +278,12 @@ section#login input[type="submit"]{
     padding: 0.5em;
     margin-top: 2em;
     height: 100%;
-    background-color: var(--button-bg-color);
-    color: white;
+    background-color: var(--button-color);
+    color: var(--main-font-color);
 }   
 
 section#login input[type="submit"]:hover {
-    background-color: var(--hover-bg);
+    background-color: var(--button-color-hover);
     cursor:pointer;
 }
 
@@ -405,7 +298,6 @@ section#story .container {
 
 section#story .container h4 {
     float: left;
-    color: var(--grey-shade-4);
     padding-right: 20px;
 }
 
@@ -476,6 +368,7 @@ section#edit label * {
     background-color: var(--writing-bg);
     margin: 10px;
     padding-left: 20px;
+    border: 1px solid var(--border-color);
 }
 
 .channel * {
@@ -499,7 +392,6 @@ section#edit label * {
 .comment-container h4 {
     margin:0;
     padding:0;
-    color: var(--grey-shade-4);
     padding-right: 20px;
 }
 
@@ -534,7 +426,7 @@ article.story {
 
 
 
-/* article.story */ .votes-container {
+.votes-container {
     position: absolute;
     float: left;
     width: 30px;
@@ -547,7 +439,7 @@ article.story {
 }
 
 
-/* article.story */ .votes-container h5 {
+.votes-container h5 {
     padding: 0;
     margin: 0;
     text-align: center;
@@ -571,12 +463,10 @@ article.story .storyinfo h3 a {
 }
 
 article.story .storyinfo h4 {
-    color: var(--secondary-font-color);
     margin: 0;
 }
 
 article.story .storyinfo h4 a {
-    color: var(--secondary-font-color);
     text-decoration: none;
 }
 

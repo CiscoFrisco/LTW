@@ -38,7 +38,9 @@
 				</form>
 			
 		<?php } else { ?>
-			<p>Want to add a channel? <a href='../pages/login.php?redirect=<?=urlencode($page)?>'>Login</a> or <a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></p>
+			<footer class = "secondary-footer">
+				<p>Want to comment? <a href='../pages/login.php?redirect=<?=urlencode($page)?>'>Login</a> or <a href='../pages/signup.php?redirect=<?=urlencode($page)?>'>Signup</a></p>
+			</footer>
 		<?php }
 		}
 		
