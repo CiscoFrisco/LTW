@@ -81,6 +81,10 @@ h2, h3, h5,p {
     color: var(--main-font-color);
 }
 
+h4 {
+    font-size: 12px;
+}
+
 /* Global Class */
 .container {
     width: 80%;
@@ -402,7 +406,6 @@ section#story .container {
 section#story .container h4 {
     float: left;
     color: var(--grey-shade-4);
-    font-size: 15px;
     padding-right: 20px;
 }
 
@@ -480,7 +483,8 @@ section#edit label * {
 }
 
 .secondary-footer {
-    margin: 20px 10%;  
+    margin: 20px 10%;
+    border: var(--border-color) 3px solid;
 }
 
 /*
@@ -496,7 +500,6 @@ section#edit label * {
     margin:0;
     padding:0;
     color: var(--grey-shade-4);
-    font-size: 15px;
     padding-right: 20px;
 }
 
@@ -569,20 +572,17 @@ article.story .storyinfo h3 a {
 
 article.story .storyinfo h4 {
     color: var(--secondary-font-color);
-    font-size: 12px;
     margin: 0;
 }
 
 article.story .storyinfo h4 a {
     color: var(--secondary-font-color);
     text-decoration: none;
-    font-size: 12px;
 }
 
 article.story .storyinfo h4 a:hover {
     color: var(--grey-shade-5);
     text-decoration: underline;
-    font-size: 12px;
 }
 
 article.story:hover {
