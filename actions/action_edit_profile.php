@@ -20,10 +20,6 @@
 		die(header('Location: ../pages/signup.php?error=username'));
 	}
 
-	if(!preg_match ("/^[a-zA-Z ]+$/", $username)){
-		die(header('Location: ../pages/signup.php?error=name'));
-	}
-
 	try {
 		editUserInfo($user_id, $new_username, $realname, $email, $birthday, $bio);
 		updateProfilePic($img_file, $user_id, $ext);

@@ -8,10 +8,6 @@
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 
-	echo(time());
-	echo(' ');
-	echo($_SESSION['timeout']);
-
 	if(time() < $_SESSION['timeout'])
 		die(header('Location: ../pages/login.php?error=wait'));
 
