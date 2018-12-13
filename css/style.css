@@ -49,6 +49,7 @@ select {
     text-indent: 1px;
     text-overflow: '';
     text-align-last: center;
+    padding: 5px;
 }
 
 select:hover {
@@ -236,7 +237,8 @@ header {
 }
 
 
-/*section#login*/ .input-block {
+
+ .input-block {
     background-color: var(--secondary-writing-bg);
     border: 1px solid var(--border-color);
     margin-left: auto;
@@ -245,7 +247,8 @@ header {
     margin-top: 30px;
 }
 
-/*section#login*/.input-block input{
+
+.input-block input, .input-block label, .input-block textarea{
     display: block;
     margin: 10px 10%;
     width: 50%;
@@ -255,23 +258,31 @@ header {
     padding: 0.2em;
 }
 
-/*section#login*/ .input-block header {
+
+.input-block header {
     background-color: var(--writing-bg);
     border-bottom: var(--border-color) 3px solid;
     color:var(--main-font-color);
     padding: 20px;
 }
 
-/*section#login*/.input-block h2 {
+.not-found {
+    text-align: center;
+}
+
+
+.input-block h2 {
     margin: 0;
 }
 
-/*section#login*/.input-block form {
+
+.input-block form {
     margin-top:20px;
 }
 
 
-/*section#login*/.input-block input[type="submit"]{
+
+.input-block input[type="submit"]{
     border-radius: 10px;
     border:none;
     max-width: 80px;
@@ -282,7 +293,8 @@ header {
     color: var(--main-font-color);
 }   
 
-/*section#login*/.input-block input[type="submit"]:hover {
+
+.input-block input[type="submit"]:hover {
     background-color: var(--button-color-hover);
     cursor:pointer;
 }
