@@ -64,7 +64,7 @@
 		<?php } else if($channel){?>
 
 			<footer class = "secondary-footer">
-				<p>Want to share a story? <a href="add_story.php?channel=<?=urlencode($channel)?>">Add a story!</a></p>
+				<p>Want to share a story? <a href="add_story.php?channel=<?=$channel?>">Add a story!</a></p>
 			</footer>
 
 		<?php } else {?>

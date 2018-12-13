@@ -10,12 +10,15 @@
 
 	if (checkUserPassword($user_id, $username, $password)) {
 		$_SESSION['user_id'] = $user_id;
+		$_SESSION['tries'] = 0;
+		$_SESSION['timeout'] = time();
 
 		if(isset($_GET['redirect']))
 			header('Location: ../pages/'.urldecode($_GET['redirect']));
 		
 		else header('Location: ../index.php');
 	} else {
+		
 		header('Location: ../pages/login.php?error=true');
 	}
 ?>

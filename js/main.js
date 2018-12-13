@@ -164,17 +164,21 @@ function addComment() {
 
 	let commentForm = document.querySelector('.comment[data-id="' + opinion['parent_id'] + '"] > form');
 
-	let regex_url = /\[([^\]]+)\]\((http[s]?:[\/]{2})?(www.)?([-a-zA-Z0-9@:%&_\+~#=]{2,256}\.[a-z]{2,6}\b[-a-zA-Z0-9@:%_\+.~#?&=/]*)\)/g;
-	opinion['comment'] = opinion['comment'].replace(regex_url, '<a href=\"https://www.$4\">$1</a>');
-
-	let regex_user = /\/u\/([-a-zA-Z0-9@:%_\+.~#?&=/]+)/g;
-	opinion['comment'] = opinion['comment'].replace(regex_user, '<a href=\"profile.php?username=$1\">$&</a>');
-
-	let regex_channel = /\/u\/([-a-zA-Z0-9@:%_\+.~#?&=/]+)/g;
-	opinion['comment'] = opinion['comment'].replace(regex_channel, '<a href=\"profile.php?username=$1\">$&</a>');
-
 	if (commentForm != null)
 		commentForm.outerHTML = '<div class="comment_comment" role="button">&#128172;</div>';
+
+	else document.querySelector('[data-id="' + opinion['parent_id'] + '"] form textarea').value = "";
+
+	opinion['comment'] = escapeHtml(opinion['comment']);
+
+	let regex_url = /\[([^\]]+)\]\((http[s]?:&#x2F;&#x2F;)?(www.)?([-a-zA-Z0-9@:%&_\+~#=]{2,256}\.[a-z]{2,6}\b[-a-zA-Z0-9@:%_\+.~#?&={&#x2F;}]*)\)/g;
+	opinion['comment'] = opinion['comment'].replace(regex_url, '<a href=\"https://www.$4\">$1</a>');
+
+	let regex_user = /&#x2F;u&#x2F;([-a-zA-Z0-9]+)/g;
+	opinion['comment'] = opinion['comment'].replace(regex_user, '<a href=\"profile.php?username=$1\">$&</a>');
+
+	let regex_channel = /&#x2F;c&#x2F;([-a-zA-Z0-9]+)/g;
+	opinion['comment'] = opinion['comment'].replace(regex_channel, '<a href=\"stories.php?channel=$1\">$&</a>');
 
 	let list = document.createElement('li');
 	let comment = document.createElement('article');
@@ -182,7 +186,7 @@ function addComment() {
 	comment.classList.add('comment');
 	comment.dataset.id = opinion['comment_id'];
 	comment.innerHTML = '<div class = "votes-container"> <div class="upvote" role="button" data-value="' + opinion['vote'] + '"><i class="fas fa-arrow-circle-up"></i></div> <h5>' + opinion['score'] + '</h5> <div class="downvote" role="button" data-value="' + opinion['vote'] + '"><i class="fas fa-arrow-circle-down"></i></div></div>';
-	comment.innerHTML += '<div class = "comment-container"><h3>' + escapeHtml(opinion['comment']) + '</h3>' + '<h4>' + 'Posted by <a href="profile.php?username=' + escapeHtml(opinion['username']) + '">' + escapeHtml(opinion['username']) + '</a> just now</h4><h4>0 replies</h4></div>';
+	comment.innerHTML += '<div class = "comment-container"><h3>' + opinion['comment'] + '</h3>' + '<h4>' + 'Posted by <a href="profile.php?username=' + escapeHtml(opinion['username']) + '">' + escapeHtml(opinion['username']) + '</a> just now</h4><h4>0 replies</h4></div>';
 	comment.innerHTML += '<div class="comment_comment" role="button">&#128172;</div> <ol></ol>';
 
 	list.innerHTML = comment.outerHTML;

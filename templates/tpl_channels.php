@@ -27,6 +27,12 @@
 						<input type="text" name="name" placeholder="Channel Name" required>
 						<input type="submit" value="Add Channel">
 					</form>
+					<?php if(isset($_GET['error'])){ 
+						if($_GET['error'] == 'lenght'){?>
+						<h3>Channel name too long!</h3>
+					<?php } else if($_GET['error'] == 'name') { ?>
+						<h3>Channel name can only contain letters and numbers!</h3>
+					<?php } } ?>
 				</div>
 			</footer>
 			
@@ -42,7 +48,7 @@
 	function draw_channel($channel){ ?>
 		<li>
 			<div class="channel">
-			<h3><a href="stories.php?channel=<?=urlencode($channel['channel_name'])?>"><?=htmlentities($channel['channel_name'])?></a></h3>
+			<h3><a href="stories.php?channel=<?=$channel['channel_name']?>"><?=htmlentities($channel['channel_name'])?></a></h3>
 			<?php if(isset($_SESSION['user_id'])) {
 					if($channel["subscribed"]) { ?>
 						<div class="unsubscribe" role="button" data-id="<?=$channel['channel_id']?>"><i class="fas fa-bell-slash"></i></div>

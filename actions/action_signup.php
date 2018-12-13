@@ -9,9 +9,8 @@
     $email = $_POST['email'];
 	$password = $_POST['password'];
 
-	if(!preg_match ("/^[a-zA-Z1-9]+$/", $username)){
+	if(!preg_match ("/^[a-zA-Z0-9]+$/", $username))
 		die(header('Location: ../pages/signup.php?error=username'));
-	}
 
     try {
 		insertUser($user_id, $username, $email, $password);

@@ -16,7 +16,7 @@
 	$img_file = $_FILES['img']['tmp_name'];
 	$ext = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
 
-	if(!preg_match ("/^[a-zA-Z1-9]+$/", $new_username)){
+	if(!preg_match ("/^[a-zA-Z0-9]+$/", $new_username)){
 		die(header('Location: ../pages/signup.php?error=username'));
 	}
 

@@ -4,7 +4,10 @@
 	$name = $_POST['name'];
 
 	if(strlen($name) > 25)
-		die(header('Location: ../pages/channels.php'));
+		die(header('Location: ../pages/channels.php?error=lenght'));
+
+	if(!preg_match ("/^[a-zA-Z0-9]+$/", $name))
+		die(header('Location: ../pages/channels.php?error=name'));
 
 	try {
 		insertChannel($name);

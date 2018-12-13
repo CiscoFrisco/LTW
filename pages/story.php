@@ -18,6 +18,17 @@
         die(header('Location: stories.php'));
 	}
 
+	$story['opinion_text'] = htmlentities($story['opinion_text']);
+
+	$regex = '/\[([^\]]+)\]\((http[s]?:[\/]{2})?(www\.)?([-a-zA-Z0-9]{2,256}\.[a-z]{2,6}\b[-a-zA-Z0-9@:%_\+.~#?{&amp;}=\/]*)\)/';
+	$story['opinion_text'] = preg_replace($regex,"<a href=\"https://www.$4\">$1</a>",$story['opinion_text']);
+
+	$regex_user = '/\/u\/([-a-zA-Z0-9]+)/';
+	$story['opinion_text'] = preg_replace($regex_user, "<a href=\"profile.php?username=$1\">$0</a>",$story['opinion_text']);
+
+	$regex_channel = '/\/c\/([-a-zA-Z0-9]+)/';
+	$story['opinion_text'] = preg_replace($regex_channel, "<a href=\"stories.php?channel=$1\">$0</a>",$story['opinion_text']);
+
 	$now = time();
 
 	$username = getUserName($story['user_id']);
@@ -43,7 +54,7 @@
 			<h3><?php
 				$lines = explode(PHP_EOL, $story['opinion_text']);
 				foreach($lines as $line) { ?>
-					<p><?=htmlentities($line);?></p>
+					<p><?=$line?></p>
 			<?php } ?></h3>
 			<?php 
 			$number_comments = getNumberComments($story_id);

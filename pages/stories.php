@@ -31,7 +31,7 @@
 			$subscribed = checkSubscription($channel_id, $_SESSION['user_id']);
 		}
 
-		$stories = array_reverse(getAllChannelStories(urldecode($channel)));
+		$stories = array_reverse(getAllChannelStories($channel));
 	}
 	
 	else $stories = array_reverse(getAllStories());

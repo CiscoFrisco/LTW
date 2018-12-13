@@ -64,14 +64,16 @@
     <?php function draw_comment($comment, $not_profile) { 
 		global $now;
 		
-		$regex = '/\[([^\]]+)\]\((http[s]?:[\/]{2})?(www\.)?([-a-zA-Z0-9@:%&_\+~#=]{2,256}\.[a-z]{2,6}\b[-a-zA-Z0-9@:%_\+.~#?&=\/]*)\)/';
-		$comment['opinion_text'] = preg_replace($regex,"<a href=\"https://www.$4\"	>$1</a>",$comment['opinion_text']);
+		$comment['opinion_text'] = htmlentities($comment['opinion_text']);
 
-		$regex_user = '/\/u\/([-a-zA-Z0-9@:%_\+.~#?&=\/]+)/';
+		$regex = '/\[([^\]]+)\]\((http[s]?:[\/]{2})?(www\.)?([-a-zA-Z0-9]{2,256}\.[a-z]{2,6}\b[-a-zA-Z0-9@:%_\+.~#?{&amp;}=\/]*)\)/';
+		$comment['opinion_text'] = preg_replace($regex,"<a href=\"https://www.$4\">$1</a>",$comment['opinion_text']);
+
+		$regex_user = '/\/u\/([-a-zA-Z0-9]+)/';
 		$comment['opinion_text'] = preg_replace($regex_user, "<a href=\"profile.php?username=$1\">$0</a>",$comment['opinion_text']);
 
-		$regex_channel = '/\/c\/([-a-zA-Z0-9@:%_\+.~#?&=\/]+)/';
-		$comment['opinion_text'] = preg_replace($regex_channel, "<a href=\"profile.php?username=$1\">$0</a>",$comment['opinion_text']);
+		$regex_channel = '/\/c\/([-a-zA-Z0-9]+)/';
+		$comment['opinion_text'] = preg_replace($regex_channel, "<a href=\"stories.php?channel=$1\">$0</a>",$comment['opinion_text']);
 		?>
 		<li>
 		<article class="comment" data-id="<?=$comment['opinion_id']?>">
@@ -81,7 +83,7 @@
 				<div class="downvote" role="button" data-value="<?=$comment['vote']?>"><i class="fas fa-arrow-circle-down"></i></div>
 			</div>
 			<div class = "comment-container">
-			<h3><?=htmlentities($comment['opinion_text'])?></h3>
+			<h3><?=$comment['opinion_text']?></h3>
 			<h4>Posted by <a href="<?='profile.php?username='.urlencode($comment['username'])?>"><?=htmlentities($comment['username'])?></a> <?=deltaTime($now, $comment['posted'])?></h4>
 			<?php 
 			$replieNum = getNumberComments($comment['opinion_id']);
