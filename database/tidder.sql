@@ -3,7 +3,7 @@ CREATE TABLE user (
     username VARCHAR NOT NULL UNIQUE COLLATE NOCASE,
     email VARCHAR NOT NULL UNIQUE COLLATE NOCASE,
     password VARCHAR NOT NULL,
-    realname VARCHAR,
+    realname VARCHAR COLLATE NOCASE,
     birthday DATE,
     join_date DATE NOT NULL,
 	bio VARCHAR
@@ -15,8 +15,8 @@ CREATE TABLE user (
 CREATE TABLE opinion (
     opinion_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	parent_id INTEGER REFERENCES opinion(opinion_id),
-    opinion_title VARCHAR,
-    opinion_text VARCHAR NOT NULL,
+    opinion_title VARCHAR COLLATE NOCASE,
+    opinion_text VARCHAR NOT NULL COLLATE NOCASE,
 	channel_id INTEGER REFERENCES channel,
 	posted DATETIME NOT NULL,
     user_id INTEGER NOT NULL REFERENCES user

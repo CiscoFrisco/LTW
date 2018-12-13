@@ -1,5 +1,6 @@
 <?php
 	include_once('../includes/session.php');
+	include_once('../includes/date.php');
 	include_once('../templates/tpl_common.php');
 
 	if (isset($_SESSION['user_id']))
@@ -31,9 +32,12 @@
 			<input type="password" name="password" placeholder="password" required>
 			<input type="submit" value="Login">
 		</form>
-		<?php if(isset($_GET['error'])){ ?>
-		<h3>Incorrect username or password. Please make sure you're typing them correctly</h3>
-		<?php } ?>
+		<?php if(isset($_GET['error'])){ 
+				if($_GET['error'] == 'bad_login'){?>
+				<h3>Incorrect username or password. Please make sure you're typing them correctly</h3>
+			<?php } else if($_GET['error'] == 'wait') { ?>
+				<h3>You failed log in too many times! Wait <?=epochDifference($_SESSION['timeout'], time());?> to try again.</h3>
+			<?php } } ?>
 		<footer>
 			<p>Don't have an account? <a href="signup.php?redirect=<?=urlencode($_GET['redirect'])?>">Signup!</a></p>
 		</footer>
