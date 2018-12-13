@@ -236,7 +236,7 @@ header {
 }
 
 
-section#login {
+/*section#login*/ .input-block {
     background-color: var(--secondary-writing-bg);
     border: 1px solid var(--border-color);
     margin-left: auto;
@@ -245,7 +245,7 @@ section#login {
     margin-top: 30px;
 }
 
-section#login input{
+/*section#login*/.input-block input{
     display: block;
     margin: 10px 10%;
     width: 50%;
@@ -255,23 +255,23 @@ section#login input{
     padding: 0.2em;
 }
 
-section#login header {
+/*section#login*/ .input-block header {
     background-color: var(--writing-bg);
     border-bottom: var(--border-color) 3px solid;
     color:var(--main-font-color);
     padding: 20px;
 }
 
-section#login h2 {
+/*section#login*/.input-block h2 {
     margin: 0;
 }
 
-section#login form {
+/*section#login*/.input-block form {
     margin-top:20px;
 }
 
 
-section#login input[type="submit"]{
+/*section#login*/.input-block input[type="submit"]{
     border-radius: 10px;
     border:none;
     max-width: 80px;
@@ -282,7 +282,7 @@ section#login input[type="submit"]{
     color: var(--main-font-color);
 }   
 
-section#login input[type="submit"]:hover {
+/*section#login*/.input-block input[type="submit"]:hover {
     background-color: var(--button-color-hover);
     cursor:pointer;
 }
@@ -490,92 +490,10 @@ a.dont-underline:hover {
     text-decoration: none;
 }
 
-
-/*
-    MEDIA SCREENS =========================================================
-*/
-
-@media screen and (max-width: 600px) {
-    article.story .storyinfo {
-        float: none;
-        padding-left: 10px;
-        display: block;
-    }
-
-    article.story:hover .votes-container {
-        background-color: var(--hover-bg);
-    }
-
-    article.story .votes-container {
-        position: relative;
-        background-color: inherit;
-    }
+.wrapper header form:nth-child(1) {
+    width: 210px;
 }
 
 
-@media screen and (max-width: 400px){
-    body > .wrapper > #stories > header > .container > form {
-        float: none;
-        width: 100%;
-        margin: 0;
-        text-align: center;
-        padding: 0;
-    }
 
-    body > .wrapper > #stories > header > .container > form label {
-        padding-left: 10%;
-    }
 
-    body > .wrapper > #stories > header {
-        padding: 0;
-    }
-
-    body > .wrapper > #stories > header > .container > h2 {
-        float: none;
-        width: 100%;
-        margin: 0;
-        text-align: center;
-    }
-}
-
-@media screen and (max-width: 1000px){
-    .container {
-        width: 90%;
-    }
-}
-
-@media screen and (max-width: 600px){
-    .container {
-        width: 95%;
-    }
-}
-
-@media screen and (max-width: 700px){
-    header nav {
-        position: relative;
-        display: block;
-        text-align: center;
-    }
-    .form-container {
-        position: absolute;
-        right: 0;
-        padding: 15px;
-    }
-}
-
-@media screen and (max-width: 430px){
-    .form-container {
-        position: relative;
-        padding: 0;
-        padding-top: 10px;
-        display: block;
-        margin: 0 auto;
-    }
-
-    body > .wrapper > header h1 {
-        float: none;
-        display: block;
-        margin: 0;
-        text-align: center;
-    }
-}

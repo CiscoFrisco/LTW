@@ -22,7 +22,7 @@
 	draw_header(false);
 ?>
 <div class="container">
-	<section id="login">
+	<section id="login" class ="input-block">
 		<header>
 			<h2>Welcome Back</h2>
 		</header>
