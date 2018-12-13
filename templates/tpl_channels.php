@@ -1,7 +1,9 @@
 <?php
 	include_once('../includes/session.php');
 
-	function draw_channels($channels){ ?>
+	function draw_channels($channels){ 
+		global $page;
+		?>
 		<section id="stories" class = "secondary">
 			<header class = "secondary-header">
 				<div class = "container"> 
