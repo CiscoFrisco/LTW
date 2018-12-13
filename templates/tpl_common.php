@@ -15,6 +15,7 @@ function draw_header($isnt_login_signup) {
 	<script src="../js/main.js" defer></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/responsive.css">
 	<link rel="shortcut icon" type="image/jpg" href="../pictures/default.jpg"/>
 </head>
 

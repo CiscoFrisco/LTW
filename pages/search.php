@@ -63,8 +63,10 @@
         draw_users($users);
 
     if(count($stories) == 0 && count($comments) == 0 && count($users) == 0) {?>
-        <h3>Couldn't find what you're looking for!</h3>
-        <h3><img src="../pictures/sad.png" alt="Not Found" width="200" height="200"></h3>
+        <div class = "container input-block not-found">
+            <h3>Couldn't find what you're looking for!</h3>
+            <h3><img src="../pictures/sad.png" alt="Not Found" width="200" height="200"></h3>
+        </div>
     <?php }
     draw_footer();
 ?>
