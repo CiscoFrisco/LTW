@@ -24,6 +24,14 @@ function encodeForAjax(data) {
 addAllEventListeners();
 startPage();
 
+let password = document.querySelector('#signup form input[type="password"]');
+if (password != null)
+	password.addEventListener('keydown', passwordStrenght)
+
+function passwordStrenght() {
+	console.log(this.value.length);
+}
+
 function addAllEventListeners() {
 	let commentForm = document.querySelector('#comments > form');
 
@@ -107,16 +115,15 @@ function numberOfParentsUntilSectionComments(node) {
 
 
 function darkmode() {
-	
+
 	let body = document.getElementsByTagName("body")[0];
-	
-	if(this.checked){
-		sessionStorage.setItem('mode','dark');
+
+	if (this.checked) {
+		sessionStorage.setItem('mode', 'dark');
 		body.classList.remove("light")
 		body.classList.add("dark")
-	}
-	else{
-		sessionStorage.setItem('mode','light');
+	} else {
+		sessionStorage.setItem('mode', 'light');
 		body.classList.remove("dark")
 		body.classList.add("light")
 	}
