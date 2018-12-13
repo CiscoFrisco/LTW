@@ -42,7 +42,7 @@
 	function draw_channel($channel){ ?>
 		<li>
 			<div class="channel">
-			<h3><a href="stories.php?channel=<?=urlencode($channel['channel_name'])?>"><?=$channel['channel_name']?></a></h3>
+			<h3><a href="stories.php?channel=<?=urlencode($channel['channel_name'])?>"><?=htmlentities($channel['channel_name'])?></a></h3>
 			<?php if(isset($_SESSION['user_id'])) {
 					if($channel["subscribed"]) { ?>
 						<div class="unsubscribe" role="button" data-id="<?=$channel['channel_id']?>"><i class="fas fa-bell-slash"></i></div>
@@ -63,9 +63,9 @@
 			
 			<?php foreach($channels as $channel) { 
 					if($channel_name == $channel["channel_name"]) { ?>
-						<option value="<?=$channel["channel_id"]?>" selected><?='/c/'.$channel_name?></option>
+						<option value="<?=$channel["channel_id"]?>" selected><?='/c/'.htmlentities($channel_name)?></option>
 			<?php } else { ?>
-				<option value="<?=$channel["channel_id"]?>"><?='/c/'.$channel["channel_name"]?></option>
+				<option value="<?=$channel["channel_id"]?>"><?='/c/'.htmlentities($channel["channel_name"])?></option>
 			<?php } } ?>
 
 			</select>

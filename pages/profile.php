@@ -57,16 +57,16 @@
 ?>
 	<div class = "container profile">
 		<div class = "comment-container">
-			<h2><?=$username?>'s Profile</h2>
+			<h2><?=htmlentities($username)?>'s Profile</h2>
 			<div class = "photo-cropper">
 				<img class = "profile-pic" src=<?=$path?> alt=<?=$alt?> width="100" height="100">
 			</div>
-			<h3>Username: <span class = "input"> <?=$username?> </span></h3>
+			<h3>Username: <span class = "input"> <?=htmlentities($username)?> </span></h3>
 			<h3>Score: <span class = "input"><?=$score?></span></h3>
-			<h3>Name: <span class = "input"><?=$realname?></span></h3>
-			<h3>Bio: <span class = "input"><?=$bio?></span></h3>
-			<h3>Email: <span class = "input"><?=$email?></span></h3>
-			<h3>Birthday: <span class = "input"><?=$formatted_birthday?></span></h3>
+			<h3>Name: <span class = "input"><?=htmlentities($realname)?></span></h3>
+			<h3>Bio: <span class = "input"><?=htmlentities($bio)?></span></h3>
+			<h3>Email: <span class = "input"><?=htmlentities($email)?></span></h3>
+			<h3>Birthday: <span class = "input"><?=htmlentities($formatted_birthday)?></span></h3>
 			<h3>Join Date: <span class = "input"><?=$formatted_join_date?></span></h3>
 		</div>
 	</div>
@@ -80,23 +80,24 @@
 	<div class = "container profile">
 		<div class = "comment-container">
 			<form method="post" action="../actions/action_edit_profile.php" enctype="multipart/form-data">
+				<input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
 				<label>Profile Picture:
 					<input type="file" name="img" value="" accept="image/png, image/jpeg">
 				</label>
 				<label>Username:
-					<input type="text" name="username" value="<?=$username?>" required>
+					<input type="text" name="username" value="<?=htmlentities($username)?>" required>
 				</label>
 				<label>Name:
-					<input type="text" name="realname" value="<?=$realname?>">
+					<input type="text" name="realname" value="<?=htmlentities($realname)?>">
 				</label>
 				<label>Email:
-					<input type="email" name="email" value="<?=$email?>" required>
+					<input type="email" name="email" value="<?=htmlentities($email)?>" required>
 				</label>
 				<label>Birthday:
-					<input type="date" name="birthday" value="<?=$birthday?>">
+					<input type="date" name="birthday" value="<?=htmlentities($birthday)?>">
 				</label>
 				<label>Bio:
-					<textarea name="bio"><?=$bio?></textarea>
+					<textarea name="bio"><?=htmlentities($bio)?></textarea>
 				</label>
 
 				<input type="submit" value="Edit Profile">

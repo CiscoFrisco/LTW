@@ -29,6 +29,7 @@ function draw_header($isnt_login_signup) {
 			</h1>
 			<div class = "form-container">
 				<form method="get" action="../actions/action_search.php">
+					<input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
 					<input type="text" name="search" placeholder="Search" required>
 					<input type="submit" class="fa fa-input" value="&#xf002">
 				</form>

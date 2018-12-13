@@ -2,6 +2,9 @@
 	include_once('../includes/session.php');
 	include_once('../database/db_user.php');
 
+	if ($_SESSION['csrf'] !== $_POST['csrf'])
+		die(header('Location: https://bit.ly/2Lf0oIo'));
+
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 

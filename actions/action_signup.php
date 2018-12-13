@@ -2,16 +2,15 @@
 	include_once('../includes/session.php');
 	include_once('../database/db_user.php');
 
+	if ($_SESSION['csrf'] !== $_POST['csrf'])
+		die(header('Location: https://bit.ly/2Lf0oIo'));
+
     $username = $_POST['username'];
     $email = $_POST['email'];
 	$password = $_POST['password'];
-	
-	$uppercase = preg_match('@[A-Z]@', $password);
-	$lowercase = preg_match('@[a-z]@', $password);
-	$number = preg_match('@[0-9]@', $password);
 
-	if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
-		die(header('Location: ../pages/signup.php?error=badPassword'));
+	if(!preg_match ("/^[a-zA-Z1-9]+$/", $username)){
+		die(header('Location: ../pages/signup.php?error=username'));
 	}
 
     try {

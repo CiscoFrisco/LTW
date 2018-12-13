@@ -11,7 +11,7 @@
 			<h3><a href="stories.php">Stories</a></h3>
 			<h3><a href="channels.php">Channels</a></h3>
 		<?php } else if($channel) { ?>
-			<h2><?='/c/'.$channel?></h2>
+			<h2><?='/c/'.htmlentities($channel)?></h2>
 			<?php if(isset($_SESSION['user_id'])) {
 					global $channel_id;
 					global $subscribed;
@@ -34,7 +34,7 @@
 			<?php if(isset($_GET['subscribed']) && $_GET['subscribed'] == 'true') { ?>
 				<input type="hidden" name="subscribed" value="true">
 			<?php } else if($channel) { ?>
-				<input type="hidden" name="channel" value="<?=$channel?>">
+				<input type="hidden" name="channel" value="<?=htmlentities($channel)?>">
 			<?php } ?>
 				<select name="sort" onchange="this.form.submit();">
 					<option value="-1" hidden selected>SORT</option>
@@ -92,9 +92,9 @@
 					</div>
 					<div class = "storyinfo">
 						<h3><a href="story.php?story_id=<?=$story['opinion_id']?>"><?=htmlentities($story['opinion_title'])?></a></h3>
-						<h4>Posted by <a href="<?='profile.php?username='.urlencode($story['username'])?>"><?=$story['username']?></a> 
+						<h4>Posted by <a href="<?='profile.php?username='.urlencode($story['username'])?>"><?=htmlentities($story['username'])?></a> 
 							<?=deltaTime($now, $story['posted'])?>
-							in <a href="<?='stories.php?channel='.urlencode($story['channel_name'])?>"><?=$story['channel_name']?></a></h4>
+							in <a href="<?='stories.php?channel='.urlencode($story['channel_name'])?>"><?=htmlentities($story['channel_name'])?></a></h4>
 						<?php if($story['comments'] == 1){ ?>
 							<h4><?=$story['comments']?> comment</h4>
 						<?php } else { ?>

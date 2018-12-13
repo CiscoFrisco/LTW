@@ -15,6 +15,7 @@
 	}
 
 	function draw_comments_header($comments,$not_profile){ 
+		global $page;
 		global $story_id;
 		if($not_profile){ ?>
 			<section id="comments" data-id="<?=$story_id?>">
@@ -32,6 +33,7 @@
 		<?php if($not_profile){
 			if((isset($_SESSION['user_id']))) { ?>
 				<form>
+					<input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
 					<input type="hidden" name="opinion_id" value="<?=$story_id?>">
 					<textarea name="comment" placeholder="Have something to say about this story?" required></textarea>
 					<input type="submit" value="Add Comment">
@@ -80,7 +82,7 @@
 			</div>
 			<div class = "comment-container">
 			<h3><?=htmlentities($comment['opinion_text'])?></h3>
-			<h4>Posted by <a href="<?='profile.php?username='.urlencode($comment['username'])?>"><?=$comment['username']?></a> <?=deltaTime($now, $comment['posted'])?></h4>
+			<h4>Posted by <a href="<?='profile.php?username='.urlencode($comment['username'])?>"><?=htmlentities($comment['username'])?></a> <?=deltaTime($now, $comment['posted'])?></h4>
 			<?php 
 			$replieNum = getNumberComments($comment['opinion_id']);
 			if($replieNum == 1){ ?>
