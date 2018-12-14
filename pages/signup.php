@@ -30,6 +30,7 @@
 			<input type="text" name="username" placeholder="username" required>
 			<input type="email" name="email" placeholder="e-mail" required>
 			<input type="password" name="password" placeholder="password" required>
+			Password Strength: <div id="passScore">0%</div>
 			<input type="submit" value="Signup">
 		</form>
 		<?php if(isset($_GET['error'])){ 

@@ -26,10 +26,103 @@ startPage();
 
 let password = document.querySelector('#signup form input[type="password"]');
 if (password != null)
-	password.addEventListener('keydown', passwordStrenght)
+	password.addEventListener('keyup', passwordStrength)
 
-function passwordStrenght() {
-	console.log(this.value.length);
+//Password strenght algorithm based on http://www.passwordmeter.com/js/pwdmeter.js
+function passwordStrength() {
+	let pass = this.value;
+
+	let lengthWeight = pass.length * 4;
+	let uppercaseWeight = pass.replace(/[A-Z]/g, '').length * 2;
+	let lowercaseWeight = pass.replace(/[a-z]/g, '').length * 2;
+	let numbersWeight = pass.replace(/[^0-9]/g, '').length * 4;
+	let symbolsWeight = pass.replace(/[A-Za-z0-9]/g, '').length * 6;
+
+	let middleNumSymbWeight = pass.replace(/[^0-9]/g, '').length + pass.replace(/[A-Za-z0-9]/g, '').length;
+	middleNumSymbWeight -= ((pass[0] < 'a' || pass[0] > 'z') && (pass[0] < 'A' || pass[0] > 'Z')) ? 1 : 0;
+	if (pass.length != 1)
+		middleNumSymbWeight -= ((pass[pass.length - 1] < 'a' || pass[pass.length - 1] > 'z') && (pass[pass.length - 1] < 'A' || pass[pass.length - 1] > 'Z')) ? 1 : 0;
+	middleNumSymbWeight *= 2;
+
+	let requirementsWeight = (pass.length < 8) ? 0 : 1;
+	requirementsWeight += (pass.length != pass.replace(/[A-Z]/g, '').length) ? 1 : 0;
+	requirementsWeight += (pass.length != pass.replace(/[a-z]/g, '').length) ? 1 : 0;
+	requirementsWeight += (numbersWeight != 0) ? 1 : 0;
+	requirementsWeight += (symbolsWeight != 0) ? 1 : 0;
+	requirementsWeight *= (pass.length < 8 || requirementsWeight < 4) ? 0 : 2;
+
+	let additions = lengthWeight + uppercaseWeight + lowercaseWeight + numbersWeight + symbolsWeight + middleNumSymbWeight + requirementsWeight;
+
+	let lettersOnlyWeight = (pass.replace(/[a-zA-Z]/g, '').length == 0) ? pass.length : 0;
+	let numbersOnlyWeight = (pass.replace(/[0-9]/g, '').length == 0) ? pass.length : 0;
+
+	let repeatChar = 0;
+	let repeatCharWeight = 0;
+	let consecutiveUpperWeight = 0;
+	let consecutiveLowerWeight = 0;
+	let consecutiveNumWeight = 0;
+	let sequentialLetterWeight = 0;
+	let sequentialNumWeight = 0;
+
+	for (let i = 0; i < pass.length; i++) {
+		let repeat = false;
+		for (let j = 0; j < pass.length; j++) {
+			if (pass[i] == pass[j] && i != j) {
+				repeat = true;
+				repeatCharWeight += Math.abs(pass.length / (j - i));
+			}
+		}
+		if (repeat) {
+			repeatChar++;
+			let uniqueChar = pass.length - repeatChar;
+			repeatCharWeight = (uniqueChar) ? Math.ceil(repeatCharWeight / uniqueChar) : Math.ceil(repeatCharWeight);
+		}
+		if (i != pass.length - 1) {
+			consecutiveUpperWeight += ((pass[i] >= 'A' && pass[i] <= 'Z') && (pass[i + 1] >= 'A' && pass[i + 1] <= 'Z')) ? 2 : 0;
+			consecutiveLowerWeight += ((pass[i] >= 'a' && pass[i] <= 'z') && (pass[i + 1] >= 'a' && pass[i + 1] <= 'z')) ? 2 : 0;
+			consecutiveNumWeight += ((pass[i] >= '1' && pass[i] <= '9') && (pass[i + 1] >= '1' && pass[i + 1] <= '9')) ? 2 : 0;
+		}
+		if (i < pass.length - 2) {
+			sequentialLetterWeight += seqLetter(pass, i) ? 3 : 0;
+			sequentialNumWeight += ((pass[i] >= '1' && pass[i] <= '9') && pass.charCodeAt(i + 1) == pass.charCodeAt(i) + 1 && pass.charCodeAt(i + 2) == pass.charCodeAt(i) + 2) ? 3 : 0;
+		}
+	}
+
+	let deductions = lettersOnlyWeight + numbersOnlyWeight + repeatCharWeight + consecutiveUpperWeight + consecutiveLowerWeight + consecutiveNumWeight + sequentialLetterWeight + sequentialNumWeight;
+
+	let score = additions - deductions;
+	score = score > 100 ? 100 : score;
+	score = score < 0 ? 0 : score;
+
+	this.parentElement.querySelector('#passScore').innerHTML = score + "%";
+}
+
+let signupSubmit = document.querySelector('#signup form');
+if (signupSubmit != null)
+	signupSubmit.addEventListener('submit', checkPasswordStrength);
+
+function checkPasswordStrength() {
+	let score = this.parentElement.querySelector('#passScore').innerHTML;
+	if (score.substring(0, score.length - 1) < 50)
+	{
+		alert('Password not strong enough\nShould be at least 50%!');
+		event.preventDefault();
+	}
+}
+
+function seqLetter(pass, i) {
+	if ((pass[i] >= 'A' && pass[i] <= 'Z') &&
+		(pass.charCodeAt(i + 1) == pass.charCodeAt(i) + 1 || pass.charCodeAt(i + 1) == pass.charCodeAt(i) + 33) &&
+		(pass.charCodeAt(i + 2) == pass.charCodeAt(i) + 2 || pass.charCodeAt(i + 2) == pass.charCodeAt(i) + 34))
+		return true;
+
+
+	if ((pass[i] >= 'a' && pass[i] <= 'z') &&
+		(pass.charCodeAt(i + 1) == pass.charCodeAt(i) + 1 || pass.charCodeAt(i + 1) == pass.charCodeAt(i) - 31) &&
+		(pass.charCodeAt(i + 2) == pass.charCodeAt(i) + 2 || pass.charCodeAt(i + 2) == pass.charCodeAt(i) - 30))
+		return true;
+
+	return false;
 }
 
 function addAllEventListeners() {
