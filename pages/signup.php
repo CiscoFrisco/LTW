@@ -29,7 +29,7 @@
 			<input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
 			<input type="text" name="username" placeholder="username" required>
 			<input type="email" name="email" placeholder="e-mail" required>
-			<input type="password" name="password" placeholder="password" onkeydown="passwordUpdate()" required>
+			<input type="password" name="password" placeholder="password" onkeyup="passwordUpdate()" required>
 			<div class="pass-score">
 				Password Strength: <div id="passScore" data-value ="0">0%</div>
 			</div>

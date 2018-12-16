@@ -37,11 +37,14 @@
 					<div class="error-message">
 						<h3>Incorrect username or password. Please make sure you're typing them correctly</h3>
 					</div>
-			<?php } else if($_GET['error'] == 'wait') { ?>
+			<?php } else if($_GET['error'] == 'wait') { 
+					$time_remaining = $_SESSION['timeout'] -time();
+					if($time_remaining > 0) {
+					?>
 					<div class="error-message">
 						<h3>You failed log in too many times! Wait <?=epochDifference($_SESSION['timeout'], time());?> to try again.</h3>
 					</div>
-			<?php } } ?>
+			<?php } } } ?>
 		<footer>
 			<p>Don't have an account? <a href="signup.php?redirect=<?=urlencode($_GET['redirect'])?>">Signup!</a></p>
 		</footer>

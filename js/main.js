@@ -6,8 +6,6 @@ function passwordUpdate() {
 	var passScore = parseInt(passScoreHTML.substr(0, passScoreHTML.length - 1));
 	var passElem = document.getElementById("passScore");
 
-	console.log(passScore);
-
 	if(passElem.classList.length == 1)
 		passElem.classList.remove(passElem.classList[0]);
 

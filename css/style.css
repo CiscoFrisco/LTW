@@ -101,14 +101,11 @@ ol {
 }
 
 .error-message {
-    border-radius: 5px;
     border: 2px solid rgb(131, 3, 3); 
     background-color:rgb(235, 62, 62);
     text-align:center;
-    color:white;
-}
-
-.error-message .h3 {
+    border-left:none;
+    border-right: none;
     color:white;
 }
 
@@ -579,6 +576,14 @@ a.dont-underline:hover {
     width: 210px;
 }
 
+
+/*
+    404 NOT FOUND
+*/
+
+#not_found_404 {
+    text-align: center;
+}
 
 
 
