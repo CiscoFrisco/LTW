@@ -34,9 +34,13 @@
 		</form>
 		<?php if(isset($_GET['error'])){ 
 				if($_GET['error'] == 'bad_login'){?>
-				<h3>Incorrect username or password. Please make sure you're typing them correctly</h3>
+					<div class="error-message">
+						<h3>Incorrect username or password. Please make sure you're typing them correctly</h3>
+					</div>
 			<?php } else if($_GET['error'] == 'wait') { ?>
-				<h3>You failed log in too many times! Wait <?=epochDifference($_SESSION['timeout'], time());?> to try again.</h3>
+					<div class="error-message">
+						<h3>You failed log in too many times! Wait <?=epochDifference($_SESSION['timeout'], time());?> to try again.</h3>
+					</div>
 			<?php } } ?>
 		<footer>
 			<p>Don't have an account? <a href="signup.php?redirect=<?=urlencode($_GET['redirect'])?>">Signup!</a></p>

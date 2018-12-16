@@ -12,6 +12,15 @@ body {
     position: relative;
 }
 
+.container .form-container input[type=text] {
+    /* float: right; */
+    padding: 6px;
+    border: none;
+    margin-left: 20px;
+    font-size: 17px;
+}
+  
+
 .wrapper {
     min-height: 100%;
     margin-bottom: -50px;
@@ -95,6 +104,58 @@ a:hover {
 ol {
     list-style-type: none;
     padding: 0;
+}
+
+.error-message {
+    border-radius: 5px;
+    border: 2px solid rgb(131, 3, 3); 
+    background-color:rgb(235, 62, 62);
+    text-align:center;
+    color:white;
+}
+
+.error-message .h3 {
+    color:white;
+}
+
+.pass-score {
+    background-color: white;
+    border-radius:3px;
+    border: 1px solid var(--border-color);
+    margin-left: 65px;
+    max-width: 205px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left:2px;
+    padding-right:2px;
+
+}
+
+#passScore {
+    width: 65px;
+    text-align:center;
+    border: 1px solid var(--border-color);
+    display: inline-block;
+}
+
+#passScore.lt20 {
+    background-image: linear-gradient(to right, red , rgb(255, 166, 0));
+}
+
+#passScore.lt40 {
+    background-image: linear-gradient(to right, rgb(255, 166, 0) , yellow);
+}
+
+#passScore.lt60 {
+    background-image: linear-gradient(to right, yellow , rgb(122, 243, 8));
+}
+
+#passScore.lt80 {
+    background-image: linear-gradient(to right,rgb(122, 243, 8) , rgb(17, 209, 17));
+}
+
+#passScore.lte100 {
+    background-image: linear-gradient(to right, rgb(17, 209, 17) , green);
 }
 
 /*

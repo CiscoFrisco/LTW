@@ -1,5 +1,37 @@
 'use strict'
 
+function passwordUpdate() {
+
+	var passScoreHTML = document.getElementById("passScore").innerHTML;
+	var passScore = parseInt(passScoreHTML.substr(0, passScoreHTML.length - 1));
+	var passElem = document.getElementById("passScore");
+
+	console.log(passScore);
+
+	if(passElem.classList.length == 1)
+		passElem.classList.remove(passElem.classList[0]);
+
+	if (passScore < 20) {
+		passElem.classList.add('lt20');
+	}
+	else if (passScore < 40) {
+		passElem.classList.add('lt40');
+	}
+	else if (passScore < 60) {
+		passElem.classList.add('lt60');
+	}
+	else if (passScore < 80) {
+		passElem.classList.add('lt80');
+	}
+	else {
+		passElem.classList.add('lte100');
+	}
+}
+
+function submitSearch() {
+	document.getElementById('.container .form-container').submit();
+}
+
 let entityMap = {
 	"&": "&amp;",
 	"<": "&lt;",
@@ -103,8 +135,7 @@ if (signupSubmit != null)
 
 function checkPasswordStrength() {
 	let score = this.parentElement.querySelector('#passScore').innerHTML;
-	if (score.substring(0, score.length - 1) < 50)
-	{
+	if (score.substring(0, score.length - 1) < 50) {
 		alert('Password not strong enough\nShould be at least 50%!');
 		event.preventDefault();
 	}

@@ -29,15 +29,21 @@
 			<input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
 			<input type="text" name="username" placeholder="username" required>
 			<input type="email" name="email" placeholder="e-mail" required>
-			<input type="password" name="password" placeholder="password" required>
-			Password Strength: <div id="passScore">0%</div>
+			<input type="password" name="password" placeholder="password" onkeydown="passwordUpdate()" required>
+			<div class="pass-score">
+				Password Strength: <div id="passScore" data-value ="0">0%</div>
+			</div>
 			<input type="submit" value="Signup">
 		</form>
 		<?php if(isset($_GET['error'])){ 
 					if($_GET['error'] == 'taken'){?>
-			<h3>Username or email already taken!</h3>
+						<div class="error-message">
+							<h3>Username or email already taken!</h3>
+						</div>
 		<?php } else if($_GET['error'] == 'username') { ?>
-			<h3>Username can only contain letters and numbers!</h3>
+					<div class="error-message">
+						<h3>Username can only contain letters and numbers!</h3>
+					</div>
 		<?php } } ?>
 		<footer>
 			<p>Already have an account? <a href="login.php?redirect=<?=urlencode($_GET['redirect'])?>">Login!</a></p>

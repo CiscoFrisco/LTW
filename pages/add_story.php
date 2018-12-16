@@ -31,9 +31,13 @@
 			</form>
 			<?php if(isset($_GET['error'])){ 
 					if($_GET['error'] == 'title'){?>
-						<h3>Title is too long! (Max is 50 characters)</h3>
+						<div class ="error-message">
+							<h3>Title is too long! (Max is 50 characters)</h3>
+						</div>
 			<?php } else if($_GET['error'] == 'text') {?>
-						<h3>Story is too long! (Max is 50000 characters)</h3>
+						<div class ="error-message">
+							<h3>Story is too long! (Max is 50000 characters)</h3>
+						</div>
 			<?php }} ?>
 		</section>
 	</div>
