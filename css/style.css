@@ -13,11 +13,11 @@ body {
 }
 
 .container .form-container input[type=text] {
-    /* float: right; */
     padding: 6px;
     border: none;
     margin-left: 20px;
     font-size: 17px;
+    border-radius: 5px;
 }
   
 
@@ -72,12 +72,6 @@ footer {
     height:50px;
     text-align: center;
     color: var(--main-font-color);
-}
-
-
-textarea {
-    width: 70%;
-    display: block;
 }
 
 .comment_comment {
@@ -222,11 +216,19 @@ input:checked + .slider:before {
     color: var(--icon-color);
 }
 
-.downvote[data-value="-1"] .fa-arrow-circle-down , .fa-arrow-circle-down:hover {
+.dark .downvote[data-value="-1"] .fa-arrow-circle-down , .fa-arrow-circle-down:hover {
+    color: orange;
+} 
+
+.dark .upvote[data-value="1"] .fa-arrow-circle-up , .fa-arrow-circle-up:hover {
+    color: rgb(247, 247, 64);
+}
+
+.light .downvote[data-value="-1"] .fa-arrow-circle-down , .fa-arrow-circle-down:hover {
     color: red;
 } 
 
-.upvote[data-value="1"] .fa-arrow-circle-up , .fa-arrow-circle-up:hover {
+.light .upvote[data-value="1"] .fa-arrow-circle-up , .fa-arrow-circle-up:hover {
     color: blue;
 }
 
@@ -308,17 +310,21 @@ header {
     margin-top: 30px;
 }
 
-
 .input-block input, .input-block label, .input-block textarea{
     display: block;
     margin: 10px 10%;
-    width: 50%;
-    max-width: 200px;    
-    min-width: 85px;
+    width: 27%;   
     font-size: 15px;
     padding: 0.2em;
 }
 
+#new_story.input-block input, #new_story.input-block textarea{
+    display: block;
+    margin: 10px 10%;
+    width: 80%;   
+    font-size: 15px;
+    padding: 0.2em;
+}
 
 .input-block header {
     background-color: var(--writing-bg);
@@ -344,7 +350,7 @@ header {
 
 
 .input-block input[type="submit"]{
-    border-radius: 10px;
+    border-radius: 5px;
     border:none;
     max-width: 80px;
     padding: 0.5em;
@@ -425,16 +431,13 @@ section#edit form {
 }
 
 section#edit form  * {
+    border-radius:3px;
     margin: 5px 0;
     display: block;
 }
 
 section#edit label{
     font-weight: bold;
-}
-
-section#edit label * {
-    display: inline-block;
 }
 
 .channel {
@@ -482,6 +485,7 @@ textarea {
     overflow: auto;
     width: 95%;
     height: 100px;
+    border-radius:5px;
 }
 
 article.comment.dark-comment {

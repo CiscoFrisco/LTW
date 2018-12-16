@@ -1,5 +1,6 @@
 :root {    
     /* Color Pallete */
+    /*light theme colors*/
     --grey-shade-0: #f9f9f9;
     --grey-shade-1: #f5f5f5;
     --grey-shade-1-5: #efefef;
@@ -7,8 +8,14 @@
     --grey-shade-3: #bebebe;
     --grey-shade-4: #a9a9a9;
     --grey-shade-5: #808080;
+    
+    /*dark theme colors*/
     --grey-shade-6: #505050;
     --grey-shade-7: #303030;
+    --grey-shade-7-5: #a79e9e;
+    --grey-shade-8: #3b3737;
+    --grey-shade-9: #928d88;
+    --grey-shade-10: #bebebe;
 }
 
 /* Variables for the light mode */
@@ -40,19 +47,19 @@ body.dark {
     --main-bg: black;
     --hover-bg: var(--grey-shade-7);
     --writing-bg: var(--grey-shade-6);
-    --secondary-writing-bg: var(--grey-shade-7);
+    --secondary-writing-bg: var(--grey-shade-7-5);
     
     /* Border */
-    --border-color: darkgrey;
+    --border-color: var(--grey-shade-8);
 
     /* Font */
-    --main-font-color: var(--grey-shade-1);
-    --secondary-font-color: var(--grey-shade-4);
+    --main-font-color:black;
+    --secondary-font-color: var(--grey-shade-10);
 
     /* Icon */
-    --icon-color: var(--grey-shade-2);
+    --icon-color: var(--grey-shade-4);
 
     /* Buttons */
-    --button-color: var(--grey-shade-6);
-    --button-color-hover: var(--grey-shade-5);
+    --button-color: rgb(58, 54, 54);
+    --button-color-hover: var(--grey-shade-9);
 }
