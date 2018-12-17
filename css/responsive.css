@@ -1,82 +1,3 @@
-
-
-@media screen and (max-width: 600px) {
-    article.story .storyinfo {
-        float: none;
-        padding-left: 10px;
-        display: block;
-    }
-
-    article.story:hover .votes-container {
-        background-color: var(--hover-bg);
-    }
-
-    article.story .votes-container {
-        position: relative;
-        background-color: inherit;
-    }
-}
-
-
-@media screen and (max-width: 400px){
-    body > .wrapper > #stories > header > .container > form {
-        float: none;
-        width: 100%;
-        margin: 0;
-        text-align: center;
-        padding: 0;
-    }
-
-    body > .wrapper > #stories > header > .container > form label {
-        padding-left: 10%;
-    }
-
-    body > .wrapper > #stories > header {
-        padding: 0;
-    }
-
-    body > .wrapper > #stories > header > .container > h2 {
-        float: none;
-        width: 100%;
-        margin: 0;
-        text-align: center;
-    }
-}
-
-
-
-@media screen and (max-width: 700px){
-    header nav {
-        position: relative;
-        display: block;
-        text-align: center;
-    }
-    .form-container {
-        position: absolute;
-        right: 0;
-        padding: 15px;
-    }
-}
-
-@media screen and (max-width: 430px){
-    .form-container {
-        position: relative;
-        padding: 0;
-        padding-top: 10px;
-        display: block;
-        margin: 0 auto;
-    }
-
-    body > .wrapper > header h1 {
-        float: none;
-        display: block;
-        margin: 0;
-        text-align: center;
-    }
-}
-
-
-
 @media screen and (max-width: 1000px){
     .container {
         width: 90%;
@@ -88,3 +9,32 @@
         width: 95%;
     }
 }
+
+@media screen and (max-width: 700px){
+
+    header nav {
+        position: relative;
+        display: block;
+        text-align: center;
+    }
+    
+    .form-container {
+        position: absolute;
+        right: 0;
+        padding: 5px;
+    }
+
+    .secondary-header select, .secondary-header h3 {
+        display: block;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .form-container, #header_container h1 a { 
+        position: relative;
+        text-align: center;
+    }
+}
+
+
