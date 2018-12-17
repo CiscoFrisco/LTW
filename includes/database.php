@@ -1,4 +1,5 @@
 <?php
+	//Copied from https://github.com/arestivo/fare-niente/blob/master/includes/database.php
     /**
      * A singleton representing the app connection 
      * to the database. Use Database::instance() to 
