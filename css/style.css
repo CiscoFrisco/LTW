@@ -421,6 +421,15 @@ section#story .container h4 {
     color: rgb(226, 225, 225);
 }
 
+
+.dark a {
+    color: wheat;
+}
+
+.light a {
+    color: orangered;
+}
+
 .profile {
     position: relative;
     background-color: var(--writing-bg);
