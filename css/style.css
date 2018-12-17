@@ -576,13 +576,19 @@ article.story:hover {
     z-index: 1;
 }
 
-
-
 /*
     SPECIFIC CASES
 */
 a.dont-underline:hover {
     text-decoration: none;
+}
+
+.light a.dont-underline {
+    color:black;
+}
+
+.dark a.dont-underline {
+    color:white;
 }
 
 .wrapper header form:nth-child(1) {
