@@ -413,8 +413,12 @@ section#story .container h4 {
     border-radius: 50%;
 }
 
-.comment-container .input {
+.light .comment-container .input {
     color: var(--grey-shade-5);
+}
+
+.dark .comment-container .input {
+    color: rgb(226, 225, 225);
 }
 
 .profile {
